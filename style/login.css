@@ -1,0 +1,29 @@
+*{
+    margin: 0 auto;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap column;
+}
+img{
+width: 60vw;
+}
+#login{
+    display: flex;
+    justify-content: center;
+    background: black;
+    color: white;
+    align-items: center;
+    flex-flow: wrap column;
+    width: 60vw;
+    height: 30vh;
+}
+input[type="text"], input[type="password"]{
+    width: 50vw;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+}
