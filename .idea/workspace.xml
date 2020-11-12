@@ -3,7 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="a74655d6-8fa9-424a-89c6-408d48e9e6c1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/code.php" beforeDir="false" afterPath="$PROJECT_DIR$/pruebasJSPHP/code.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/pruebasJSPHP.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/bbdd.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/code.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/comprobacion.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/logged.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/logoblanco.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/logologin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/shortlogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/style/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +42,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/php-7.4.12-Win32-vc15-x64/php.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -39,6 +62,10 @@
       <updated>1605001622469</updated>
       <workItem from="1605001623525" duration="630000" />
       <workItem from="1605166562252" duration="147000" />
+      <workItem from="1605167902343" duration="4000" />
+      <workItem from="1605168347393" duration="8000" />
+      <workItem from="1605168378182" duration="18000" />
+      <workItem from="1605168398146" duration="6105000" />
     </task>
     <servers />
   </component>
@@ -50,10 +77,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="606" y="212" key="#CLI_Interpreters/0.0.2048.1112@0.0.2048.1112" timestamp="1605001670265" />
-    <state x="806" y="312" key="FileChooserDialogImpl" timestamp="1605001662271">
+    <state x="806" y="312" key="FileChooserDialogImpl" timestamp="1605168393724">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="806" y="312" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1605001662271" />
+    <state x="806" y="312" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1605168393724" />
     <state x="526" y="201" key="SettingsEditor" timestamp="1605001688368">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

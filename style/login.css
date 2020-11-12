@@ -20,9 +20,9 @@ body{
     align-items: center;
     flex-flow: wrap column;
     background:rgba(0,0,0,0.5);
-    height: 100vh;;
+    height: 100vh;
 }
-img{
+.imgMovil{
     width: 40vw;
 }
 form{
@@ -46,7 +46,6 @@ i{
     border-bottom: 1px solid white;
     margin-bottom: 4vh;
     padding-bottom: 1vh;
-    max-width: 60vw;
     width: 60vw;
 }
 ::placeholder{
@@ -55,7 +54,7 @@ i{
 input[type="submit"]{
     width: 50vw;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     background: white;
     outline:none;
     margin-bottom: 10px;
@@ -66,10 +65,10 @@ input[type="submit"]{
     position: absolute;
     margin-bottom: 10px;
 }
-input[type="button"]{
+.btnSignmbl{
     width: 50vw;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: transparent;
     color: white;
     outline:none;
@@ -94,6 +93,99 @@ input[type="file"]{
 #signup{
     display: none;
 }
-#fotoperfil{
+#fotoperfil, #color, h1, .btncambiar{
     display: none;
+}
+
+@media screen and (min-width: 1100px){
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 100vw;
+    }
+    #color{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60vw;
+        height: 100vh;
+        background:rgba(0,0,0,0.5);
+    }
+    #login,#signup{
+        width: 40vw;
+        margin:0;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOElEQVQoU2NkIBIwElT3f+Z/BsZ0RvwKoYpAhhE2EWoldoVIJsGchqkQiyIyrcZhEqrVBBSRZDUAYmMSC1jiMgMAAAAASUVORK5CYII=) lightseagreen repeat;
+    }
+    .imgMovil{
+        display: none;
+    }
+    #login{
+        height: 100vh;
+    }
+    i{
+        width: 20vw;
+    }
+    form{
+        width: auto;
+    }
+    input[type="text"], input[type="password"],input[type="email"]{
+        width:18vw;
+    }
+    input[type="submit"]{
+        width: 20vw;
+        height: 2vw;
+        font-size: 20px;
+    }
+    .btnSignmbl{
+        display: none;
+    }
+    p{
+        font-size: 18px;
+    }
+    h1{
+        display: block;
+        align-self: flex-start;
+        margin: 0 0 5vh 0;
+        border-bottom: 15px solid black;
+        color: white;
+        font-size: 50px;
+    }
+
+    #signup form{
+        width: 40vh;
+    }
+    .btncambiar{
+        display: flex;
+        top:0;
+        right: 0;
+        position: absolute;
+        margin:10px;
+
+    }
+    .btnSignin,.btnSignup{
+        display: inline-block;
+        border: none;
+        padding:5px;
+        outline: 0;
+        width: 8vw;
+        font-size: 20px;
+        background-color: black;
+        color: white;
+    }
+    .btnSignin{
+        border-radius: 10px 0 0 10px;
+        border-right: 0.5px solid white;
+    }
+    .btnSignup{
+        border-radius: 0 10px 10px 0;
+        border-left: 0.5px solid white;
+    }
+    #signup{
+        display: none;
+    }
+    #login{
+        display: flex;
+    }
 }
