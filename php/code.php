@@ -21,7 +21,7 @@ function comprobarLogin($usuario, $password)
     require_once "bbdd.php";
     $dbh = connect();
     $data = array( 'username' => $usuario, 'password' => $password );
-    $stmt = $dbh->prepare("SELECT * FROM USUARIOS where username = :username AND password = :password");
+    $stmt = $dbh->prepare("SELECT * FROM USERS where username = :username AND password = :password");
 
 
     $stmt->execute($data);

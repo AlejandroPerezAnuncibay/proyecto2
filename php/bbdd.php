@@ -1,9 +1,9 @@
 <?php
 function connect()
 {
-    $host = "localhost";
-    $dbname = "Pruebas";
-    $user = "alejandro";
+    $host = "172.20.224.123:3306";
+    $dbname = "aergibide";
+    $user = "jefe";
     $pass = "Jm12345";
     $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     try {
