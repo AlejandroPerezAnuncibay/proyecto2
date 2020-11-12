@@ -31,7 +31,7 @@ function comprobarLogin($usuario, $password)
         header("location:logged.php");
     } else{
         $errorLog = "Nombre o contraseña incorrecto";
-        require "login.php";
+        require "index.php";
 
 }
 
@@ -57,4 +57,4 @@ function registrar($usuario, $password,$nombre,$apellido,$mail){
 
 
 }
-require "login.php";
+require "index.php";

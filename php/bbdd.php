@@ -1,7 +1,7 @@
 <?php
 function connect()
 {
-    $host = "172.20.224.123:3306";
+    $host = "localhost";
     $dbname = "aergibide";
     $user = "jefe";
     $pass = "Jm12345";
