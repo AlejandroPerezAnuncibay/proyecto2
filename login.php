@@ -27,12 +27,15 @@
         <h1>Login</h1>
         <i class="fa fa-user-circle">&nbsp;<input type="text" name="username" class="username" placeholder="Username"></i>
         <i class="fa fa-lock">&nbsp;<input type="password" name="password" class="password" placeholder="Password"></i>
+        <div id="errorLog">
         <?php
         // Si el usuario ha intentado acertar un número mostramos el mensaje
         if(isset($errorLog)) {
             ?>
-            <?= $errorLog ?> </p>
+            <p> <?= $errorLog ?> </p>
         <?php } ?>
+        </div>
+
         <input type="submit" value="Sign in">
         <input type="button" value="Sign up" class="btnSignmbl" >
     </form>
