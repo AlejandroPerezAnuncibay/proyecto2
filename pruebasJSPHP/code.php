@@ -30,7 +30,8 @@ function comprobarLogin($usuario, $password)
         $_SESSION["usuario"] = $fila["username"];
         header("location:logged.php");
     } else{
-
+        echo "Nombre o contraseña incorrecto";
+        header("location:login.php");
 
 }
 
