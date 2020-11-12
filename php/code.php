@@ -4,7 +4,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-
+$errorLog =null;
 if (isset($_POST["user"]) && isset($_POST["pass"])){
     registrar($_POST["user"],$_POST["pass"],$_POST["nombre"],$_POST["apellido"],$_POST["email"]);
 }
@@ -30,8 +30,8 @@ function comprobarLogin($usuario, $password)
         $_SESSION["usuario"] = $fila["username"];
         header("location:logged.php");
     } else{
-        echo "Nombre o contraseña incorrecto";
-        header("location:login.php");
+        $errorLog = "Nombre o contraseña incorrecto";
+        require "login.php";
 
 }
 

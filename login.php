@@ -16,15 +16,18 @@
 <body>
 <div id="login">
     <img src="media/logologin.png" alt="Logo">
-    <form action="code.php" method="post">
+    <form action="../code.php" method="post">
         <i class="fa fa-user-circle">&nbsp;<input type="text" name="username" class="username" placeholder="Username"></i>
         <i class="fa fa-lock">&nbsp;<input type="password" name="password" class="password" placeholder="Password"></i>
+        <div id="errorLog">
         <?php
         // Si el usuario ha intentado acertar un número mostramos el mensaje
         if(isset($errorLog)) {
             ?>
-            <?= $errorLog ?> </p>
+            <p> <?= $errorLog ?> </p>
         <?php } ?>
+        </div>
+
         <input type="submit" value="Sign in">
         <input type="button" value="Sign up" >
     </form>
@@ -32,7 +35,7 @@
 </div>
 <div id="signup">
     <img src="media/logologin.png" alt="Logo">
-    <form action="code.php" method="post">
+    <form action="../code.php" method="post">
         <i class="fa fa-user-circle">&nbsp;<input type="text" required name="username" class="username" placeholder="Username"></i>
         <i class="fa fa-lock">&nbsp;<input type="password" required name="password" class="password" placeholder="Password"></i>
         <i class='far fa-address-card'>&nbsp;
