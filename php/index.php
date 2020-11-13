@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="../style/login.css">
     <link rel="icon" type="image/png" href="../media/shortlogo.png">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="./jquery-3.5.1.js"></script>
-    <script src="./login.js"></script>
+    <script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/login.js"></script>
     
 </head>
 <body>
@@ -39,7 +39,7 @@
         </div>
 
         <input type="submit" value="Sign in">
-        <input type="button" value="Sign up" class="btnSignmbl" >
+        <input type="button" value="Sign up" class="btnSignmbl">
     </form>
     <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
 </div>
@@ -51,8 +51,10 @@
     <img src="../media/logologin.png" alt="Logo" class="imgMovil">
     <form action=php/code.php" method="post">
         <h1>Sign up</h1>
-        <i class="fa fa-user-circle">&nbsp;<input type="text" required name="username" class="username" placeholder="Username"></i>
-        <i class="fa fa-lock">&nbsp;<input type="password" required name="password" class="password" placeholder="Password"></i>
+        <i class="fa fa-user-circle">&nbsp;
+            <input type="text" required name="username" class="username" placeholder="Username"></i>
+        <i class="fa fa-lock">&nbsp;
+            <input type="password" required name="password" class="password" placeholder="Password"></i>
         <i class='far fa-address-card'>&nbsp;
             <input type="text" name="nombre" class="nombre" required placeholder="Nombre"></i>
         <i class='fas fa-address-card'>&nbsp;
