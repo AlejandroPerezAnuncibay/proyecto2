@@ -10,6 +10,6 @@
 
 </head>
 <body>
-<p>hola</p>
+<p>hola<?=$_SESSION['usuario']?></p>
 </body>
 </html>
