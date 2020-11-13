@@ -65,7 +65,7 @@ function validateForm(type) {
             return true;
         }
     } catch (error) {
-        
+        alert(error)
         return false;
     }
 }
