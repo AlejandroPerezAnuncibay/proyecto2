@@ -67,7 +67,7 @@ function validateForm(type) {
             if (!apellidoRegex.test($("#apellido").val())) {
                 throw "El apellido no es valido";
             }
-            //el regex del email lo valida el html
+            //TODO añadir validacion email, el html no lo valida del todo
             return true;
         }
     } catch (error) {
