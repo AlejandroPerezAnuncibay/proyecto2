@@ -26,14 +26,15 @@ function buttonsChangeForm() {
 function validateForm(type) {
     //regex
     var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,30}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
-    var passwordRegex = new RegExp("^(?=.*[A-Z])(?=.*[!@#$&])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,64}$");
-
-    var username = $(".username").val();
-    var password = $(".password").val();
+    //TODO probar regex de contraseña, en el log in cambiar y no validar mas que longitud
+    var passwordRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,30}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
+    // ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,64}$
     //segun desde que submit se llame a la funcion el type sera "login" o "signup"
     try {
         if (type == "login") {
             //logIn
+            var username = $(".username").eq(0).val();
+            var password = $(".password").eq(0).val();
             
             if (usernameRegex.test(username) && passwordRegex.test(password)) {
                 return true;
@@ -43,29 +44,34 @@ function validateForm(type) {
             }
         } else {
             //signUp
+            var username = $(".username").eq(1).val();
+            var password = $(".password").eq(1).val();
+
             if (!usernameRegex.test(username)) {
                 throw "El nombre de usuario no es valido";
             }
             if (passwordRegex.test(password)) {
-                if (!password==$("#password2")){
+                if (password!=$("#password2").val()){
                     throw "Las contraseñas no coinciden";
                 }
             }else {
+                alert(password);
+                alert(passwordRegex.test(password));
                 throw "La contraseña debe contener 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (!@#$&)";
             }
             var nombreRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,3}$");
-            if (!nombreRegex.test($("#nombre"))) {
+            if (!nombreRegex.test($("#nombre").val())) {
                 throw "El nombre no es valido";
             }
             var apellidoRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,4}$");
-            if (!apellidoRegex.test($("#apellido"))) {
+            if (!apellidoRegex.test($("#apellido").val())) {
                 throw "El apellido no es valido";
             }
             //el regex del email lo valida el html
             return true;
         }
     } catch (error) {
-        
+        alert(error);
         return false;
     }
 }
