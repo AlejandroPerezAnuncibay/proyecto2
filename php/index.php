@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="../style/login.css">
     <link rel="icon" type="image/png" href="../media/shortlogo.png">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./login.js"></script>
+    
 </head>
 <body>
 <div id="login">
