@@ -54,9 +54,9 @@
     <form action=php/code.php" method="post">
         <h1>Sign up</h1>
         <i class="fa fa-user-circle">&nbsp;
-            <input type="text" required name="username" class="username" placeholder="Username"></i>
+            <input type="text" required name="user" class="username" placeholder="Username"></i>
         <i class="fa fa-lock">&nbsp;
-            <input type="password" required name="password" class="password" placeholder="Password"></i>
+            <input type="password" required name="pass" class="password" placeholder="Password"></i>
         <i class='far fa-address-card'>&nbsp;
             <input type="text" name="nombre" class="nombre" required placeholder="Nombre"></i>
         <i class='fas fa-address-card'>&nbsp;
