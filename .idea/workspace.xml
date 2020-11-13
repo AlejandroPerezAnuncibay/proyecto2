@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a74655d6-8fa9-424a-89c6-408d48e9e6c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/login.css" afterDir="false" />
-    </list>
+    <list default="true" id="a74655d6-8fa9-424a-89c6-408d48e9e6c1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +49,7 @@
       <workItem from="1605168398146" duration="6455000" />
       <workItem from="1605252636292" duration="224000" />
       <workItem from="1605253080519" duration="185000" />
-      <workItem from="1605253291651" duration="26000" />
+      <workItem from="1605253291651" duration="175000" />
     </task>
     <servers />
   </component>
@@ -65,10 +61,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="606" y="212" key="#CLI_Interpreters/0.0.2048.1112@0.0.2048.1112" timestamp="1605001670265" />
-    <state x="806" y="312" key="FileChooserDialogImpl" timestamp="1605168393724">
+    <state x="806" y="312" key="FileChooserDialogImpl" timestamp="1605253467095">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="806" y="312" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1605168393724" />
+    <state x="806" y="312" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1605253467095" />
     <state x="526" y="201" key="SettingsEditor" timestamp="1605001688368">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
