@@ -172,15 +172,22 @@ input[type="file"]{
         width: 8vw;
         font-size: 20px;
         background-color: black;
-        color: white;
+        color: black;
     }
     .btnSignin{
         border-radius: 10px 0 0 10px;
-        border-right: 0.5px solid white;
     }
-    .btnSignup{
+    .btnSignup {
         border-radius: 0 10px 10px 0;
-        border-left: 0.5px solid white;
+    }
+    .unactive{
+        border: 1px solid black;
+        /* border-right: 0.5px solid white; */
+        background: transparent;
+    }
+    .active{
+        color:  darkorange;
+        /* border-left: 0.5px solid white; */
     }
     #login{
         display: none;

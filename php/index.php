@@ -21,12 +21,12 @@
 </div>
 <div id="login">
     <div class="btncambiar">
-        <input type="button" value="Sign in" class="btnSignin">
-        <input type="button" value="Sign up" class="btnSignup">
+        <input type="button" value="Log in" class="btnSignin active">
+        <input type="button" value="Sign up" class="btnSignup unactive changeForm">
     </div>
     <img src="../media/logologin.png" alt="Logo" class="imgMovil">
-    <form action="php/code.php" method="post">
-        <h1>Login</h1>
+    <form action="php/code.php" method="post" clas>
+        <h1>Log in</h1>
         <i class="fa fa-user-circle">&nbsp;<input type="text" name="username" class="username" placeholder="Username"></i>
         <i class="fa fa-lock">&nbsp;<input type="password" name="password" class="password" placeholder="Password"></i>
         <div id="errorLog">
@@ -38,15 +38,15 @@
         <?php } ?>
         </div>
 
-        <input type="submit" value="Sign in">
-        <input type="button" value="Sign up" class="btnSignmbl">
+        <input type="submit" value="Log in">
+        <input type="button" value="Sign up" class="btnSignmbl changeForm">
     </form>
     <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
 </div>
 <div id="signup">
     <div class="btncambiar">
-        <input type="button" value="Sign in" class="btnSignin">
-        <input type="button" value="Sign up" class="btnSignup">
+        <input type="button" value="Log in" class="btnSignin unactive changeForm">
+        <input type="button" value="Sign up" class="btnSignup active">
     </div>
     <img src="../media/logologin.png" alt="Logo" class="imgMovil">
     <form action=php/code.php" method="post">
@@ -64,7 +64,7 @@
         <i class="fa fa-file-image-o" id="fotoperfil">&nbsp;
             <input type="file" name="fotoperfil" class="fotoperfil" value="foto de perfil"></i>
         <input type="submit" value="Sign up">
-        <input type="button" value="Sign in" class="btnSignmbl">
+        <input type="button" value="Log in" class="btnSignmbl changeForm">
     </form>
     <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
 </div>
