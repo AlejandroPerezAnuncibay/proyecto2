@@ -4,7 +4,7 @@ $(document).ready(function () {
 });
 
 function buttonsChangeForm(){
-    //variable para saber que esta mostrando, true=signUp, false= signIn
+    //variable para saber que esta mostrando, true=signUp, false=logIn
     var signUpSingInstatus = false;
     $(".changeForm").click(function () { 
         if (signUpSingInstatus==false) {
@@ -21,8 +21,18 @@ function buttonsChangeForm(){
         }
         //limpio los campos de los formularios
         $("form")[0].reset();
-        $("form")[1].reset();
-       
-        
+        $("form")[1].reset(); 
     });
+}
+function validateForm(type){
+    //segun desde que submit se llame a la funcion el type sera "login" o "signup"
+    if (type=="login") {
+        //logIn
+        
+
+    }else {
+        //signUp
+        alert("signUp");
+    }
+    return false;
 }

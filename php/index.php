@@ -27,8 +27,10 @@
     <img src="../media/logologin.png" alt="Logo" class="imgMovil">
     <form action="php/code.php" method="post" clas>
         <h1>Log in</h1>
-        <i class="fa fa-user-circle">&nbsp;<input type="text" name="username" class="username" placeholder="Username"></i>
-        <i class="fa fa-lock">&nbsp;<input type="password" name="password" class="password" placeholder="Password"></i>
+        <i class="fa fa-user-circle">&nbsp;
+            <input type="text" name="username" class="username" placeholder="Username"></i>
+        <i class="fa fa-lock">&nbsp;
+            <input type="password" name="password" class="password" placeholder="Password"></i>
         <div id="errorLog">
         <?php
         // Si el usuario ha intentado acertar un número mostramos el mensaje
@@ -38,7 +40,7 @@
         <?php } ?>
         </div>
 
-        <input type="submit" value="Log in">
+        <input type="submit" value="Log in" onclick="return validateForm('login')">
         <input type="button" value="Sign up" class="btnSignmbl changeForm">
     </form>
     <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
@@ -63,7 +65,7 @@
             <input type="email" name="email" class="email" required placeholder="Correo electronico"></i>
         <i class="fa fa-file-image-o" id="fotoperfil">&nbsp;
             <input type="file" name="fotoperfil" class="fotoperfil" value="foto de perfil"></i>
-        <input type="submit" value="Sign up">
+        <input type="submit" value="Sign up" onclick="return validateForm('signup')">
         <input type="button" value="Log in" class="btnSignmbl changeForm">
     </form>
     <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
