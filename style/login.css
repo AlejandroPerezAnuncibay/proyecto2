@@ -116,7 +116,7 @@ input[type="file"]{
     #login,#signup{
         width: 40vw;
         margin:0;
-        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOElEQVQoU2NkIBIwElT3f+Z/BsZ0RvwKoYpAhhE2EWoldoVIJsGchqkQiyIyrcZhEqrVBBSRZDUAYmMSC1jiMgMAAAAASUVORK5CYII=) lightseagreen repeat;
+        background-color: darkorange;
     }
     .imgMovil{
         display: none;
