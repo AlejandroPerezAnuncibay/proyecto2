@@ -25,7 +25,7 @@
         <input type="button" value="Sign up" class="btnSignup unactive changeForm">
     </div>
     <img src="../media/logologin.png" alt="Logo" class="imgMovil">
-    <form action="php/code.php" method="post" clas>
+    <form action="./code.php" method="post" clas>
         <h1>Log in</h1>
         <i class="fa fa-user-circle">&nbsp;
             <input type="text" name="username" class="username" placeholder="Username"></i>
@@ -51,7 +51,7 @@
         <input type="button" value="Sign up" class="btnSignup active">
     </div>
     <img src="../media/logologin.png" alt="Logo" class="imgMovil">
-    <form action=php/code.php" method="post">
+    <form action="./code.php" method="post">
         <h1>Sign up</h1>
         <i class="fa fa-user-circle">&nbsp;
             <input type="text" required name="user" class="username" placeholder="Username"></i>

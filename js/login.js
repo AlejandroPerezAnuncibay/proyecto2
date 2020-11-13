@@ -34,5 +34,5 @@ function validateForm(type){
         //signUp
         alert("signUp");
     }
-    return false;
+    return true;
 }
