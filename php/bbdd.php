@@ -16,3 +16,6 @@ function connect()
     }
     return $dbh;
 }
+function close(){
+    $dbh = null;
+}
