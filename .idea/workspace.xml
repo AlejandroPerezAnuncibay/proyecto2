@@ -3,24 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a74655d6-8fa9-424a-89c6-408d48e9e6c1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/pruebasJSPHP.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/bbdd.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/code.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/comprobacion.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/logged.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/logoblanco.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/logologin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/media/shortlogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pruebasJSPHP/style/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +11,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,6 +32,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -52,7 +42,10 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a74655d6-8fa9-424a-89c6-408d48e9e6c1" name="Default Changelist" comment="" />
@@ -66,11 +59,12 @@
       <workItem from="1605168347393" duration="8000" />
       <workItem from="1605168378182" duration="18000" />
       <workItem from="1605168398146" duration="6455000" />
+      <workItem from="1605458240763" duration="980000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="606" y="212" key="#CLI_Interpreters" timestamp="1605001670265">
@@ -81,6 +75,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="806" y="312" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1605168393724" />
+    <state x="1274" y="443" key="NewPhpFileDialog" timestamp="1605458435598">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1274" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605458435598" />
     <state x="526" y="201" key="SettingsEditor" timestamp="1605001688368">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
