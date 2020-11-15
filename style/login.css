@@ -116,7 +116,7 @@ input[type="file"]{
     #login,#signup{
         width: 40vw;
         margin:0;
-        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOElEQVQoU2NkIBIwElT3f+Z/BsZ0RvwKoYpAhhE2EWoldoVIJsGchqkQiyIyrcZhEqrVBBSRZDUAYmMSC1jiMgMAAAAASUVORK5CYII=) lightseagreen repeat;
+        background-color: darkorange;
     }
     .imgMovil{
         display: none;
@@ -172,17 +172,24 @@ input[type="file"]{
         width: 8vw;
         font-size: 20px;
         background-color: black;
-        color: white;
+        color: black;
     }
     .btnSignin{
         border-radius: 10px 0 0 10px;
-        border-right: 0.5px solid white;
     }
-    .btnSignup{
+    .btnSignup {
         border-radius: 0 10px 10px 0;
-        border-left: 0.5px solid white;
     }
-    #signup{
+    .unactive{
+        border: 1px solid black;
+        /* border-right: 0.5px solid white; */
+        background: transparent;
+    }
+    .active{
+        color:  darkorange;
+        /* border-left: 0.5px solid white; */
+    }
+    #login{
         display: none;
     }
     #login{
