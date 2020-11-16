@@ -5,6 +5,7 @@
     <?php
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
+
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,10 +37,11 @@
             <div id="errorLog">
                 <?php
                 // Si el usuario ha intentado acertar un número mostramos el mensaje
-                if (isset($errorLog)) {
+                if (isset($_COOKIE["errorLog"])) {
                 ?>
-                    <p> <?= $errorLog ?> </p>
-                <?php } ?>
+                    <p> <?= $_COOKIE["errorLog"] ?> </p>
+
+                <?php   setcookie("errorLog", null, -1);} ?>
             </div>
 
             <input type="submit" value="Log in" onclick="return validateForm('login')">

@@ -4,7 +4,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-$errorLog =null;
 if (isset($_POST["user"]) && isset($_POST["pass"])){
     registrar($_POST["user"],$_POST["pass"],$_POST["nombre"],$_POST["apellido"],$_POST["email"]);
 }
@@ -22,21 +21,25 @@ function comprobarLogin($usuario, $password)
     $dbh = connect();
 
     $data = array( 'username' => $usuario);
-    $stmt = $dbh->prepare("SELECT username, password FROM USERS where username = :username ");
+    $stmt = $dbh->prepare("SELECT id_user, username, password FROM USERS where username = :username ");
 
 
     $stmt->execute($data);
     $fila = $stmt->fetch();
     if(password_verify($password, $fila['password'])) {
-        $fila  = $stmt->fetch();
-        $_SESSION["usuario"] = $fila["username"];
+        session_start();
+        $nombreUsuario = $fila["username"];
+        $idUsuario = $fila["id_user"];
+        setcookie("nombreUsuario",$nombreUsuario, time()+60);
+        setcookie("idUsuario",$idUsuario,time()+60);
+        updateLastLogin($usuario);
         close();
         header("location:logged.php");
     } else{
-        $errorLog = "Nombre o contraseña incorrecto";
-        close();
-        require "index.php";
+        setcookie("errorLog","Nombre o contraseña incorrectos", time()+60);
 
+        close();
+        header("Location: index.php");
 }
 
 
@@ -60,15 +63,58 @@ function registrar($usuario, $password,$nombre,$apellido,$mail){
     $stmt->execute($data);
     if($stmt->rowCount() == 1) {
 
-        $errorLog = "El usuario ".$usuario." ha sido registrado";
+        setcookie("errorLog", "El usuario ".$usuario." ha sido registrado", time()+60);
+
         close();
-        require "index.php";
+        header("Location: index.php");
     } else{
-        $errorLog = "Problemas con la Base de datos";
+        setcookie("errorLog","Problemas con la Base de datos", time()+60);
+
         close();
-        require "index.php";
+        header("Location: index.php");
 
     }
 
+}
 
+function cargarUsuario($nombre){
+
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array( 'nombre' => $nombre);
+    $stmt = $dbh->prepare("SELECT   username, name, surname, biography, last_login_date FROM USERS where username = :nombre");
+
+
+    $stmt->execute($data);
+    $fila = $stmt->fetch();
+
+    $persona=[
+        "username"=>$fila["username"],
+        "nombre"=>$fila["name"],
+        "apellido"=>$fila["surname"],
+        "biografia"=>$fila["biography"],
+        "ultimoLogin"=>$fila["last_login_date"]
+    ];
+
+
+    close();
+    return $persona;
+
+
+}
+
+
+function updateLastLogin($usuario){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $hoy = getdate();
+    $data = array( 'username' => $usuario );
+    $stmt = $dbh->prepare("UPDATE USERS SET last_login_date = CURRENT_TIMESTAMP where username= :username");
+
+
+    $stmt->execute($data);
+
+
+    close();
 }

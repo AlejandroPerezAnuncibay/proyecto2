@@ -10,6 +10,10 @@
 
 </head>
 <body>
-<p>hola<?=$_SESSION['usuario']?></p>
+<p>hola <a href="user.php">
+        <?php
+        session_start();?>
+    <?=$_COOKIE["nombreUsuario"]?></a></p>
+
 </body>
 </html>
