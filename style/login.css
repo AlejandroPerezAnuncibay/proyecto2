@@ -1,8 +1,15 @@
+@font-face {
+    font-family: "elephans";
+    src: url("../fonts/Elephans.ttf");
+}
 *{
     margin: 0 auto;
 }
+#imgPcs{
+    width: 30%;
+}
 body{
-    background: url("../media/background.jpg");
+    background: url("../media/backgroundbn.png");
     background-size: cover;
     height:100vh;
 }
@@ -25,12 +32,21 @@ body{
 .imgMovil{
     width: 40vw;
 }
+#color{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#color #nombreEmpresa{
+    font-size: 80px;
+    color: #ffb600;
+    font-family: elephans;
+}
 form{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: wrap column;
-    color: white;
     width: 60vw;
     height: 35vh;
     border-radius: 5px;
@@ -39,7 +55,7 @@ form{
 input[type="text"], input[type="password"],input[type="email"]{
     background: none;
     border: none;
-    color: white;
+    color: black;
     outline:none;
 }
 i{
@@ -47,6 +63,7 @@ i{
     margin-bottom: 4vh;
     padding-bottom: 1vh;
     width: 60vw;
+    color: white;
 }
 ::placeholder{
     color: white;
@@ -55,15 +72,18 @@ input[type="submit"]{
     width: 50vw;
     padding: 5px;
     border-radius: 10px;
-    background: white;
+    background: black;
     outline:none;
     margin-bottom: 10px;
     border: none;
+    color: white;
+    font-family: elephans;
 }
 .newaccount{
     bottom:0;
     position: absolute;
     margin-bottom: 10px;
+    color: white;
 }
 .btnSignmbl{
     width: 50vw;
@@ -74,9 +94,6 @@ input[type="submit"]{
     outline:none;
     margin-top: 10px;
     border:0.5px solid white;
-}
-p{
-    color: lightgray;
 }
 a{
     text-decoration:none;
@@ -111,12 +128,12 @@ input[type="file"]{
         align-items: center;
         width: 60vw;
         height: 100vh;
-        background:rgba(0,0,0,0.5);
+        background:#000000a3;
     }
     #login,#signup{
         width: 40vw;
         margin:0;
-        background-color: darkorange;
+        background-color: #ffb600;
     }
     .imgMovil{
         display: none;
@@ -141,16 +158,24 @@ input[type="file"]{
     .btnSignmbl{
         display: none;
     }
+    ::placeholder{
+        color: black;
+    }
     p{
         font-size: 18px;
+    }
+    i{
+        color: black;
+        border-bottom-color: black;
     }
     h1{
         display: block;
         align-self: flex-start;
         margin: 0 0 5vh 0;
         border-bottom: 15px solid black;
-        color: white;
+        color: black;
         font-size: 50px;
+        font-family: elephans;
     }
 
     #signup form{
@@ -173,6 +198,15 @@ input[type="file"]{
         font-size: 20px;
         background-color: black;
         color: black;
+        font-family: elephans;
+    }
+    .newaccount{
+        color: black;
+        font-family: elephans;
+    }
+    a{
+        font-weight: normal;
+        color: black;
     }
     .btnSignin{
         border-radius: 10px 0 0 10px;
@@ -186,7 +220,7 @@ input[type="file"]{
         background: transparent;
     }
     .active{
-        color:  darkorange;
+        color:  #ffb600;
         /* border-left: 0.5px solid white; */
     }
     #login{

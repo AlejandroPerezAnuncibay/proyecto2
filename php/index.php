@@ -20,7 +20,8 @@
 
 <body>
     <div id="color">
-        <img src="../media/logologin.png" alt="Logo" id="imgPcs">
+        <img src="../media/shortlogo.svg" alt="Logo" id="imgPcs">
+        <h2 id="nombreEmpresa">Aergibide</h2>
     </div>
     <div id="login">
         <div class="btncambiar">
