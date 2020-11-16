@@ -39,7 +39,7 @@ function validateForm(type) {
             var password = $(".password").eq(1).val();
 
             if (!usernameRegex.test(username)) {
-                throw "El nombre de usuario no es valido";
+                throw "El nombre de usuario tiene un formato incorrecto";
             }
             if (passwordRegex.test(password)) {
                 if (password!=$("#password2").val()){
@@ -48,17 +48,20 @@ function validateForm(type) {
             }else {
                 alert(password);
                 alert(passwordRegex.test(password));
-                throw "La contraseña debe contener 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (!@#$&)";
+                throw "La contraseña debe contener 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (@#$%&?¿!¡._-)";
             }
             var nombreRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,3}$");
             if (!nombreRegex.test($("#nombre").val())) {
-                throw "El nombre no es valido";
+                throw "El nombre tiene un formato incorrectp";
             }
             var apellidoRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,4}$");
             if (!apellidoRegex.test($("#apellido").val())) {
-                throw "El apellido no es valido";
+                throw "El apellido tiene un formato incorrecto";
             }
-            //el regex del email lo valida el html
+            var emailRgex = new RegExp("^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            if (!emailRgex.test($("#email").val())){
+                throw "El email tiene un formato incorrecto"
+            }
             return true;
         }
     } catch (error) {
