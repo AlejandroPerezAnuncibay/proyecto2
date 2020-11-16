@@ -27,21 +27,12 @@ function validateForm(type) {
     //regex
     var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,30}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
     //TODO probar regex de contraseña, en el log in cambiar y no validar mas que longitud
-    var passwordRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,30}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
+    var passwordRegex = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,64}$");
     // ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,64}$
     //segun desde que submit se llame a la funcion el type sera "login" o "signup"
     try {
         if (type == "login") {
-            //logIn
-            var username = $(".username").eq(0).val();
-            var password = $(".password").eq(0).val();
-            
-            if (usernameRegex.test(username) && passwordRegex.test(password)) {
-                return true;
-            } else {
-                clearForms();
-                throw "Invalid user or password";
-            }
+            return true;
         } else {
             //signUp
             var username = $(".username").eq(1).val();
@@ -67,7 +58,7 @@ function validateForm(type) {
             if (!apellidoRegex.test($("#apellido").val())) {
                 throw "El apellido no es valido";
             }
-            //TODO añadir validacion email, el html no lo valida del todo
+            //el regex del email lo valida el html
             return true;
         }
     } catch (error) {
