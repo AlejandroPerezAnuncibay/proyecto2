@@ -45,6 +45,10 @@
         </form>
         <i class='fas fa-user-circle' style='font-size:36px'><a href="#" ></a></i>
         <i class="fa fa-sign-out" style="font-size:36px"><a href="#" ></a></i>
+        <div class="btncambiar">
+            <input type="button" value="Log in" class="btnSignin unactive changeForm">
+            <input type="button" value="Sign up" class="btnSignup active">
+        </div>
 
     </nav>
 </header>
@@ -60,8 +64,12 @@
 
     <div id="primero">
         <h1 id="titulop">PREGÚNTANOS</h1>
+        <div id="color">
+            <img src="../media/shortlogo.svg" alt="Logo" id="imgPcs">
+            <h2 id="nombreEmpresa">Aergibide</h2>
+        </div>
         <button class="button1" ><a href="#">Nueva Pregunta</a></button>
-         <img src="../media/Logo.png" alt="logo" class="logo">
+
     </div>
     <section id="principal">
     <div id="etiquetas">

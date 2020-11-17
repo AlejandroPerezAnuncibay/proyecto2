@@ -85,7 +85,7 @@
 
 
     .buscador{
-        width:35%;
+        width:50%;
         border-radius: 6%;
     }
 
@@ -129,9 +129,19 @@
         display: none;
     }
 
-    img.logo {
+    #imgPcs {
 
-        width: 40%;
+        width: 35%;
+
+    }
+    #color{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    }
+    #color #nombreEmpresa{
+    font-size: 25px;
+    color: #ffb600;
 
     }
     #opciones{
@@ -145,7 +155,6 @@
         max-width: 100%;
         padding-bottom: 3%;
         border-bottom: solid 0.5px grey;
-        flex-wrap: wrap;
     }
     .button1 {
         background-color: white;
@@ -235,8 +244,14 @@
         display: inline-block;
         padding-top: 17px;
     }
+    .btncambiar{
+        display: none;
+    }
     @media (min-width: 768px) {
         /*Diseño Escritorio*/
+        main{
+            margin: 0 8%;
+        }
 
 
         #menuList {
@@ -263,7 +278,7 @@
 
 
         }
-        img.logo{
+        #imgPcs,#nombreEmpresa {
             display: none;
         }
         .button1 {
@@ -280,6 +295,9 @@
 
         #primero{
             margin:5%;
+            margin-bottom: 8px;
+
+
 
         }
         #menu #menuList li {
@@ -290,6 +308,10 @@
             border-right: solid 0.5px black;
             border-bottom: 0;
             padding:10px ;
+        }
+        .buscador{
+            width:35%;
+
         }
         #principal{
             display: grid;
@@ -315,7 +337,34 @@
         .iconos{
             margin-top: auto;
         }
+        .btncambiar{
+            display: flex;
+            margin:5px;
 
-
+        }
+        .btnSignin,.btnSignup{
+            border: none;
+            padding:5px;
+            width: 8vw;
+            font-size: 20px;
+            background-color: black;
+            color: black;
+            font-family: elephans;
+        }
+        .btnSignin{
+            border-radius: 10px 0 0 10px;
+        }
+        .btnSignup {
+            border-radius: 0 10px 10px 0;
+        }
+        .active{
+            color:  #ffb600;
+            /* border-left: 0.5px solid white; */
+        }
+        .unactive{
+            border: 1px solid black;
+            /* border-right: 0.5px solid white; */
+            background: transparent;
+        }
     }
 
