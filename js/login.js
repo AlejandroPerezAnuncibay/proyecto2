@@ -25,7 +25,7 @@ function buttonsChangeForm() {
 }
 function validateForm(type) {
     //regex
-    var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,30}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
+    var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,16}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
     //TODO probar regex de contraseña, en el log in cambiar y no validar mas que longitud
     var passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&?¿!¡._-]).{8,64}$");
     // ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,64}$
@@ -46,8 +46,6 @@ function validateForm(type) {
                     throw "Las contraseñas no coinciden";
                 }
             }else {
-                alert(password);
-                alert(passwordRegex.test(password));
                 throw "La contraseña debe contener 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (@#$%&?¿!¡._-)";
             }
             var nombreRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,3}$");
@@ -58,7 +56,7 @@ function validateForm(type) {
             if (!apellidoRegex.test($("#apellido").val())) {
                 throw "El apellido tiene un formato incorrecto";
             }
-            var emailRgex = new RegExp("^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            var emailRgex = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
             if (!emailRgex.test($("#email").val())){
                 throw "El email tiene un formato incorrecto"
             }
