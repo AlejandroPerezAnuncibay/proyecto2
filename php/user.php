@@ -9,92 +9,47 @@
 </head>
 <body>
 <!--MENU ROSA-->
+<?php
+require "code.php";
+$persona = cargarUsuario($_COOKIE["nombreUsuario"]);
 
+
+?>
 
 <div id="principal">
     <div id="informacionTotal">
         <div id="imgUser">
-            <img src="../media/fotoperfil.webp" alt="foto de perfil">
-            <p id="username">UVadillo</p>
+            <img src="<?= cargarFotoPerfil($_COOKIE["nombreUsuario"])?>">
+
+            <p id="username"><?=$persona["username"]?></p>
         </div>
         <div id="infUsu">
             <div id="preguntasRealizadas">
-                <p>50</p>
+                <p><?=$persona["preguntas"]?></p>
                 <p>Preguntas</p>
             </div>
             <div id="datosUsu">
-                <p id="nombreApellido">Unai Vadillo Fernández</p>
-                <p id="bio">"BIOGRAFIA"</p>
-                <p id="ultConex">Ultima conexión: 17/07/2020</p>
+                <p id="nombreApellido"><?= $persona["nombre"]?> <?=$persona["apellido"]?></p>
+                <p id="bio"><?= $persona["biografia"]?></p>
+                <p id="ultConex">Ultima conexión: <?=$persona["ultimoLogin"]?></p>
             </div>
         </div>
     </div>
+    <form name="MiForm" enctype="multipart/form-data" id="MiForm" method="post" action="carga.php" >
+        <h4 class="text-center">Seleccione imagen a cargar</h4>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Archivos</label>
+            <div class="col-sm-8">
+                <input type="file" class="form-control" id="imagen" name="imagen">
+            </div>
+            <button name="submit" >Cargar Imagen</button>
+        </div>
+    </form>
     <div id="preguntas">
-        <div class="pregunta">
-            <div class="interaccion">
-                <p>LIKES</p>
-                <p>RESPUESTAS</p>
-            </div>
-            <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
-                <p>tags</p>
-            </div>
-            <div class="fechaPregunta">
-                <p>FECHA DE PREGUNTA</p>
-            </div>
-        </div>
-        <div class="pregunta">
-            <div class="interaccion">
-                <p>LIKES</p>
-                <p>RESPUESTAS</p>
-            </div>
-            <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
-                <p>tags</p>
-            </div>
-            <div class="fechaPregunta">
-                <p>FECHA DE PREGUNTA</p>
-            </div>
-        </div>
-        <div class="pregunta">
-            <div class="interaccion">
-                <p>LIKES</p>
-                <p>RESPUESTAS</p>
-            </div>
-            <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
-                <p>tags</p>
-            </div>
-            <div class="fechaPregunta">
-                <p>FECHA DE PREGUNTA</p>
-            </div>
-        </div>
-        <div class="pregunta">
-            <div class="interaccion">
-                <p>LIKES</p>
-                <p>RESPUESTAS</p>
-            </div>
-            <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
-                <p>tags</p>
-            </div>
-            <div class="fechaPregunta">
-                <p>FECHA DE PREGUNTA</p>
-            </div>
-        </div>
-        <div class="pregunta">
-            <div class="interaccion">
-                <p>LIKES</p>
-                <p>RESPUESTAS</p>
-            </div>
-            <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
-                <p>tags</p>
-            </div>
-            <div class="fechaPregunta">
-                <p>FECHA DE PREGUNTA</p>
-            </div>
-        </div>
+
+       <?php cargarPreguntas($_COOKIE["idUsuario"]);?>
+
+
     </div>
 </div>
 </body>

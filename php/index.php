@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,13 +32,13 @@
             <input type="button" value="Sign up" class="btnSignup unactive changeForm">
         </div>
         <img src="../media/shortlogo.svg" alt="Logo" class="imgMovil">
-        <form action="./code.php" method="post" clas>
+        <form action="./code.php" method="post" >
             <h1>Log in</h1>
             <i class="fa fa-user-circle">&nbsp;
                 <input type="text" name="username" class="username" placeholder="Username"></i>
             <i class="fa fa-lock">&nbsp;
                 <input type="password" name="password" class="password" placeholder="Password"></i>
-            <div id="errorLog">
+            <div id="errorLog" style="color: #ffb600;margin-bottom: 12px;">
                 <?php
                 // Si el usuario ha intentado acertar un número mostramos el mensaje
                 if (isset($_COOKIE["errorLog"])) {
