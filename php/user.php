@@ -5,38 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de usuario</title>
     <link rel="stylesheet" href="../style/users.css">
-    <link rel="icon" type="image/png" href="media/shortlogo.png">
+    <link rel="icon" type="image/png" href="../media/shortlogo.png">
 </head>
 <body>
 <!--MENU ROSA-->
 
 
 <div id="principal">
-    <img src="" alt="foto de perfil">
-    <div id="infUsu">
-
-        <h1><?php
-            require_once "code.php";
-            $persona = cargarUsuario($_COOKIE["nombreUsuario"]);?>
-            <?= $persona["username"]?>
-            <?= $persona["nombre"]?>
-            </h1>
-        <p id="bio">"BIOGRAFIA"</p>
-        <p id="email">"EMAIL"</p>
+    <div id="informacionTotal">
+        <div id="imgUser">
+            <img src="../media/fotoperfil.webp" alt="foto de perfil">
+            <p id="username">UVadillo</p>
+        </div>
+        <div id="infUsu">
+            <div id="preguntasRealizadas">
+                <p>50</p>
+                <p>Preguntas</p>
+            </div>
+            <div id="datosUsu">
+                <p id="nombreApellido">Unai Vadillo Fernández</p>
+                <p id="bio">"BIOGRAFIA"</p>
+                <p id="ultConex">Ultima conexión: 17/07/2020</p>
+            </div>
+        </div>
     </div>
     <div id="preguntas">
-        <h2>Preguntas formuladas ("NUMERO DE PREGUNTAS QUE HA HECHO EL USUARIO")</h2>
-        <div id="pregunta1">
+        <div class="pregunta">
             <div class="interaccion">
                 <p>LIKES</p>
                 <p>RESPUESTAS</p>
             </div>
             <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="linkpregunta">"TITULO PREGUNTA"</a></h3>ç
+                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
                 <p>tags</p>
             </div>
-            <div class="fechaUsuario">
-                <p>Last login: <?=$persona["ultimoLogin"]?></p>
+            <div class="fechaPregunta">
+                <p>FECHA DE PREGUNTA</p>
+            </div>
+        </div>
+        <div class="pregunta">
+            <div class="interaccion">
+                <p>LIKES</p>
+                <p>RESPUESTAS</p>
+            </div>
+            <div class="titulotags">
+                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
+                <p>tags</p>
+            </div>
+            <div class="fechaPregunta">
+                <p>FECHA DE PREGUNTA</p>
+            </div>
+        </div>
+        <div class="pregunta">
+            <div class="interaccion">
+                <p>LIKES</p>
+                <p>RESPUESTAS</p>
+            </div>
+            <div class="titulotags">
+                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
+                <p>tags</p>
+            </div>
+            <div class="fechaPregunta">
+                <p>FECHA DE PREGUNTA</p>
+            </div>
+        </div>
+        <div class="pregunta">
+            <div class="interaccion">
+                <p>LIKES</p>
+                <p>RESPUESTAS</p>
+            </div>
+            <div class="titulotags">
+                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
+                <p>tags</p>
+            </div>
+            <div class="fechaPregunta">
+                <p>FECHA DE PREGUNTA</p>
+            </div>
+        </div>
+        <div class="pregunta">
+            <div class="interaccion">
+                <p>LIKES</p>
+                <p>RESPUESTAS</p>
+            </div>
+            <div class="titulotags">
+                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
+                <p>tags</p>
+            </div>
+            <div class="fechaPregunta">
+                <p>FECHA DE PREGUNTA</p>
             </div>
         </div>
     </div>
