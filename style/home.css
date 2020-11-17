@@ -90,7 +90,7 @@
         padding: 10px;
         font-size: 17px;
         border: 1px solid grey;
-        border-radius: 6%;
+        border-radius: 5px 0 0 5px;
         float: left;
         width: 80%;
         background: #f1f1f1;
@@ -107,13 +107,15 @@
         border: 1px solid grey;
         border-left: none;
         cursor: pointer;
-        border-radius: 6%;
+        border-radius: 0 5px 5px 0;
     }
 
     form.buscador button:hover {
         background:#ffcc00 ;
     }
-
+    form.buscador button:hover > i{
+        color:black;
+    }
     form.buscador::after {
         content: "";
         clear: both;

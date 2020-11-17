@@ -79,6 +79,7 @@ input[type="submit"]{
     margin-bottom: 10px;
     border: none;
     color: #ffb600;
+    border: 1px solid #ffb600;
     font-family: elephans;
 }
 .newaccount{
