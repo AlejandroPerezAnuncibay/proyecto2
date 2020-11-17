@@ -1,16 +1,74 @@
+
 *{
     margin: 0;
 }
 img{
     margin-top: 4vh;
     margin-bottom: 2vh;
-    width: 40vw;
+    margin-right: 2vw;
+    width: 20vw;
     border-radius: 50%;
+}
+
+#informacionTotal{
+    margin-bottom: 3vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width:80vw;
+    font-size: 18px;
+
+}
+#imgUser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: flex-start;
+}
+#imgUser img{
+    margin-left: 2vw;
 }
 #principal{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 6vh;
+}
+#infUsu{
+    display: flex;
+    flex-direction: row;
+}
+#datosUsu{
+    display: flex;
+    flex-direction: column;
+    height: 5vh;
+}
+#datosUsu p{
+    margin-bottom: 1vh;
+}
+#datosUsu #ultConex{
+    font-size: 12px;
+}
+#preguntasRealizadas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5vw;
+}
+#bio{
+    display: none;
+}
+#preguntas{
+    border-top: 1px solid #ffcc00;
+    width: 90vw;
+}
+.pregunta{
+    margin-top: 2vh;
+    border-bottom: 1px solid #ffcc00;
+    padding-bottom: 2vh;
 }
