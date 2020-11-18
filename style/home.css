@@ -24,7 +24,7 @@
     }
 
     #menuList {
-        position: fixed;
+        position: absolute;
         z-index: 10;
         top: 60px;
         left: -100%;
