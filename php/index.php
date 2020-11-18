@@ -63,16 +63,22 @@ session_start();
             <h1>Sign up</h1>
             <i class="fa fa-user-circle">&nbsp;
                 <input type="text" required name="user" class="username" placeholder="Username"></i>
+                <p class="errorUsername"></p>
             <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" class="password" placeholder="Password"></i>
+                <p class="errorPassword"></p>
                 <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" id="password2" placeholder="Repeat the password"></i>
+                <p class="errorPassword2"></p>
             <i class='far fa-address-card'>&nbsp;
                 <input type="text" name="nombre" id="nombre" required placeholder="Nombre"></i>
+                <p id="errorNombre"></p>
             <i class='fas fa-address-card'>&nbsp;
                 <input type="text" name="apellido" id="apellido" required placeholder="Apellido"></i>
+                <p id="errorApellido"></p>
             <i class="fa fa-at">&nbsp;
                 <input type="email" name="email" id="email" required placeholder="Correo electronico"></i>
+                <p id="errorEmail"></p>
             <!-- <i class="fa fa-file-image-o" id="fotoperfil">&nbsp;
                 <input type="file" name="fotoperfil" class="fotoperfil" value="foto de perfil"></i> -->
             <input type="submit" value="Sign up" onclick="return validateForm('signup')">

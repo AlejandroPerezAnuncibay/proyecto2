@@ -18,7 +18,7 @@ $directorio ="";
         || ($_FILES["imagen"]["type"] == "image/png"))
     {
         // Ruta donde se guardarán las imágenes que subamos
-        $directorio = /*$_SERVER['DOCUMENT_ROOT'].*/'/vagrant/media/';
+        $directorio = /*$_SERVER['DOCUMENT_ROOT'].*/'/vagrant/images/userProfile/';
         // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
         move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$_SESSION["nombreUsuario"].".".$extension);
 
@@ -33,7 +33,7 @@ $directorio ="";
 require_once "bbdd.php";
 $dbh = connect();
 
-$data = array( 'ruta' => "../media/".$_SESSION["nombreUsuario"].".".$extension, 'id' => $_SESSION["idUsuario"]);
+$data = array( 'ruta' => "../images/userProfile/".$_SESSION["nombreUsuario"].".".$extension, 'id' => $_SESSION["idUsuario"]);
 $stmt = $dbh->prepare("UPDATE USERS SET profile_image = :ruta where id_user= :id");
 
 

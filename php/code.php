@@ -186,13 +186,18 @@ function cargarTag($id){
     return $fila["name"];
 }
 
-function cargarFotoPerfil($id){
+function cargarFotoPerfil($id)
+{
     require_once "bbdd.php";
     $dbh = connect();
 
-    $data = array( 'id' => $id );
+    $data = array('id' => $id);
     $stmt = $dbh->prepare("SELECT  id_user, username, profile_image FROM USERS where id_user = :id");
     $stmt->execute($data);
-    $fila =  $stmt->fetch();
-    echo $fila['profile_image'];
+    $fila = $stmt->fetch();
+    if ($fila['profile_image'] != null) {
+        echo $fila['profile_image'];
+    }else {
+    echo "../images/userProfile/.default.jpg";
+    }
 }
