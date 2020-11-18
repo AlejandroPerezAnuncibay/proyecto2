@@ -28,7 +28,6 @@ function buttonsChangeForm() {
 function validateForm(type) {
     //regex
     var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,16}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
-    //TODO probar regex de contraseña, en el log in cambiar y no validar mas que longitud
     var passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&?¿!¡._-]).{8,64}$");
     // ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,64}$
     //segun desde que submit se llame a la funcion el type sera "login" o "signup"
