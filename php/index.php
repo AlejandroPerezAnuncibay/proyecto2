@@ -65,7 +65,7 @@ session_start();
                 <input type="text" required name="user" class="username" placeholder="Username"></i>
             <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" class="password" placeholder="Password"></i>
-            <i class="fa fa-lock">&nbsp;
+                <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" id="password2" placeholder="Repeat the password"></i>
             <i class='far fa-address-card'>&nbsp;
                 <input type="text" name="nombre" id="nombre" required placeholder="Nombre"></i>
