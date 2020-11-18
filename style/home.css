@@ -81,15 +81,16 @@
     .close{
         display: none;
     }
-
-
+    .btncambiar{
+        display: none;
+    }
 
     .buscador{
         width:50%;
         border-radius: 6%;
     }
 
-
+    /*Barra buscador*/
     form.buscador input[type=text] {
         padding: 10px;
         font-size: 17px;
@@ -125,6 +126,7 @@
         clear: both;
         display: table;
     }
+    /*main*/
     #titulop{
         display: none;
     }
@@ -158,7 +160,6 @@
     }
     .button1 {
         background-color: white;
-
         border: 2px solid black;
         margin-right: 10px;
         padding: 15px 32px;
@@ -244,16 +245,14 @@
         display: inline-block;
         padding-top: 17px;
     }
-    .btncambiar{
-        display: none;
-    }
+
     @media (min-width: 768px) {
         /*Diseño Escritorio*/
         main{
             margin: 0 8%;
         }
 
-
+        /*MENU*/
         #menuList {
             position: relative;
             z-index: 0;
@@ -265,39 +264,6 @@
             height: auto;
             text-align: center;
             background-color: #ffb600;
-
-        }
-
-        .checkbtn{
-            display: none;
-        }
-
-        #titulop{
-            display: block;
-            font-size: 65px;
-
-
-        }
-        #imgPcs,#nombreEmpresa {
-            display: none;
-        }
-        .button1 {
-            background-color: #ffb600;
-            border: 2px solid black;
-            margin-left: 2%;
-            border-radius: 6%;
-            font-size: 32px;
-        }
-        .button1 a{
-            color:black;
-            font-weight: bold;
-        }
-
-        #primero{
-            margin:5%;
-            margin-bottom: 8px;
-
-
 
         }
         #menu #menuList li {
@@ -313,35 +279,31 @@
             width:35%;
 
         }
-        #principal{
-            display: grid;
-            grid-template-columns: 20% 80%;
-            margin: auto 5%;
-            font-size:24px;
-        }
-        #etiquetas{
-            grid-column:1/2;
-            border-bottom: 0;
-
-        }
-        #preguntas{
-            grid-column: 2/3;
-            margin:3%;
-        }
         #menu #menuList li.salir{
             display: none;
         }
-        .fecha{
-            margin-left: 2%;
+
+        .checkbtn{
+            display: none;
         }
-        .iconos{
-            margin-top: auto;
-        }
-        .btncambiar{
-            display: flex;
-            margin:5px;
+        /*Primer div*/
+        #titulop{
+            display: block;
+            font-size: 65px;
 
         }
+        .button1 {
+            background-color: #ffb600;
+            border: 2px solid black;
+            margin-left: 2%;
+            border-radius: 6%;
+            font-size: 32px;
+        }
+        .button1 a{
+            color:black;
+            font-weight: bold;
+        }
+
         .btnSignin,.btnSignup{
             border: none;
             padding:5px;
@@ -349,7 +311,6 @@
             font-size: 20px;
             background-color: black;
             color: black;
-            font-family: elephans;
         }
         .btnSignin{
             border-radius: 10px 0 0 10px;
@@ -366,5 +327,38 @@
             /* border-right: 0.5px solid white; */
             background: transparent;
         }
+
+        #primero{
+            margin:5%;
+            margin-bottom: 8px;
+
+        }
+        #imgPcs,#nombreEmpresa {
+            display: none;
+        }
+
+        #principal{
+            display: grid;
+            grid-template-columns: 20% 80%;
+            margin: auto 5%;
+            font-size:24px;
+        }
+        #etiquetas{
+            grid-column:1/2;
+            border-bottom: 0;
+
+        }
+        #preguntas{
+            grid-column: 2/3;
+            margin:3%;
+        }
+
+        .fecha{
+            margin-left: 2%;
+        }
+        .iconos{
+            margin-top: auto;
+        }
+
     }
 

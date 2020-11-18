@@ -53,6 +53,7 @@
     </nav>
 </header>
 <main>
+    <div>
     <article id="opciones">
         <form class="buscador" action="#">
             <input type="text" placeholder="Search.." name="search">
@@ -144,7 +145,7 @@
 
 
     </section
-
+    </div>
 </main>
 <footer>
     <ul>
