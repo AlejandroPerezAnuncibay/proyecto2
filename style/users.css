@@ -1,13 +1,7 @@
 
 *{
     margin: 0;
-}
-img{
-    margin-top: 4vh;
-    margin-bottom: 2vh;
-    margin-right: 2vw;
-    width: 20vw;
-    border-radius: 50%;
+    font-family: 'montserrat';
 }
 
 #informacionTotal{
@@ -25,10 +19,27 @@ img{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 40%;
+}
+#tamañoFoto{
+    width: 100%;
     align-self: flex-start;
+
 }
 #imgUser img{
-    margin-left: 2vw;
+    margin-top: 4vh;
+    margin-bottom: 1vh;
+    margin-right: 2vw;
+    width: 100%;
+    border-radius: 50%;
+}
+#imgUser #username{
+    text-transform: uppercase;
+    font-weight: bold;
+    align-self: flex-start;
+    width: 100%;
+    text-align: center;
+
 }
 #principal{
     display: flex;
@@ -41,34 +52,95 @@ img{
 #infUsu{
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
 }
 #datosUsu{
     display: flex;
     flex-direction: column;
     height: 5vh;
+    justify-content: space-between;
 }
 #datosUsu p{
     margin-bottom: 1vh;
 }
+#datosUsu #nombreApellido{
+    text-transform: capitalize;
+    font-weight: 600;
+}
 #datosUsu #ultConex{
     font-size: 12px;
+    font-family: Serif;
 }
 #preguntasRealizadas{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-right: 5vw;
+    margin-bottom: 1vw;
 }
 #bio{
     display: none;
 }
+#cargaImg{
+    width: 100%;
+}
 #preguntas{
-    border-top: 1px solid #ffcc00;
     width: 90vw;
 }
 .pregunta{
     margin-top: 2vh;
     border-bottom: 1px solid #ffcc00;
     padding-bottom: 2vh;
+}
+input[type="file"]#imagen {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+label[for="imagen"]{
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #ffb600;
+    color:black;
+    border: 1px solid black;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 70%;
+    text-align: center;
+    margin-top:30px ;
+}
+i#subir{
+    background-color: #ffb600;
+    color:black;
+    border: 1px solid black;
+    transition: all .5s;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+button[name="submit"]{
+    outline: none;
+    border: none;
+    background: none;
+}
+input[type="text"], input[type="password"], #email{
+    border: none;
+    margin-top: 30px;
+}
+#email{
+
+}
+i{
+    border-bottom: 1px solid #ffb600;
+
 }
