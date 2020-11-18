@@ -32,16 +32,28 @@ $directorio ="";
 
 require_once "bbdd.php";
 $dbh = connect();
+if (isset($_POST["pass"])){
+    $pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
+$data = array( 'ruta' => "../images/userProfile/".$_SESSION["nombreUsuario"].".".$extension,
+    'id' => $_SESSION["idUsuario"],
+    'username'=>$_POST["user"],
+    'pass'=>$pass,
+    'name'=>$_POST["nombre"],
+    'ape'=>$_POST["apellido"],
+    'email' =>$_POST["email"]);
 
-$data = array( 'ruta' => "../images/userProfile/".$_SESSION["nombreUsuario"].".".$extension, 'id' => $_SESSION["idUsuario"]);
-$stmt = $dbh->prepare("UPDATE USERS SET profile_image = :ruta where id_user= :id");
+$stmt = $dbh->prepare("UPDATE USERS SET username = :username, password = :pass,
+email = :email,
+ name = :name,
+ surname = :ape;
+ profile_image = :ruta where id_user= :id");
 
 
 $stmt->execute($data);
 close();
 header("Location: user.php");
 
-
+}
 
 
 

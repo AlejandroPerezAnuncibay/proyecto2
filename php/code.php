@@ -83,7 +83,7 @@ function cargarUsuario($id){
     $dbh = connect();
 
     $data = array( 'id' => $id);
-    $stmt = $dbh->prepare("SELECT  id_user, username, name, surname, biography, last_login_date FROM USERS where id_user = :id");
+    $stmt = $dbh->prepare("SELECT  id_user, username, name, surname, biography,email, last_login_date,profile_image  FROM USERS where id_user = :id");
 
 
     $stmt->execute($data);
@@ -95,7 +95,9 @@ function cargarUsuario($id){
         "nombre"=>$fila["name"],
         "apellido"=>$fila["surname"],
         "biografia"=>$fila["biography"],
-        "ultimoLogin"=>$fila["last_login_date"]
+        "email"=>$fila["email"],
+        "ultimoLogin"=>$fila["last_login_date"],
+        "foto"=>$fila["profile_image"]
     ];
     $data = array( 'id' => $id);
     $stmt = $dbh->prepare("SELECT  count(*) FROM QUESTIONS where id_user = :id");

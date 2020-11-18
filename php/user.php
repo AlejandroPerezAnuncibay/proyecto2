@@ -58,32 +58,33 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
             <div class="content">
                 <form enctype="multipart/form-data" method="post" action="carga.php" >
                     <i class="fa fa-user-circle">&nbsp;
-                        <input type="text" required name="user" class="username" placeholder="Username"></i>
+                        <input type="text" required name="user" value="<?=$persona["username"]?>" class="username" placeholder="Username"></i>
                     <i class="fa fa-lock">&nbsp;
-                        <input type="password" required name="pass" class="password" placeholder="Password"></i>
+                        <input type="password" required name="pass" class="password"  placeholder="Password"></i>
                     <i class="fa fa-lock">&nbsp;
-                        <input type="password" required name="pass" id="password2" placeholder="Repeat the password"></i>
+                        <input type="password" required name="pass2" id="password2" placeholder="Repeat the password"></i>
                     <i class='far fa-address-card'>&nbsp;
-                        <input type="text" name="nombre" id="nombre"  placeholder="Nombre"></i>
+                        <input type="text" name="nombre" id="nombre"  value="<?= $persona["nombre"]?>" placeholder="Nombre"></i>
                     <i class='fas fa-address-card'>&nbsp;
-                        <input type="text" name="apellido" id="apellido"  placeholder="Apellido"></i>
+                        <input type="text" name="apellido" id="apellido" value="<?=$persona["apellido"]?>" placeholder="Apellido"></i>
                     <i class="fa fa-at">&nbsp;
-                        <input type="email" name="email" id="email"  placeholder="Correo electronico"></i>
+                        <input type="email" name="email" id="email" value="<?=$persona["email"]?>" placeholder="Correo electronico"></i>
                     <div id="cargaImg">
                         <label for="imagen">Seleccionar imagen</label>
-                        <input type="file"  id="imagen" name="imagen">
+                        <input type="file" value="<?=$persona["foto"]?>" id="imagen" name="imagen">
                         <button name="submit" ><i id="subir" class="fas fa-upload"></i></button>
                     </div>
                 </form>
         </div>
     </div>
 
+
+</div>
     <div id="preguntas">
 
-       <?php cargarPreguntas($_SESSION["idUsuario"]);?>
+        <?php cargarPreguntas($_SESSION["idUsuario"]);?>
 
 
     </div>
-</div>
 </body>
 </html>
