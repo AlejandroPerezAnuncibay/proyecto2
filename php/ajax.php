@@ -4,6 +4,7 @@ if (isset($_POST["action"])){
 
     switch($action){
         case "checkUsername": checkUsername();break;
+        case "checkEmail": checkEmail();break;
     }
 
 }
@@ -16,8 +17,20 @@ function checkUsername(){
 
     $stmt->execute($data);
     $aviable = $stmt->fetchColumn();
-
     close();
 
     echo $aviable;
+}
+function checkEmail(){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array("email" => $_POST["value"]);
+    $stmt = $dbh->prepare("SELECT id_user FROM USERS WHERE email LIKE :email LIMIT 1");
+
+    $stmt->execute($data);
+    $aviable = $stmt->fetchColumn();
+    close();
+
+    echo $aviable;
+
 }
