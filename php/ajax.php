@@ -4,7 +4,6 @@ if (isset($_POST["action"])){
 
     switch($action){
         case "checkUsername": checkUsername();break;
-        case "checkEmail": checkEmail();break;
     }
 
 }
@@ -17,7 +16,6 @@ function checkUsername(){
 
     $stmt->execute($data);
     $aviable = $stmt->fetchColumn();
-    close();
 
     echo $aviable;
 }
@@ -32,5 +30,4 @@ function checkEmail(){
     close();
 
     echo $aviable;
-
 }
