@@ -95,25 +95,20 @@ function checkUsername() {
                     data: { action: "checkUsername", value: username },
                     success: function (response) {
                         if (response == 1) {
-                            $(".fa-user-circle").css("color", "red");
-                            $(".fa-user-circle").css("border-bottom", "1px solid red");
+                            $("#errorUsername").append("Nombre no disponible");
                         } else {
-                            $(".fa-user-circle").css("color", "green");
-                            $(".fa-user-circle").css("border-bottom", "1px solid green");
+                            $("#errorUsername").empty();
                         }
                     }
                 });
             }
-        } else {
-            $(".fa-user-circle").css("color", "#ffb600");
-            $(".fa-user-circle").css("border-bottom", "1px solid #ffb600");
         }
     })
 }
 function checkEmail() {
     var emailRgex = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
     $("#email").on("input", function () {
-        var email = $("#email").val().trim();
+        var email = $("#email").val();
         if (emailRgex.test(email)) {
             if (email != "") {
                 $.ajax({
@@ -122,19 +117,13 @@ function checkEmail() {
                     data: { action: "checkEmail", value: email },
                     success: function (response) {
                         if (response == 1) {
-                            $(".fa-at").css("color", "red");
-                            $(".fa-at").css("border-bottom", "1px solid red");
+                            $("#errorEmail").append("Email en uso");
                         } else {
-                            $(".fa-at").css("color", "green");
-                            $(".fa-at").css("border-bottom", "1px solid green");
+                            $("#errorEmail").empty();
                         }
                     }
                 });
             }
-        }
-        else {
-            $(".fa-at").css("color", "#ffb600");
-            $(".fa-at").css("border-bottom", "1px solid #ffb600");
         }
     })
 }
