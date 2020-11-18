@@ -13,7 +13,7 @@ function checkUsername(){
     $dbh = connect();
 
     $data = array("username" => $_POST["value"]);
-    $stmt = $dbh->prepare("SELECT id_user FROM USERS WHERE username LIKE :username LIMIT 1");
+    $stmt = $dbh->prepare("SELECT COUNT(*) FROM USERS WHERE username LIKE :username LIMIT 1");
 
     $stmt->execute($data);
     $aviable = $stmt->fetchColumn();
@@ -25,7 +25,7 @@ function checkEmail(){
     require_once "bbdd.php";
     $dbh = connect();
     $data = array("email" => $_POST["value"]);
-    $stmt = $dbh->prepare("SELECT id_user FROM USERS WHERE email LIKE :email LIMIT 1");
+    $stmt = $dbh->prepare("SELECT COUNT(*) FROM USERS WHERE email LIKE :email LIMIT 1");
 
     $stmt->execute($data);
     $aviable = $stmt->fetchColumn();
