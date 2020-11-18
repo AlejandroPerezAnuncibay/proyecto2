@@ -30,10 +30,10 @@ function comprobarLogin($usuario, $password)
         session_start();
         $nombreUsuario = $fila["username"];
         $idUsuario = $fila["id_user"];
-        setcookie("nombreUsuario",$nombreUsuario, time()+60);
-        setcookie("idUsuario",$idUsuario,time()+60);
-        updateLastLogin($usuario);
+        $_SESSION["nombreUsuario"] = $nombreUsuario;
+        $_SESSION["idUsuario"]=$idUsuario;
         close();
+        updateLastLogin($idUsuario);
         header("location:logged.php");
     } else{
         setcookie("errorLog","Nombre o contraseña incorrectos", time()+60);
@@ -77,26 +77,27 @@ function registrar($usuario, $password,$nombre,$apellido,$mail){
 
 }
 
-function cargarUsuario($nombre){
+function cargarUsuario($id){
 
     require_once "bbdd.php";
     $dbh = connect();
 
-    $data = array( 'nombre' => $nombre);
-    $stmt = $dbh->prepare("SELECT  id_user, username, name, surname, biography, last_login_date FROM USERS where username = :nombre");
+    $data = array( 'id' => $id);
+    $stmt = $dbh->prepare("SELECT  id_user, username, name, surname, biography, last_login_date FROM USERS where id_user = :id");
 
 
     $stmt->execute($data);
     $fila = $stmt->fetch();
-    $iduser = $fila["id_user"];
+
     $persona=[
+        "id"=> $fila["id_user"],
         "username"=>$fila["username"],
         "nombre"=>$fila["name"],
         "apellido"=>$fila["surname"],
         "biografia"=>$fila["biography"],
         "ultimoLogin"=>$fila["last_login_date"]
     ];
-    $data = array( 'id' => $iduser);
+    $data = array( 'id' => $id);
     $stmt = $dbh->prepare("SELECT  count(*) FROM QUESTIONS where id_user = :id");
 
 
@@ -110,12 +111,12 @@ function cargarUsuario($nombre){
 }
 
 
-function updateLastLogin($usuario){
+function updateLastLogin($id){
     require_once "bbdd.php";
     $dbh = connect();
 
-    $data = array( 'username' => $usuario );
-    $stmt = $dbh->prepare("UPDATE USERS SET last_login_date = CURRENT_TIMESTAMP where username= :username");
+    $data = array( 'id' => $id );
+    $stmt = $dbh->prepare("UPDATE USERS SET last_login_date = CURRENT_TIMESTAMP where id_user= :id");
 
 
     $stmt->execute($data);
@@ -185,12 +186,12 @@ function cargarTag($id){
     return $fila["name"];
 }
 
-function cargarFotoPerfil($nombreUsu){
+function cargarFotoPerfil($id){
     require_once "bbdd.php";
     $dbh = connect();
 
-    $data = array( 'nombre' => $nombreUsu );
-    $stmt = $dbh->prepare("SELECT  username, profile_image FROM USERS where username = :nombre");
+    $data = array( 'id' => $id );
+    $stmt = $dbh->prepare("SELECT  id_user, username, profile_image FROM USERS where id_user = :id");
     $stmt->execute($data);
     $fila =  $stmt->fetch();
     echo $fila['profile_image'];

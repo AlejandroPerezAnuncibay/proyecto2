@@ -56,7 +56,7 @@ form{
 input[type="text"], input[type="password"],input[type="email"]{
     background: none;
     border: none;
-    color: black;
+    color: #ffb600;
     outline:none;
 }
 i{

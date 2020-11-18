@@ -1,3 +1,5 @@
+<?php
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +12,11 @@
 
 </head>
 <body>
-<p>hola <a href="user.php">
-        <?php
-        session_start();?>
-    <?=$_COOKIE["nombreUsuario"]?></a></p>
 
+
+<p>hola <a href="user.php">
+
+        <?=$_SESSION["nombreUsuario"]?></a>
+<?= $_SESSION["idUsuario"]?></p>
 </body>
 </html>

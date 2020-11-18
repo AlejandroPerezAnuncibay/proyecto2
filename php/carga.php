@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 // Recibo los datos de la imagen
 $nombre_img = $_FILES['imagen']['name'];
 $tipo = $_FILES['imagen']['type'];
@@ -17,7 +20,8 @@ $directorio ="";
         // Ruta donde se guardarán las imágenes que subamos
         $directorio = /*$_SERVER['DOCUMENT_ROOT'].*/'/vagrant/media/';
         // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
-        move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$_COOKIE["nombreUsuario"].".".$extension);
+        move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$_SESSION["nombreUsuario"].".".$extension);
+
     }
         else
     {
@@ -29,9 +33,8 @@ $directorio ="";
 require_once "bbdd.php";
 $dbh = connect();
 
-$data = array( 'ruta' => "../media/".$_COOKIE["nombreUsuario"].".".$extension, 'username' => $_COOKIE["nombreUsuario"]);
-
-$stmt = $dbh->prepare("UPDATE USERS SET profile_image = :ruta where username= :username");
+$data = array( 'ruta' => "../media/".$_SESSION["nombreUsuario"].".".$extension, 'id' => $_SESSION["idUsuario"]);
+$stmt = $dbh->prepare("UPDATE USERS SET profile_image = :ruta where id_user= :id");
 
 
 $stmt->execute($data);

@@ -1,6 +1,11 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de usuario</title>
@@ -11,7 +16,7 @@
 <!--MENU ROSA-->
 <?php
 require "code.php";
-$persona = cargarUsuario($_COOKIE["nombreUsuario"]);
+$persona = cargarUsuario($_SESSION["idUsuario"]);
 
 
 ?>
@@ -19,7 +24,8 @@ $persona = cargarUsuario($_COOKIE["nombreUsuario"]);
 <div id="principal">
     <div id="informacionTotal">
         <div id="imgUser">
-            <img src="<?= cargarFotoPerfil($_COOKIE["nombreUsuario"])?>">
+            <?php $idUsuario = $_SESSION["idUsuario"];?>
+            <img src="<?= cargarFotoPerfil($idUsuario)?>">
 
             <p id="username"><?=$persona["username"]?></p>
         </div>
@@ -36,18 +42,18 @@ $persona = cargarUsuario($_COOKIE["nombreUsuario"]);
         </div>
     </div>
     <form name="MiForm" enctype="multipart/form-data" id="MiForm" method="post" action="carga.php" >
-        <h4 class="text-center">Seleccione imagen a cargar</h4>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Archivos</label>
-            <div class="col-sm-8">
-                <input type="file" class="form-control" id="imagen" name="imagen">
+        <h4>Seleccione imagen a cargar</h4>
+        <div >
+
+            <div>
+                <input type="file"  id="imagen" name="imagen">
             </div>
-            <button name="submit" >Cargar Imagen</button>
+            <button name="submit" ><i class="fas fa-upload"></i></button>
         </div>
     </form>
     <div id="preguntas">
 
-       <?php cargarPreguntas($_COOKIE["idUsuario"]);?>
+       <?php cargarPreguntas($_SESSION["idUsuario"]);?>
 
 
     </div>
