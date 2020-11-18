@@ -86,7 +86,7 @@ function checkAvailability(variable) {
 function checkUsername() {
     var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,16}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
     $(".username").eq(1).on("input", function () {
-        var username = $(".username").eq(1).val();
+        var username = $(".username").eq(1).val().trim();
         if (usernameRegex.test(username)) {
             if (username != "") {
                 $.ajax({
@@ -113,7 +113,7 @@ function checkUsername() {
 function checkEmail() {
     var emailRgex = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
     $("#email").on("input", function () {
-        var email = $("#email").val();
+        var email = $("#email").val().trim();
         if (emailRgex.test(email)) {
             if (email != "") {
                 $.ajax({
