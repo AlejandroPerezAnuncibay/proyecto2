@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -12,6 +12,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 
     <title>Document</title>
@@ -33,7 +35,7 @@
                     <li><a href="#">Preguntas</a></li>
                     <li><a href="#">Sin responder</a></li>
                     <li> <a href="#">Populares</a></li>
-                    <li><a href="../index.html">Cerrar sesion</a></li>
+                    <li class="salir"><a href="../index.html">Cerrar sesion</a></li>
 
             </ul>
 
@@ -42,6 +44,11 @@
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
         <i class='fas fa-user-circle' style='font-size:36px'><a href="#" ></a></i>
+        <i class="fa fa-sign-out" style="font-size:36px"><a href="#" ></a></i>
+        <div class="btncambiar">
+            <input type="button" value="Log in" class="btnSignin unactive changeForm">
+            <input type="button" value="Sign up" class="btnSignup active">
+        </div>
 
     </nav>
 </header>
@@ -57,9 +64,14 @@
 
     <div id="primero">
         <h1 id="titulop">PREGÚNTANOS</h1>
+        <div id="color">
+            <img src="../media/shortlogo.svg" alt="Logo" id="imgPcs">
+            <h2 id="nombreEmpresa">Aergibide</h2>
+        </div>
         <button class="button1" ><a href="#">Nueva Pregunta</a></button>
-         <img src="../media/Logo.png" alt="logo" class="logo">
+
     </div>
+    <section id="principal">
     <div id="etiquetas">
         <button class="labels" >Etiquetas</button>
         <button class="labels" >Etiquetas</button>
@@ -89,8 +101,49 @@
             <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
                 Por scientie, musica, sport etc, litot Europa usa li sam vocabular.</p>
         </div>
+
         <span class="fecha">Nov 16 . 8 min read</span>
+
     </div>
+        <div id="preguntas">
+            <p>Likes</p>
+            <div class="iconos">
+
+                <button class="like"><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+                <button><i class='fas fa-eye' style='font-size:36px'></i></button>
+            </div>
+            <div class="info">
+                <h4>Titulo pregunta</h4>
+                <h5>Usuario que responde</h5>
+
+                <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+                    Por scientie, musica, sport etc, litot Europa usa li sam vocabular.</p>
+            </div>
+
+            <span class="fecha">Nov 16 . 8 min read</span>
+
+        </div>
+        <div id="preguntas">
+            <p>Likes</p>
+            <div class="iconos">
+
+                <button class="like"><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+                <button><i class='fas fa-eye' style='font-size:36px'></i></button>
+            </div>
+            <div class="info">
+                <h4>Titulo pregunta</h4>
+                <h5>Usuario que responde</h5>
+
+                <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+                    Por scientie, musica, sport etc, litot Europa usa li sam vocabular.</p>
+            </div>
+
+            <span class="fecha">Nov 16 . 8 min read</span>
+
+        </div>
+
+
+    </section
 
 </main>
 <footer>

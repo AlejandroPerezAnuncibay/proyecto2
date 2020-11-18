@@ -1,6 +1,6 @@
 $(document).ready(function () {
     buttonsChangeForm();
-
+    checkUsernameEmail();
 });
 
 function buttonsChangeForm() {
@@ -70,4 +70,20 @@ function validateForm(type) {
 function clearForms() {
     $("form")[0].reset();
     $("form")[1].reset();
+}
+function checkUsernameEmail(){
+    $(".username").eq(1).on("input", function(){
+        var tmp_username = $(".username").eq(1).val().trim();
+
+        if (tmp_username!=""){
+        $.ajax({
+            type: "post",
+            url: "../php/ajax.php",
+            data: {action: "checkUsername", value: tmp_username},
+            success: function (response) {
+                alert(response);
+            }
+        });
+    }
+})
 }

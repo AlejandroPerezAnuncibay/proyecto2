@@ -5,40 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de usuario</title>
     <link rel="stylesheet" href="../style/users.css">
-    <link rel="icon" type="image/png" href="media/shortlogo.png">
+    <link rel="icon" type="image/png" href="../media/shortlogo.png">
 </head>
 <body>
 <!--MENU ROSA-->
+<?php
+require "code.php";
+$persona = cargarUsuario($_COOKIE["nombreUsuario"]);
 
+
+?>
 
 <div id="principal">
-    <img src="" alt="foto de perfil">
-    <div id="infUsu">
+    <div id="informacionTotal">
+        <div id="imgUser">
+            <img src="<?= cargarFotoPerfil($_COOKIE["nombreUsuario"])?>">
 
-        <h1><?php
-            require_once "code.php";
-            $persona = cargarUsuario($_COOKIE["nombreUsuario"]);?>
-            <?= $persona["username"]?>
-            <?= $persona["nombre"]?>
-            </h1>
-        <p id="bio">"BIOGRAFIA"</p>
-        <p id="email">"EMAIL"</p>
-    </div>
-    <div id="preguntas">
-        <h2>Preguntas formuladas ("NUMERO DE PREGUNTAS QUE HA HECHO EL USUARIO")</h2>
-        <div id="pregunta1">
-            <div class="interaccion">
-                <p>LIKES</p>
-                <p>RESPUESTAS</p>
+            <p id="username"><?=$persona["username"]?></p>
+        </div>
+        <div id="infUsu">
+            <div id="preguntasRealizadas">
+                <p><?=$persona["preguntas"]?></p>
+                <p>Preguntas</p>
             </div>
-            <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="linkpregunta">"TITULO PREGUNTA"</a></h3>ç
-                <p>tags</p>
-            </div>
-            <div class="fechaUsuario">
-                <p>Last login: <?=$persona["ultimoLogin"]?></p>
+            <div id="datosUsu">
+                <p id="nombreApellido"><?= $persona["nombre"]?> <?=$persona["apellido"]?></p>
+                <p id="bio"><?= $persona["biografia"]?></p>
+                <p id="ultConex">Ultima conexión: <?=$persona["ultimoLogin"]?></p>
             </div>
         </div>
+    </div>
+    <form name="MiForm" enctype="multipart/form-data" id="MiForm" method="post" action="carga.php" >
+        <h4 class="text-center">Seleccione imagen a cargar</h4>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Archivos</label>
+            <div class="col-sm-8">
+                <input type="file" class="form-control" id="imagen" name="imagen">
+            </div>
+            <button name="submit" >Cargar Imagen</button>
+        </div>
+    </form>
+    <div id="preguntas">
+
+       <?php cargarPreguntas($_COOKIE["idUsuario"]);?>
+
+
     </div>
 </div>
 </body>
