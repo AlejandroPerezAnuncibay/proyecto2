@@ -126,6 +126,7 @@ form.buscador::after {
     clear: both;
     display: table;
 }
+/*pagina*/
 section{
     display: grid;
     grid-template-columns: 25% 75%;
