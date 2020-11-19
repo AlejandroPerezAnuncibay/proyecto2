@@ -36,31 +36,13 @@ function validateForm(type) {
             return true;
         } else {
             //signUp
-            var username = $(".username").eq(1).val();
-            var password = $(".password").eq(1).val();
+            //llamo a los metodos que validan los campos
+            regexUsername($(".username").eq(1).val());
+            regexPassword($(".password").eq(1).val,$("#password2").val());
+            regexName($("#nombre").val());
+            regexSurname($("#apellido").val());
+            regexEmail($("#email").val());
 
-            if (!usernameRegex.test(username)) {
-                throw "El nombre de usuario tiene un formato incorrecto";
-            }
-            if (passwordRegex.test(password)) {
-                if (password != $("#password2").val()) {
-                    throw "Las contraseñas no coinciden";
-                }
-            } else {
-                throw "La contraseña debe contener 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (@#$%&?¿!¡._-)";
-            }
-            var nombreRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,3}$");
-            if (!nombreRegex.test($("#nombre").val())) {
-                throw "El nombre tiene un formato incorrectp";
-            }
-            var apellidoRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,4}$");
-            if (!apellidoRegex.test($("#apellido").val())) {
-                throw "El apellido tiene un formato incorrecto";
-            }
-            var emailRgex = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
-            if (!emailRgex.test($("#email").val())) {
-                throw "El email tiene un formato incorrecto";
-            }
             return true;
         }
     } catch (error) {
@@ -68,61 +50,96 @@ function validateForm(type) {
         return false;
     }
 }
+function regexUsername(username){
+    if (!usernameRegex.test(username)) {
+        throw "El nombre de usuario tiene un formato incorrecto";
+    } else {
+        return true;
+    }
+}
+function regexPassword(password, password2){
+    if (passwordRegex.test(password)) {
+        if (password != password2) {
+            throw "Las contraseñas no coinciden";
+        } else {
+            return true;
+        }
+    } else {
+        throw "La contraseña debe contener 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (@#$%&?¿!¡._-)";
+    }
+}
+function regexName(nombre) {
+    var nombreRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,3}$");
+    if (!nombreRegex.test(nombre)) {
+        throw "El nombre tiene un formato incorrecto";
+    } else {
+        return true;
+    }
+}
+function regexSurname(surname){
+    var apellidoRegex = new RegExp("^(([a-zA-Z ])?[a-zA-Z]*){1,4}$");
+    if (!apellidoRegex.test(surname)) {
+        throw "El apellido tiene un formato incorrecto";
+    } else {
+        return true;
+    }
+}
+function regexEmail(email){
+    var emailRgex = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
+    if (!emailRgex.test(email)) {
+        throw "El email tiene un formato incorrecto";
+    } else {
+        return true;
+    }
+}
 function clearForms() {
     $("form")[0].reset();
     $("form")[1].reset();
 }
 function checkAvailability(variable) {
+    var field;
+    var input;
+    var inputVal;
+    var regex;
+    var errorField;
+    //defino variables segun se tenga que validar el username o el email
     switch (variable) {
         case "Username":
-            checkUsername();
+            field = "Username";
+            input = $(".username");
+            regex = new RegExp("^(?=[a-zA-Z0-9._-]{3,16}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
+            errorField = $("#errorUsername");
             break;
         case "Email":
-            checkEmail();
+            field = "Email";
+            input = $("#email");
+            regex =  new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
+            errorField = $("#errorEmail");
             break;
     }
-}
-function checkUsername() {
-    var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,16}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
-    $(".username").eq(1).on("input", function () {
-        var username = $(".username").eq(1).val().trim();
-        if (usernameRegex.test(username)) {
-            if (username != "") {
-                $.ajax({
-                    type: "post",
-                    url: "../php/ajax.php",
-                    data: { action: "checkUsername", value: username },
-                    success: function (response) {
-                        if (response == 1) {
-                            $("#errorUsername").append("Nombre no disponible");
-                        } else {
-                            $("#errorUsername").empty();
-                        }
+
+    input.on("input", function (){
+        if (field=="Username"){
+        inputVal = $(".username").eq(1).val().trim();
+        }else{
+        inputVal = $("#email").val().trim();
+        }
+
+        if (regex.test(inputVal)){
+            $.ajax({
+                type: "post",
+                url: "../php/ajax.php",
+                data: {action: "check"+field, value: inputVal },
+                success: function (response) {
+                    //si devuelve 1 es que esta pillado si no devuelve nada es que no
+                    if (response==1){
+                        errorField.append(field+" no disponible.");
+                    } else {
+                        errorField.empty();
                     }
-                });
-            }
+                }
+            });
         }
     })
-}
-function checkEmail() {
-    var emailRgex = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$");
-    $("#email").on("input", function () {
-        var email = $("#email").val();
-        if (emailRgex.test(email)) {
-            if (email != "") {
-                $.ajax({
-                    type: "post",
-                    url: "../php/ajax.php",
-                    data: { action: "checkEmail", value: email },
-                    success: function (response) {
-                        if (response == 1) {
-                            $("#errorEmail").append("Email en uso");
-                        } else {
-                            $("#errorEmail").empty();
-                        }
-                    }
-                });
-            }
-        }
-    })
+
 }
