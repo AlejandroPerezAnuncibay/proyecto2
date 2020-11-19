@@ -34,26 +34,53 @@ require_once "bbdd.php";
 $dbh = connect();
 if (isset($_POST["pass"])){
     $pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
-$data = array( 'ruta' => "../images/userProfile/".$_SESSION["nombreUsuario"].".".$extension,
-    'id' => $_SESSION["idUsuario"],
-    'username'=>$_POST["user"],
-    'pass'=>$pass,
-    'name'=>$_POST["nombre"],
-    'ape'=>$_POST["apellido"],
-    'email' =>$_POST["email"]);
 
-$stmt = $dbh->prepare("UPDATE USERS SET username = :username, password = :pass,
-email = :email,
- name = :name,
- surname = :ape;
- profile_image = :ruta where id_user= :id");
+    $data = array('id'=>$_SESSION["idUsuario"],'pass' => $pass,);
+    $stmt = $dbh->prepare("UPDATE USERS SET password = :pass where id_user= :id");
 
 
-$stmt->execute($data);
-close();
-header("Location: user.php");
+    $stmt->execute($data);
+    close();
+
+    header("Location: user.php");
+}else {
+    if ($tamano > 0) {
+
+
+        $data = array(
+            'ruta' => "../images/userProfile/" . $_SESSION["nombreUsuario"] . "." . $extension,
+            'id' => $_SESSION["idUsuario"],
+            'username' => $_POST["user"],
+            'name' => $_POST["nombre"],
+            'ape' => $_POST["apellido"],
+            'email' => $_POST["email"],
+            'bio' => $_POST["bio"]);
+
+        $stmt = $dbh->prepare("UPDATE USERS SET username = :username, name = :name, surname = :ape, email = :email, profile_image = :ruta, biography = :bio where id_user= :id");
+
+
+        $stmt->execute($data);
+        close();
+
+        header("Location: user.php");
+    } else {
+        $data = array(
+            'id' => $_SESSION["idUsuario"],
+            'username' => $_POST["user"],
+            'name' => $_POST["nombre"],
+            'ape' => $_POST["apellido"],
+            'email' => $_POST["email"],
+            'bio' => $_POST["bio"]);
+
+        $stmt = $dbh->prepare("UPDATE USERS SET username = :username, name = :name, surname = :ape, email = :email,  biography = :bio where id_user= :id");
+
+
+        $stmt->execute($data);
+        close();
+
+        header("Location: user.php");
+    }
 
 }
-
 
 
