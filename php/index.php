@@ -63,13 +63,13 @@ session_start();
             <h1>Sign up</h1>
             <i class="fa fa-user-circle">&nbsp;
                 <input type="text" required name="user" class="username" placeholder="Username"></i>
-                <p class="errorUsername"></p>
+                <p id="errorUsername"></p>
             <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" class="password" placeholder="Password"></i>
-                <p class="errorPassword"></p>
-                <i class="fa fa-lock">&nbsp;
+                <p id="errorPassword"></p>
+            <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" id="password2" placeholder="Repeat the password"></i>
-                <p class="errorPassword2"></p>
+                <p id="errorPassword2"></p>
             <i class='far fa-address-card'>&nbsp;
                 <input type="text" name="nombre" id="nombre" required placeholder="Nombre"></i>
                 <p id="errorNombre"></p>

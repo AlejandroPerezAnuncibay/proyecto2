@@ -26,10 +26,6 @@ function buttonsChangeForm() {
     });
 }
 function validateForm(type) {
-    //regex
-    var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,16}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
-    var passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&?¿!¡._-]).{8,64}$");
-    // ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,64}$
     //segun desde que submit se llame a la funcion el type sera "login" o "signup"
     try {
         if (type == "login") {
@@ -38,7 +34,7 @@ function validateForm(type) {
             //signUp
             //llamo a los metodos que validan los campos
             regexUsername($(".username").eq(1).val());
-            regexPassword($(".password").eq(1).val,$("#password2").val());
+            regexPassword($(".password").eq(1).val(),$("#password2").val());
             regexName($("#nombre").val());
             regexSurname($("#apellido").val());
             regexEmail($("#email").val());
@@ -51,6 +47,7 @@ function validateForm(type) {
     }
 }
 function regexUsername(username){
+    var usernameRegex = new RegExp("^(?=[a-zA-Z0-9._-]{3,16}$)(?!.*[_.-]{2})[^_.-].*[^_.-]$");
     if (!usernameRegex.test(username)) {
         throw "El nombre de usuario tiene un formato incorrecto";
     } else {
@@ -58,6 +55,7 @@ function regexUsername(username){
     }
 }
 function regexPassword(password, password2){
+    var passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&?¿!¡._-]).{8,64}$");
     if (passwordRegex.test(password)) {
         if (password != password2) {
             throw "Las contraseñas no coinciden";
@@ -118,7 +116,7 @@ function checkAvailability(variable) {
             break;
     }
 
-    input.on("input", function (){
+    input.on("input", function Availability(){
         if (field=="Username"){
         inputVal = $(".username").eq(1).val().trim();
         }else{
@@ -134,8 +132,12 @@ function checkAvailability(variable) {
                     //si devuelve 1 es que esta pillado si no devuelve nada es que no
                     if (response==1){
                         errorField.append(field+" no disponible.");
+                        $("[type=submit]").attr("disabled", true);
+                        $("[type=submit]").css("background-color", "red");
                     } else {
                         errorField.empty();
+                        $("[type=submit]").attr("disabled", false);
+                        $("[type=submit]").css("background-color", "black");
                     }
                 }
             });
