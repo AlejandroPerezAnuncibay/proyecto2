@@ -82,6 +82,7 @@
     display: none;
 }
 .btncambiar{
+    cursor: pointer;
     display: none;
 }
 
@@ -125,6 +126,12 @@ form.buscador::after {
     content: "";
     clear: both;
     display: table;
+}
+i{
+    cursor: pointer;
+}
+i:hover{
+    color: white;
 }
 /*DISEÑO ESCRITORIO*/
 @media (min-width: 768px){

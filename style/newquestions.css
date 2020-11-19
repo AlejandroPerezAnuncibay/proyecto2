@@ -110,5 +110,15 @@
     .button2 a{
         color:black;
     }
+    .formulario label{
+        font-size:30px;
+
+    }
+    .formulario input{
+
+        font-size: 22px;
+
+
+    }
 }
 
