@@ -12,120 +12,7 @@
 
 }
 /*MOVIL FIRST*/
-/*menu desplegable*/
-#menu {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 60px;
-    background: #ffb600;
-    justify-content: space-around;
-    align-items: center;
-}
 
-#menuList {
-    position: fixed;
-    z-index: 10;
-    top: 60px;
-    left: -100%;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    transition: all .3s;
-    text-align: center;
-    background-color: #ffcc00;
-}
-
-#menu #menuList li {
-    display: flex;
-    height: 15%;
-    justify-content: center;
-    align-items: center;
-    border-bottom: solid 0.5px black;
-}
-
-#menu #menuList li a {
-    font-size: 1.5em;
-    font-weight: 700;
-    color:black;
-}
-#menu #menuList li a:hover{
-    color:white;
-
-}
-
-#check:checked~#menuList {
-    left: 0;
-}
-
-#check:checked~.close {
-    display: inline;
-}
-
-#check:checked~.open {
-    display: none;
-
-}
-
-.checkbtn {
-    font-size: 30px;
-    display: block;
-    float: left;
-    cursor: pointer;
-    color: white;
-}
-#check {
-    display: none;
-}
-.close{
-    display: none;
-}
-.btncambiar{
-    display: none;
-}
-
-.buscador{
-    width:50%;
-    border-radius: 6%;
-}
-
-/*Barra buscador*/
-form.buscador input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-radius: 5px 0 0 5px;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-}
-
-
-form.buscador button{
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: black;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0;
-}
-
-form.buscador button:hover {
-    background:#ffcc00 ;
-}
-form.buscador button:hover > i{
-    color:black;
-}
-form.buscador::after {
-    content: "";
-    clear: both;
-    display: table;
-}
 section{
     display: grid;
     grid-template-columns: 25% 75%;
@@ -217,86 +104,13 @@ section{
     justify-content: space-between;
     /* margin-top: inherit;*/
 }
-footer {
 
-    display: flex;
-    width: 100%;
-    height: 50px;
-    background-color: #ffb600;
-    justify-content: center;
-}
-
-footer ul li {
-    display: inline-block;
-    padding-top: 17px;
-}
 @media (min-width: 768px) {
     /*Diseño Escritorio*/
     main {
         margin: 0 8%;
     }
 
-    /*MENU*/
-    #menuList {
-        position: relative;
-        z-index: 0;
-        top: 0px;
-        left: 0%;
-        display: flex;
-        flex-direction: row;
-        width: auto;
-        height: auto;
-        text-align: center;
-        background-color: #ffb600;
-
-    }
-
-    #menu #menuList li {
-        display: flex;
-        height: 15%;
-        justify-content: space-between;
-        align-items: center;
-        border-right: solid 0.5px black;
-        border-bottom: 0;
-        padding: 10px;
-    }
-
-    .buscador {
-        width: 35%;
-
-    }
-
-    #menu #menuList li.salir {
-        display: none;
-    }
-
-    .checkbtn {
-        display: none;
-    }
-
-    .btnSignin,.btnSignup{
-        border: none;
-        padding:5px;
-        width: 8vw;
-        font-size: 20px;
-        background-color: black;
-        color: black;
-    }
-    .btnSignin{
-        border-radius: 10px 0 0 10px;
-    }
-    .btnSignup {
-        border-radius: 0 10px 10px 0;
-    }
-    .active{
-        color:  #ffb600;
-        /* border-left: 0.5px solid white; */
-    }
-    .unactive{
-        border: 1px solid black;
-        /* border-right: 0.5px solid white; */
-        background: transparent;
-    }
     section{
         display: grid;
         grid-template-columns: repeat(2, auto);

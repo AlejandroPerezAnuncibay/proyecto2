@@ -1,4 +1,18 @@
- <nav id="menu">
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../style/menu.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Menu</title>
+</head>
+<header>
+<nav id="menu">
     <input type="checkbox" id="check">
     <label for="check" class="checkbtn open">
         <i class="fas fa-bars"></i>
@@ -27,3 +41,5 @@
     </div>
 
 </nav>
+</header>
+</html>

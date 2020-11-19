@@ -1,0 +1,114 @@
+@font-face {
+    font-family: "elephans";
+    src: url("../fonts/Elephans.ttf");
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: "elephans";
+
+}
+/*MOVIL FIRST*/
+
+#principal{
+    margin:5%;
+
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5%;
+    align-content: space-around;
+}
+.formulario label{
+    font-size:22px;
+    margin-bottom: 5%;
+}
+.formulario input{
+    margin-bottom: 5%;
+    padding: 5px 10px;
+    font-size: 18px;
+
+
+}
+#description{
+    margin-bottom: 5%;
+    height: 180px;
+
+}
+#botones{
+    display: flex;
+    flex-direction: column;
+}
+#bttnSendQuestion{
+
+    background-color: white;
+    border: 2px solid #ffb600;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 22px;
+    cursor: pointer;
+    color: black;
+
+
+}
+.button2{
+
+    background-color:#ffb600;
+    border: 2px solid black;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 5%;
+}
+.button2 a{
+    color:black;
+}
+@media (min-width: 768px) {
+    /*Diseño Escritorio*/
+    main {
+        margin: 0 8%;
+    }
+    #principal{
+        border: solid 1px black;
+        border-radius: 6%;
+        box-shadow: inset 0 0 5px 5px #ffb600;
+    }
+    #botones{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    #bttnSendQuestion{
+        background-color:#ffb600;
+        border: 2px solid black;
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 22px;
+        cursor: pointer;
+        margin-bottom: 5%;
+        color: black;
+
+    }
+    .button2{
+
+        background-color: white;
+        border: 2px solid #ffb600;
+        padding: 15px 70px;
+        text-align: center;
+        font-size: 22px;
+        cursor: pointer;
+        color: black;
+
+
+    }
+    .button2 a{
+        color:black;
+    }
+}
+
