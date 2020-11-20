@@ -14,15 +14,14 @@
 /*MOVIL FIRST*/
 
     /*main*/
-main{
-    margin-bottom: 40px;
-}
     #titulop{
         display: none;
     }
 
     #imgPcs {
+
         width: 35%;
+
     }
     #color{
     display: flex;
@@ -64,7 +63,6 @@ main{
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        margin: 5%;
         max-width: 100%;
         padding-bottom: 5%;
         border-bottom: solid 0.5px grey;
@@ -73,15 +71,17 @@ main{
 
     .labels {
         background-color: white;
-        color:black;;
+        color:black;
         border: 2px solid #ffb600;
         margin:1.5%;
         padding: 7px 15px;
         text-align: center;
         font-size: 15px;
         cursor: pointer;
+        width: 30%;
+
     }
-    #preguntas{
+    .preguntas{
     display: grid;
         grid-template-columns: 25% 75%;
         grid-template-rows:70% 30%;
@@ -188,9 +188,31 @@ main{
         #etiquetas{
             grid-column:1/2;
             border-bottom: 0;
+            overflow: hidden;
 
         }
-        #preguntas{
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 15%;
+            
+        }
+        .labels {
+            background-color: white;
+            color:black;
+            border: 2px solid #ffb600;
+            margin:1.5%;
+            padding: 7px 15px;
+            text-align: center;
+            font-size: 15px;
+            cursor: pointer;
+            width: 47%;
+
+        }
+        .sticky + .principal {
+            padding-top: 60px;
+        }
+        .preguntas{
             grid-column: 2/3;
             margin:3%;
         }

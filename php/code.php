@@ -203,3 +203,111 @@ function cargarFotoPerfil($id)
     echo "../images/userProfile/.default.jpg";
     }
 }
+
+function cargarTodasPreguntas()
+{
+    require_once "bbdd.php";
+    $dbh = connect();
+
+
+    $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS");
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    $stmt->execute();
+    while ($fila = $stmt->fetch()) {
+
+        $tag = cargarTag($fila["id_topic"]);
+        $usuario = cargarCreadorPregunta($fila["id_user"]);
+        $likes = cargarLikesPregunta($fila["id_question"]);
+        echo "<div class='preguntas'>";
+        echo "<p> Likes: ".$likes."</p>";
+        echo "<div class='iconos'>";
+        echo "<button class='like'><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+                        <button><i class='fas fa-eye' style='font-size:36px'></i></button> </div>";
+        echo "<div class='info'>";
+        echo "<h4>".$fila["title"]."</h4>";
+        echo "<h5>".$usuario."</h5>";
+        echo "<p>".$fila["text"]."</p></div>";
+        echo "<span class='fecha'>".$fila["date"]."        Tag: ".$tag."</span></div>";
+
+
+
+
+        /*<div class="preguntas">
+                    <p>Likes</p>
+                    <div class="iconos">
+
+                        <button class="like"><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+                        <button><i class='fas fa-eye' style='font-size:36px'></i></button>
+                    </div>
+                    <div class="info">
+                        <h4>Titulo pregunta</h4>
+                        <h5>Usuario que responde</h5>
+
+                        <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+                            Por scientie, musica, sport etc, litot Europa usa li sam vocabular.</p>
+                    </div>
+
+                    <span class="fecha">Nov 16 . 8 min read</span>
+
+                </div>*/
+    }
+    close();
+}
+
+
+
+
+function cargarCreadorPregunta($id){
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array( 'id' => $id );
+    $stmt = $dbh->prepare("SELECT  * FROM USERS where id_user = :id");
+
+
+    $stmt->execute($data);
+    $fila =  $stmt->fetch();
+
+    close();
+    return $fila["name"]." ".$fila["surname"];
+}
+
+
+function cargarEtiquetas(){
+
+
+
+    require_once "bbdd.php";
+    $dbh = connect();
+
+
+    $stmt = $dbh->prepare("SELECT  * FROM TOPICS");
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    $stmt->execute();
+    while ($fila = $stmt->fetch()) {
+       echo  "<button class='labels'>".$fila["name"]."</button>";
+
+
+
+    }
+    close();
+}
+
+function cargarLikesPregunta($id){
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array( 'id' => $id);
+    $stmt = $dbh->prepare("SELECT  count(*) FROM LIKES_QUESTIONS where id_question = :id");
+
+
+    $stmt->execute($data);
+    $conteo = $stmt->fetchColumn();
+    close();
+
+
+    return $conteo;
+
+}

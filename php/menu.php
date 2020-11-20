@@ -9,6 +9,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <title>Menu</title>
 </head>
 <header>
 <nav id="menu">
@@ -38,9 +39,7 @@
         <input type="button" value="Log in" class="btnSignin unactive changeForm">
         <input type="button" value="Sign up" class="btnSignup active">
     </div>
-</nav>
-    <div id="space">
 
-    </div>
+</nav>
 </header>
 </html>

@@ -63,7 +63,9 @@ function regexPassword(password, password2){
             return true;
         }
     } else {
+
         throw "La contraseña debe contener 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (@#$%&?¿!¡._-)";
+
     }
 }
 function regexName(nombre) {
