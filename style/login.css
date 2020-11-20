@@ -161,7 +161,7 @@ input[type="file"]{
     }
     input[type="submit"]{
         width: 20vw;
-        height: 4vw;
+        height: 3vw;
         font-size: 20px;
     }
     .btnSignmbl{
@@ -189,6 +189,7 @@ input[type="file"]{
 
     #signup form{
         width: 40vh;
+        height: auto;
     }
     .btncambiar{
         display: flex;
@@ -196,6 +197,7 @@ input[type="file"]{
         right: 0;
         position: absolute;
         margin:10px;
+
 
     }
     .btnSignin,.btnSignup{

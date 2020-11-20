@@ -14,9 +14,7 @@
 </head>
 
 <body>
-    <header>
-        <?php require_once "menu.php" ?>
-    </header>
+<?php require_once "menu.php" ?>
     <main>
         <div>
             <article id="opciones">
@@ -112,9 +110,7 @@
             </section> 
     </main> 
 
-    <footer>
         <?php require_once "footer.php" ?>
-    </footer>
 
 </body>
 </html>
