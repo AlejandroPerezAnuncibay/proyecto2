@@ -22,7 +22,7 @@ session_start();
         <?php require_once "menu.php" ?>
     </header>
     <main>
-        <div>
+
             <article id="opciones">
                 <form class="buscador" action="#">
                     <input type="text" placeholder="Search.." name="search">
@@ -43,6 +43,7 @@ session_start();
             </div>
             <section id="principal">
                 <div id="etiquetas">
+                    <p class="eti">Etiquetas: </p>
                     <?php cargarEtiquetas()?>
 
 

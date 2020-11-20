@@ -16,7 +16,7 @@
     /*main*/
 
 main{
-
+    padding-top: 50px;
     margin-bottom: 40px;
 
 }
@@ -73,7 +73,11 @@ main{
         padding-bottom: 5%;
         border-bottom: solid 0.5px grey;
     }
+    .eti{
+        flex-basis: 100%;
+        font-weight: bold;
 
+    }
 
     .labels {
         background-color: white;
@@ -199,7 +203,7 @@ main{
         }
         .sticky {
             position: fixed;
-            top: 0;
+            top: 60px;
             width: 15%;
             
         }
