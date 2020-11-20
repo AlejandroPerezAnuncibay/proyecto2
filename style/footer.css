@@ -3,12 +3,10 @@
     src: url("../fonts/Elephans.ttf");
 }
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
-    font-family: "elephans";
 
 }
 
@@ -19,10 +17,17 @@ footer {
     height: 50px;
     background-color: #ffb600;
     justify-content: center;
+    font-family: "elephans";
+    position: fixed;
+    bottom: 0;
 }
 
 footer ul li a{
     display: inline-block;
     padding-top: 17px;
     color: black;
+}
+#spacefooter{
+    bottom: 0;
+    height: 50px;
 }

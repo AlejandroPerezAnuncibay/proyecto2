@@ -3,12 +3,10 @@
     src: url("../fonts/Elephans.ttf");
 }
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
-    font-family: "elephans";
 
 }
 /*MOVIL FIRST*/
@@ -21,8 +19,12 @@
     background: #ffb600;
     justify-content: space-around;
     align-items: center;
+    font-family: "elephans";
+    position: fixed;
 }
-
+i{
+    color:black;
+}
 #menuList {
     position: absolute;
     z-index: 10;
@@ -89,6 +91,8 @@
 .buscador{
     width:50%;
     border-radius: 6%;
+    display: flex;
+    margin-right: 17px;
 }
 
 /*Barra buscador*/
@@ -100,6 +104,7 @@ form.buscador input[type=text] {
     float: left;
     width: 80%;
     background: #f1f1f1;
+    margin: 0;
 }
 
 
@@ -127,12 +132,11 @@ form.buscador::after {
     clear: both;
     display: table;
 }
-i{
+i.fa-search{
     cursor: pointer;
+    border-bottom: none;
 }
-i:hover{
-    color: white;
-}
+
 /*DISEÑO ESCRITORIO*/
 @media (min-width: 768px){
     #menuList {
@@ -209,4 +213,8 @@ i:hover{
         /* border-right: 0.5px solid white; */
         background: transparent;
     }
+}
+#space{
+    height: 60px;
+
 }

@@ -9,12 +9,12 @@ h1 {
 }
 
 .box {
-    width: 40%;
+    width: 70%;
     margin: 0 auto;
     background: rgba(255,255,255,0.2);
     padding: 35px;
     border: 2px solid #fff;
-    border-radius: 20px/50px;
+
     background-clip: padding-box;
     text-align: center;
     padding-top: 0;
@@ -23,7 +23,7 @@ h1 {
 
 .button {
     font-size: 1em;
-    padding: 6px;
+    padding: 11px;
     border: 2px solid black;
     background: #ffb600;
     border-radius: 20px/50px;
@@ -86,7 +86,7 @@ h1 {
     overflow: auto;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (min-width: 700px){
     .box{
         width: 70%;
     }

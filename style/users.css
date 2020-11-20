@@ -49,6 +49,7 @@
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-top: 45px;
     margin-bottom: 6vh;
 }
 #infUsu{
@@ -167,6 +168,16 @@ textarea{
 }
 i.fa-lock-open{
     padding: 5px;
+    border: none;
 }
-
+.red, .green {
+    border: none;
+    display: none;
+}
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
 

@@ -120,7 +120,7 @@ input[type="file"]{
     display: none;
 }
 
-@media screen and (min-width: 1100px){
+@media screen and (min-width: 768px){
     body{
         display: flex;
         justify-content: center;
@@ -152,6 +152,7 @@ input[type="file"]{
     }
     form{
         width: auto;
+        height: auto;
     }
     input[type="text"], input[type="password"],input[type="email"]{
         width:18vw;
@@ -160,7 +161,7 @@ input[type="file"]{
     }
     input[type="submit"]{
         width: 20vw;
-        height: 2vw;
+        height: 3vw;
         font-size: 20px;
     }
     .btnSignmbl{
@@ -188,6 +189,7 @@ input[type="file"]{
 
     #signup form{
         width: 40vh;
+        height: auto;
     }
     .btncambiar{
         display: flex;
@@ -195,6 +197,7 @@ input[type="file"]{
         right: 0;
         position: absolute;
         margin:10px;
+
 
     }
     .btnSignin,.btnSignup{
