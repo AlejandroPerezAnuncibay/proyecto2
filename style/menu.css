@@ -21,6 +21,7 @@
     align-items: center;
     font-family: "elephans";
     position: fixed;
+    top: 0;
 }
 i{
     color:black;
@@ -136,6 +137,19 @@ i.fa-search{
     cursor: pointer;
     border-bottom: none;
 }
+#userFoto{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px black solid;
+}
+#infoUsu{
+    display: flex;
+
+}
+#infoUsu p{
+    display: none;
+}
 
 /*DISEÑO ESCRITORIO*/
 @media (min-width: 768px){
@@ -213,8 +227,11 @@ i.fa-search{
         /* border-right: 0.5px solid white; */
         background: transparent;
     }
-}
-#space{
-    height: 60px;
+    #space{
+         height: 60px;
 
+     }
+    #infoUsu p{
+        display: block;
+    }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -9,10 +8,14 @@ if (isset($_POST["user"]) && isset($_POST["pass"])){
 }
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     comprobarLogin($_POST["username"], $_POST["password"]);
-
-
 }
-
+if (isset($_GET["cerrar"])){
+    cerrarSesion();
+}
+function cerrarSesion(){
+    session_destroy();
+    header("Location: index.php");
+}
 
 
 function comprobarLogin($usuario, $password)
@@ -34,7 +37,7 @@ function comprobarLogin($usuario, $password)
         $_SESSION["idUsuario"]=$idUsuario;
         close();
         updateLastLogin($idUsuario);
-        header("location:logged.php");
+        header("location:home.php");
     } else{
         setcookie("errorLog","Nombre o contraseña incorrectos", time()+60);
 

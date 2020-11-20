@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
@@ -33,8 +34,12 @@
         <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
-    <i class='fas fa-user-circle' style='font-size:36px'><a href="http://localhost:8765/proyecto2/php"></a></i>
-    <i class="fa fa-sign-out" style="font-size:36px"><a href="#"></a></i>
+    <?php $idUsuario = $_SESSION["idUsuario"];?>
+    <?php $usuario = cargarUsuario($idUsuario);?>
+    <div id="infoUsu">
+    <a href="http://localhost:8765/proyecto2/php"><img id="userFoto" src="<?php cargarFotoPerfil($idUsuario)?>"></a>
+    <p><?= $usuario["nombre"]." ".$usuario["apellido"] ?></p></div>
+    <a href="code.php?cerrar=true"><i class="fa fa-sign-out" style="font-size:36px"></i></a>
     <div class="btncambiar">
         <input type="button" value="Log in" class="btnSignin unactive changeForm">
         <input type="button" value="Sign up" class="btnSignup active">
