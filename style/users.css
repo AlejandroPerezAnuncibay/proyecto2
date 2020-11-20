@@ -170,14 +170,4 @@ i.fa-lock-open{
     padding: 5px;
     border: none;
 }
-.red, .green {
-    border: none;
-    display: none;
-}
-.green {
-    color: green;
-}
-.red {
-    color: red;
-}
 

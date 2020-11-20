@@ -71,13 +71,17 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
             <div class="content">
                 <form enctype="multipart/form-data" method="post" action="carga.php" >
                     <i class="fa fa-user-circle">&nbsp;
-                        <input type="text" required name="user" value="<?=$persona["username"]?>" class="username" placeholder="Username"></i><i class="fas fa-check check-Username green"></i><i class="fas fa-times times-Username red"></i>
+                        <input type="text" required name="user" value="<?=$persona["username"]?>" class="username" placeholder="Username"></i>
+                        <i class="fas fa-check check-Username green"></i><i class="fas fa-times times-Username red"></i>
                     <i class='far fa-address-card'>&nbsp;
-                        <input type="text" name="nombre" id="nombre"  value="<?= $persona["nombre"]?>" placeholder="Nombre"></i><i class="fas fa-check check-nombre green"></i><i class="fas fa-times times-nombre red"></i>
+                        <input type="text" name="nombre" id="nombre"  value="<?= $persona["nombre"]?>" placeholder="Nombre"></i>
+                        <i class="fas fa-check check-nombre green"></i><i class="fas fa-times times-nombre red"></i>
                     <i class='fas fa-address-card'>&nbsp;
-                        <input type="text" name="apellido" id="apellido" value="<?=$persona["apellido"]?>" placeholder="Apellido"></i><i class="fas fa-check check-apellido green"></i><i class="fas fa-times times-apellido red"></i>
+                        <input type="text" name="apellido" id="apellido" value="<?=$persona["apellido"]?>" placeholder="Apellido"></i>
+                        <i class="fas fa-check check-apellido green"></i><i class="fas fa-times times-apellido red"></i>
                     <i class="fa fa-at">&nbsp;
-                        <input type="email" name="email" id="email" value="<?=$persona["email"]?>" placeholder="Correo electronico"></i><i class="fas fa-check check-Email green"></i><i class="fas fa-times times-Email red"></i><br>
+                        <input type="email" name="email" id="email" value="<?=$persona["email"]?>" placeholder="Correo electronico"></i>
+                        <i class="fas fa-check check-Email green"></i><i class="fas fa-times times-Email red"></i><br>
                     <i id="biografia" class="fa fa-info-circle">Biografia:
                     </i><br>
                     <textarea name="bio"  PLACEHOLDER="Introduce aqui tu biografia..." maxlength="254" ><?=$persona["biografia"]?></textarea>
@@ -85,7 +89,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
                         <label for="imagen">Seleccionar imagen</label>
                         <input type="file" value="<?=$persona["foto"]?>" id="imagen" name="imagen">
                         <label for="submit">Aceptar cambios</label>
-                        <button name="submit" id="submit"></button>
+                        <button name="submit" id="submit" onclick="return validarCampos()"></button>
                     </div>
                 </form>
             </div>

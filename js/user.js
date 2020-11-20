@@ -9,7 +9,7 @@ document.getElementById('imagen').onchange = function () {
     $("label[for=imagen]").text(y[y.length - 1]);
 
 };
-//TODO regex de todos los campos, mirar los fa de font awesome que se displayean solos
+
 function checkAvailability(variable){
     var originalValue;
     var field;
@@ -43,7 +43,7 @@ function checkAvailability(variable){
             inputVal = $("#email").val().trim();
         }
 
-        if (regex.test(inputVal)&& originalValue!==inputVal){
+        if (regex.test(inputVal) && originalValue!==inputVal){
             $.ajax({
                 type: "post",
                 url: "../php/ajax.php",
@@ -64,13 +64,13 @@ function checkAvailability(variable){
                 }
             });
         } else {
+            $("#submit").attr("disabled", true);
             $(".check-"+field).css("display", "none");
             $(".times-"+field).css("display", "none");
         }
     })
 
 }
-
 function regexPassword(password, password2){
     var passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&?¿!¡._-]).{8,64}$");
     if (passwordRegex.test(password)) {
@@ -85,12 +85,22 @@ function regexPassword(password, password2){
 
     }
 }
+function validarCampos(){
+    try {
+//TODO regex de todos los campos
+//https://stackoverflow.com/questions/43157936/javascript-import-function-syntax
 
+
+
+
+
+    } catch (error){
+        alert(error);
+        return false;
+    }
+}
 function validarContrasenas() {
     try {
-
-
-
         regexPassword($("#pass1").val(),$("#pass2").val());
 
         return true;
