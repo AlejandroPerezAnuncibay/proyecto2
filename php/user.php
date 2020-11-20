@@ -17,24 +17,19 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
-
-
-
-
-
-
-
-
 </head>
 <body>
-<!--MENU ROSA-->
 <?php
 require "code.php";
 $persona = cargarUsuario($_SESSION["idUsuario"]);
 
 
 ?>
-
+<header>
+    <?php
+        require_once ("menu.php");
+    ?>
+</header>
 <div id="principal">
     <div id="informacionTotal">
         <div id="imgUser">
@@ -116,12 +111,16 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
                 </form>
             </div>
         </div>
+    </div>
     <div id="preguntas">
 
         <?php cargarPreguntas($_SESSION["idUsuario"]);?>
 
 
     </div>
+    <footer>
+        <?php require_once ("footer.php")?>
+    </footer>
 </body>
 <script src="../js/user.js">
 </script>

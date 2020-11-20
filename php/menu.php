@@ -39,7 +39,9 @@
         <input type="button" value="Log in" class="btnSignin unactive changeForm">
         <input type="button" value="Sign up" class="btnSignup active">
     </div>
-
 </nav>
+    <div id="space">
+
+    </div>
 </header>
 </html>
