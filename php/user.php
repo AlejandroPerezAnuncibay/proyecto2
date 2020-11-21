@@ -71,7 +71,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
             <div class="content">
                 <form enctype="multipart/form-data" method="post" action="carga.php" >
                     <i class="fa fa-user-circle">&nbsp;
-                        <input type="text" required name="user" value="<?=$persona["username"]?>" class="username" placeholder="Username"></i>
+                        <input type="text" required name="user" value="<?=$persona["username"]?>" class="username" id="nombreUsuario" placeholder="Username"></i>
                         <i class="fas fa-check check-Username green"></i><i class="fas fa-times times-Username red"></i>
                     <i class='far fa-address-card'>&nbsp;
                         <input type="text" name="nombre" id="nombre"  value="<?= $persona["nombre"]?>" placeholder="Nombre"></i>
@@ -85,6 +85,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
                     <i id="biografia" class="fa fa-info-circle">Biografia:
                     </i><br>
                     <textarea name="bio"  PLACEHOLDER="Introduce aqui tu biografia..." maxlength="254" ><?=$persona["biografia"]?></textarea>
+                    <p id="errorModificar"></p>
                     <div id="cargaImg">
                         <label for="imagen">Seleccionar imagen</label>
                         <input type="file" value="<?=$persona["foto"]?>" id="imagen" name="imagen">
