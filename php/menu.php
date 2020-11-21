@@ -27,7 +27,7 @@
         <li id="btnUsu"><a href="http://localhost:8765/proyecto2/php/user.php">Mi perfil</a></li>
         <li><a href="#">Preguntas</a></li>
         <li><a href="#">Sin responder</a></li>
-        <li class="salir"><a href="http://localhost:8765/proyecto2/php">Cerrar sesion</a></li>
+        <li class="salir"><a href="cerrarsesion.php">Cerrar sesion</a></li>
     </ul>
 
     <form class="buscador" action="#">
@@ -40,7 +40,7 @@
     <div id="infoUsu">
     <a href="http://localhost:8765/proyecto2/php"><img id="userFoto" src="<?php cargarFotoPerfil($idUsuario)?>"></a>
     <p><?= $usuario["nombre"]." ".$usuario["apellido"] ?></p></div>
-    <a href="code.php?cerrar=true"><i class="fa fa-sign-out" style="font-size:36px"></i></a>
+    <a href="cerrarsesion.php"><i class="fa fa-sign-out" style="font-size:36px"></i></a>
     <div class="btncambiar">
         <input type="button" value="Log in" class="btnSignin unactive changeForm">
         <input type="button" value="Sign up" class="btnSignup active">

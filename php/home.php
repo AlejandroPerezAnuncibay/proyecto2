@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(isset($_SESSION["idUsuario"])){
 ?>
 
 <!doctype html>
@@ -65,5 +66,9 @@ session_start();
 
 </body>
 <script src="../js/scroll.js"></script>
-
 </html>
+<?php
+}else{
+    header("location:index.php");
+}
+?>

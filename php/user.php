@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(isset($_SESSION["idUsuario"])){
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -130,3 +131,8 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
 <script src="../js/user.js">
 </script>
 </html>
+<?php
+}else{
+    header("location:index.php");
+}
+?>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION["idUsuario"])){
+?>
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -38,3 +42,8 @@
 </footer>
 </body>
 </html>
+<?php
+}else{
+    header("location:index.php");
+}
+?>
