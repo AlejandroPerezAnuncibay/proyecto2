@@ -19,14 +19,14 @@ session_start();
 
 </head>
 <body>
-<!--MENU ROSA-->
+<!--Cargamos los datos del usuario-->
 <?php
 require "code.php";
 $persona = cargarUsuario($_SESSION["idUsuario"]);
 ?>
 
 <header>
-
+    <!--Peticion del menu que esta en un archivo aparte-->
     <?php
 
         require_once ("menu.php");
@@ -63,7 +63,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
         <a class="button" href="#popup2"><i class="fas fa-lock-open"></i></a>
 
     </div>
-
+    <!--Dos formularios distintos en funcion de los datos que desee cambiar el usuario-->
     <div id="popup1" class="overlay">
         <div class="popup">
             <h2>Modificar usuario</h2>
@@ -115,13 +115,13 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
         </div>
     </div>
         <div id="preguntas">
-
+            <!--Cargamos las preguntas que tenga el usuario generadas-->
             <?php cargarPreguntas($_SESSION["idUsuario"]);?>
 
 
         </div>
     <footer>
-
+        <!--Peticion del footer que se encuentra en un archivo distinto-->
         <?php require_once ("footer.php")?>
 
     </footer>

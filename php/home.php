@@ -19,6 +19,7 @@ session_start();
 <?php require_once "code.php"?>
 <body>
     <header>
+        <!--Petición del menu-->
         <?php require_once "menu.php" ?>
     </header>
     <main>
@@ -44,11 +45,12 @@ session_start();
             <section id="principal">
                 <div id="etiquetas">
                     <p class="eti">Etiquetas: </p>
+                    <!--Pedimos los tags al servidor para mostrarlos-->
                     <?php cargarEtiquetas()?>
 
 
                 </div>
-
+                <!--Con esta peticion nos encargamos de generar todas las preguntas-->
                 <?php cargarTodasPreguntas()?>
 
 
@@ -57,6 +59,7 @@ session_start();
     </main> 
 
     <footer>
+        <!--Peticion del footer-->
         <?php require_once "footer.php" ?>
     </footer>
 

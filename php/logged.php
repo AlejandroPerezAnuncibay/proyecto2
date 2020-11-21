@@ -16,7 +16,7 @@ session_start();?>
 
 <p>hola <a href="user.php">
 
-        <?=$_SESSION["nombreUsuario"]?></a>
+ <?=$_SESSION["nombreUsuario"]?></a>
 <?= $_SESSION["idUsuario"]?></p>
 </body>
 </html>

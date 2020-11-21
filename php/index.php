@@ -40,7 +40,7 @@ session_start();
                 <input type="password" name="password" class="password" placeholder="Password"></i>
             <div id="errorLog" style="color: #ffb600;margin-bottom: 12px;">
                 <?php
-                // Si el usuario ha intentado acertar un número mostramos el mensaje
+                //En caso de que se necesite esta cookie mostrará un mensaje informativo al usuario
                 if (isset($_COOKIE["errorLog"])) {
                 ?>
                     <p> <?= $_COOKIE["errorLog"] ?> </p>

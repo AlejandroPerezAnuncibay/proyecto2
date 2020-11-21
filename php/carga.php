@@ -32,6 +32,8 @@ $directorio ="";
 
 require_once "bbdd.php";
 $dbh = connect();
+//En caso que detecte que la contraseña tambien va a ser modificada se encarga de encriptarla para actualizarla
+//en la base de datos
 if (isset($_POST["pass"])){
     $pass = password_hash($_POST["pass"], PASSWORD_DEFAULT);
 
@@ -44,9 +46,11 @@ if (isset($_POST["pass"])){
 
     header("Location: user.php");
 }else {
+    //En caso de que detecte que hay una imagen, se recogeran los datos previamente preparados para guardar la ruta de
+    //la nueva imagen
     if ($tamano > 0) {
 
-
+        //Preparamos los datos con los proporcionados por el usuario.
         $data = array(
             'ruta' => "../images/userProfile/" . $_SESSION["nombreUsuario"] . "." . $extension,
             'id' => $_SESSION["idUsuario"],
@@ -64,6 +68,7 @@ if (isset($_POST["pass"])){
 
         header("Location: user.php");
     } else {
+        //Esto se ejecutará en caso de que no haya subido ninguna imagen. Se le quedara la imagen que ya tenia.
         $data = array(
             'id' => $_SESSION["idUsuario"],
             'username' => $_POST["user"],
