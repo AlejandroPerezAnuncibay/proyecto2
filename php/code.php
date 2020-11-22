@@ -1,8 +1,8 @@
 <?php
 //Estas dos lineas permiten al servidor PHP los errores que suceden mientrasse ejecuta el programa
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+/*error_reporting(E_ALL);
+ini_set('display_errors', '1');*/
 
 //Mediante estas condiciones nos encargamos de saber si el usuario esta; logueando, registrando o cerrando sesión.
 if (isset($_POST["user"]) && isset($_POST["pass"])){
@@ -342,3 +342,4 @@ function cargarLikesPregunta($id){
     return $count;
 
 }
+

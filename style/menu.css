@@ -70,7 +70,9 @@ i{
     display: none;
 
 }
-
+i.fa-search{
+    color: white;
+}
 .checkbtn {
     font-size: 30px;
     display: block;
@@ -84,10 +86,7 @@ i{
 .close{
     display: none;
 }
-.btncambiar{
-    cursor: pointer;
-    display: none;
-}
+
 
 .buscador{
     width:50%;
@@ -150,7 +149,12 @@ i.fa-search{
 #infoUsu p{
     display: none;
 }
-
+#pcbutton{
+    display: none;
+}
+i.fa-door-open{
+    display: block;
+}
 /*DISEÑO ESCRITORIO*/
 @media (min-width: 768px){
     #menuList {
@@ -204,19 +208,17 @@ i.fa-search{
         font-weight: bold;
     }
 
-    .btnSignin,.btnSignup{
-        border: none;
-        padding:5px;
-        width: 8vw;
-        font-size: 20px;
-        background-color: black;
+    #pcbutton{
+        display: block;
         color: black;
+        border: 1px solid black;
+        border-radius: 5px;
+        background: white;
+        padding: 10px;
     }
-    .btnSignin{
-        border-radius: 10px 0 0 10px;
-    }
-    .btnSignup {
-        border-radius: 0 10px 10px 0;
+    #pcbutton:hover{
+        color: white;
+        background: black;
     }
     .active{
         color:  #ffb600;
@@ -233,5 +235,8 @@ i.fa-search{
      }
     #infoUsu p{
         display: block;
+    }
+    i.fa-door-open{
+        display: none;
     }
 }

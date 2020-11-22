@@ -34,25 +34,23 @@
         <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
-    <ul id="searchResult">
-        <li>Resultado 1</li>
-        <li>Resultado 2</li>
-        <li>Resultado 3</li>
-        <li>Resultado 4</li>
-        <li>Resultado 5</li>
-    </ul>
     <!--Cargamos datos del usuario cogiendo el ID de la sesion del usuario logeado-->
     <?php $idUsuario = $_SESSION["idUsuario"];?>
     <?php $usuario = cargarUsuario($idUsuario);?>
+    <?php if(isset($_SESSION["idUsuario"])){
+    ?>
     <div id="infoUsu">
     <a href="http://localhost:8765/proyecto2/php"><img id="userFoto" src="<?php cargarFotoPerfil($idUsuario)?>"></a>
     <p><?= $usuario["nombre"]." ".$usuario["apellido"] ?></p></div>
     <a href="cerrarsesion.php"><i class="fa fa-sign-out" style="font-size:36px"></i></a>
-    <div class="btncambiar">
-        <input type="button" value="Log in" class="btnSignin unactive changeForm">
-        <input type="button" value="Sign up" class="btnSignup active">
-    </div>
-
+    <?php
+    }else{
+    ?>
+    <a href="index.php" id="pcbutton">Iniciar sesion/Registrate</a>
+    <a href="index.php"> <i class="fas fa-door-open" style="font-size: 30px"></i></a>
+    <?php
+    }
+    ?>
 </nav>
 </header>
 </html>
