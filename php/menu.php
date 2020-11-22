@@ -23,8 +23,8 @@
     </label>
 
     <ul id="menuList">
-        <li id="btnCal"><a class="active" href="http://localhost:8765/proyecto2/php/home.php">Inicio</a></li>
-        <li id="btnUsu"><a href="http://localhost:8765/proyecto2/php/user.php">Mi perfil</a></li>
+        <li id="btnCal"><a class="active" href="home.php">Inicio</a></li>
+        <li id="btnUsu"><a href="user.php">Mi perfil</a></li>
         <li><a href="#">Preguntas</a></li>
         <li><a href="#">Sin responder</a></li>
         <li class="salir"><a href="cerrarsesion.php">Cerrar sesion</a></li>
@@ -34,6 +34,9 @@
         <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
+    <ol id="/*JORGE*/">
+
+    </ol>
     <!--Cargamos datos del usuario cogiendo el ID de la sesion del usuario logeado-->
     <?php $idUsuario = $_SESSION["idUsuario"];?>
     <?php $usuario = cargarUsuario($idUsuario);?>
