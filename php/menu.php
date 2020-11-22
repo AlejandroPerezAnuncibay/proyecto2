@@ -34,9 +34,13 @@
         <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
-    <ol id="/*JORGE*/">
-
-    </ol>
+    <ul id="searchResult">
+        <li>Resultado 1</li>
+        <li>Resultado 2</li>
+        <li>Resultado 3</li>
+        <li>Resultado 4</li>
+        <li>Resultado 5</li>
+    </ul>
     <!--Cargamos datos del usuario cogiendo el ID de la sesion del usuario logeado-->
     <?php $idUsuario = $_SESSION["idUsuario"];?>
     <?php $usuario = cargarUsuario($idUsuario);?>
