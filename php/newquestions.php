@@ -5,7 +5,7 @@ if(isset($_SESSION["idUsuario"])){
 <!doctype html>
 <html lang="es">
 <head>
-
+    <script src="../js/jquery-3.5.1.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,6 +16,8 @@ if(isset($_SESSION["idUsuario"])){
 
     <title>Preguntas</title>
 </head>
+<?php
+require_once "code.php"?>
 <header>
 
     <?php require_once "menu.php" ?>
@@ -26,13 +28,16 @@ if(isset($_SESSION["idUsuario"])){
 
 <main>
     <div id="principal">
-     <form class="formulario" action="" method="post">
+     <form class="formulario" action="carga.php?insertar=true" method="post">
             <label for="title">Título</label>
             <input type="text" name="title" id="title" placeholder="Escriba aqui un breve titulo">
             <label for="description">Description</label>
             <textarea name="description" id="description" placeholder="Describa su problema..."></textarea>
             <label for="tags">Etiquetas</label>
-            <input type="text" name="tags" id="tags" placeholder="Escriba sus tags aqui separados por , o por un espacio">
+         <div id="etiquetas">
+            <?php cargarEtiquetas() ?></div>
+         <input type="text" name="tags" id="tags" disabled placeholder="Etiquetas">
+
             <div id="botones">
             <button class="button2" ><a href="#">SUBIR IMAGEN</a></button>
             <input type="submit" value="Publicar pregunta" id="bttnSendQuestion">
@@ -45,6 +50,7 @@ if(isset($_SESSION["idUsuario"])){
         <?php require_once "footer.php" ?>
 </footer>
 </body>
+    <script src="../js/etiquetas.js"></script>
 </html>
 <?php
 }else{

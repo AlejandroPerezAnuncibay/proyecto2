@@ -58,6 +58,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
     <div id="popup">
 
     </div>-->
+    <?php if (!isset($_GET["id"])){?>
 
     <div class="box">
         <a class="button" href="#popup1" id="1popup">Modificar perfil</a>
@@ -116,6 +117,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
             </div>
         </div>
     </div>
+    <?php }?>
         <div id="preguntas">
             <!--Cargamos las preguntas que tenga el usuario generadas-->
             <?php cargarPreguntas($_SESSION["idUsuario"]);?>

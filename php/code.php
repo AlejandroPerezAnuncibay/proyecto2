@@ -317,6 +317,7 @@ function cargarTodasPreguntas()
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
     $stmt->execute();
+    $contador = 0;
     //Mientras se encuentren preguntas, esta repetitiva se encarga de generar la estructura HTML necesaria.
     while ($fila = $stmt->fetch()) {
 
@@ -326,10 +327,10 @@ function cargarTodasPreguntas()
         echo "<div class='preguntas'>";
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span></p>";
         echo "<div class='iconos'>";
-        echo "<button id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<button id='".$fila["id_question"]."' value='".$contador."' class='like'><i class='fas fa-heart' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
-
+        $contador = $contador +1;
         echo "<h4>".$fila["title"]."</h4>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
@@ -389,7 +390,7 @@ function cargarEtiquetas(){
 
     $stmt->execute();
     while ($fila = $stmt->fetch()) {
-       echo  "<button class='labels'>".$fila["name"]."</button>";
+       echo  "<button class='labels' value='".$fila["name"]."' type='button' >".$fila["name"]."</button>";
 
     }
     close();

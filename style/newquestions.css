@@ -11,6 +11,7 @@
     font-family: "elephans";
 
 }
+
 main{
     padding-top: 50px;
 }
@@ -36,6 +37,22 @@ main{
     padding: 5px 10px;
     font-size: 18px;
 
+
+}
+#etiquetas{
+    display: flex;
+    flex-wrap: wrap;
+}
+.labels {
+    background-color: white;
+    color:black;
+    border: 2px solid #ffb600;
+    margin:1.5%;
+    padding: 7px 15px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    width: 30%;
 
 }
 #description{
