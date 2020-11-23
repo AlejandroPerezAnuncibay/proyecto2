@@ -108,6 +108,39 @@ function cargarUsuario($id){
     //Conexion con la base de datos.
     require_once "bbdd.php";
     $dbh = connect();
+    if (isset($_GET["id"])){
+
+        $data = array( 'id' => $_GET["id"]);
+        //Seleccionamos al usuario mediante el id que nos proporcionen.
+        $stmt = $dbh->prepare("SELECT  id_user, username, name, surname, biography,email, last_login_date,profile_image  FROM USERS where id_user = :id");
+
+
+        $stmt->execute($data);
+        $fila = $stmt->fetch();
+        //Preparamos el array asociativo;
+        $persona=[
+            "id"=> $fila["id_user"],
+            "username"=>$fila["username"],
+            "nombre"=>$fila["name"],
+            "apellido"=>$fila["surname"],
+            "biografia"=>$fila["biography"],
+            "email"=>$fila["email"],
+            "ultimoLogin"=>$fila["last_login_date"],
+            "foto"=>$fila["profile_image"]
+        ];
+        //Mediante esta consulta contamos el número de preguntas que haya realizado el usuario.
+        $stmt = $dbh->prepare("SELECT  count(*) FROM QUESTIONS where id_user = :id");
+
+
+        $stmt->execute($data);
+        //Introducimos el dato recibido en el array asociativo y lo devolvemos
+        $count = $stmt->fetchColumn();
+        $persona["preguntas"]= $count;
+        close();
+        return $persona;
+    }else{
+
+
 
     $data = array( 'id' => $id);
     //Seleccionamos al usuario mediante el id que nos proporcionen.
@@ -137,7 +170,7 @@ function cargarUsuario($id){
     $persona["preguntas"]= $count;
     close();
     return $persona;
-
+    }
 
 }
 
@@ -163,41 +196,64 @@ function cargarPreguntas($id){
     //Conexion con la base de datos.
     require_once "bbdd.php";
     $dbh = connect();
+    if(isset($_GET["id"])) {
+        $data = array('id' => $_GET["id"]);
+        //Seleccionamos todas las preguntas.
+        $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS where id_user = :id");
+        //Le damos el metodo de lectura de datos.
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        //Esta funcion se encarga de que, mientras encuentre filas, las enseñe generando la estructura HTML necesaria.
+        $stmt->execute($data);
+        while ($fila = $stmt->fetch()) {
+            $tag = cargarTag($fila["id_topic"]);
+            echo "<div class='pregunta'>";
+            echo "<div class='interaccion'>";
+            echo "<p>LIKES</p><p>RESPUESTAS</p></div>";
+            echo "<div class='titulotags'>";
+            echo "<h3 class='tituloPregunta'><a href='#'>" . $fila["title"] . "</a></h3>";
+            echo "<p> Tag: " . $tag . "</p></div>";
+            echo "<div class='fechaPregunta'>";
+            echo "<p>Creada el: " . $fila["date"] . "</p></div></div>";
 
-    $data = array( 'id' => $id );
-    //Seleccionamos todas las preguntas.
-    $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS where id_user = :id");
-    //Le damos el metodo de lectura de datos.
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    //Esta funcion se encarga de que, mientras encuentre filas, las enseñe generando la estructura HTML necesaria.
-    $stmt->execute($data);
-    while($fila =  $stmt->fetch()) {
-        $tag = cargarTag($fila["id_topic"]);
-        echo "<div class='pregunta'>";
-        echo "<div class='interaccion'>";
-        echo "<p>LIKES</p><p>RESPUESTAS</p></div>";
-        echo "<div class='titulotags'>";
-        echo "<h3 class='tituloPregunta'><a href='#'>".$fila["title"]."</a></h3>";
-        echo "<p> Tag: ".$tag."</p></div>";
-        echo "<div class='fechaPregunta'>";
-        echo "<p>Creada el: ".$fila["date"]."</p></div></div>";
+
+        }
+    }
+    else{
+        $data = array('id' => $id);
+        //Seleccionamos todas las preguntas.
+        $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS where id_user = :id");
+        //Le damos el metodo de lectura de datos.
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        //Esta funcion se encarga de que, mientras encuentre filas, las enseñe generando la estructura HTML necesaria.
+        $stmt->execute($data);
+        while ($fila = $stmt->fetch()) {
+            $tag = cargarTag($fila["id_topic"]);
+            echo "<div class='pregunta'>";
+            echo "<div class='interaccion'>";
+            echo "<p>LIKES</p><p>RESPUESTAS</p></div>";
+            echo "<div class='titulotags'>";
+            echo "<h3 class='tituloPregunta'><a href='#'>" . $fila["title"] . "</a></h3>";
+            echo "<p> Tag: " . $tag . "</p></div>";
+            echo "<div class='fechaPregunta'>";
+            echo "<p>Creada el: " . $fila["date"] . "</p></div></div>";
 
 
-        //Estructura a generar
-        /*  <div class="pregunta">
-            <div class="interaccion">
-                <p>LIKES</p>
-                <p>RESPUESTAS</p>
+            //Estructura a generar
+            /*  <div class="pregunta">
+                <div class="interaccion">
+                    <p>LIKES</p>
+                    <p>RESPUESTAS</p>
+                </div>
+                <div class="titulotags">
+                    <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
+                    <p>tags</p>
+                </div>
+                <div class="fechaPregunta">
+                    <p>FECHA DE PREGUNTA</p>
+                </div>
             </div>
-            <div class="titulotags">
-                <h3 class="tituloPregunta"><a href="#">"TITULO PREGUNTA"</a></h3>
-                <p>tags</p>
-            </div>
-            <div class="fechaPregunta">
-                <p>FECHA DE PREGUNTA</p>
-            </div>
-        </div>
-        */
+            */
+        }
     }
 }
 
@@ -222,17 +278,30 @@ function cargarFotoPerfil($id)
 {
     require_once "bbdd.php";
     $dbh = connect();
-
-    $data = array('id' => $id);
-    $stmt = $dbh->prepare("SELECT  id_user, username, profile_image FROM USERS where id_user = :id");
-    $stmt->execute($data);
-    $fila = $stmt->fetch();
-    //En caso de que no la encuentre, este if devuelve la ruta de una imagen por defecto para todos los usuarios que
-    //aun no hayan subido ninguna foto de perfil.
-    if ($fila['profile_image'] != null) {
-        echo $fila['profile_image'];
-    }else {
-    echo "../images/userProfile/.default.jpg";
+    if (isset($_GET["id"])) {
+        $data = array('id' => $_GET["id"]);
+        $stmt = $dbh->prepare("SELECT  id_user, username, profile_image FROM USERS where id_user = :id");
+        $stmt->execute($data);
+        $fila = $stmt->fetch();
+        //En caso de que no la encuentre, este if devuelve la ruta de una imagen por defecto para todos los usuarios que
+        //aun no hayan subido ninguna foto de perfil.
+        if ($fila['profile_image'] != null) {
+            echo $fila['profile_image'];
+        } else {
+            echo "../images/userProfile/.default.jpg";
+        }
+    } else {
+        $data = array('id' => $id);
+        $stmt = $dbh->prepare("SELECT  id_user, username, profile_image FROM USERS where id_user = :id");
+        $stmt->execute($data);
+        $fila = $stmt->fetch();
+        //En caso de que no la encuentre, este if devuelve la ruta de una imagen por defecto para todos los usuarios que
+        //aun no hayan subido ninguna foto de perfil.
+        if ($fila['profile_image'] != null) {
+            echo $fila['profile_image'];
+        } else {
+            echo "../images/userProfile/.default.jpg";
+        }
     }
 }
 //Funcion de la paguina principal que se encarga de cargar todas las preguntas de la BBDD.
@@ -255,14 +324,14 @@ function cargarTodasPreguntas()
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         $likes = cargarLikesPregunta($fila["id_question"]);
         echo "<div class='preguntas'>";
-        echo "<p> Likes: ".$likes."</p>";
+        echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span></p>";
         echo "<div class='iconos'>";
-        echo "<button id='".$fila["id_question"]."' class='like'><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+        echo "<button id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
 
         echo "<h4>".$fila["title"]."</h4>";
-        echo "<h5>".$usuario."</h5>";
+        echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
         echo "<span class='fecha'>".$fila["date"]."        Tag: ".$tag."</span></div>";
 
@@ -361,7 +430,7 @@ function cargarPregunta(){
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         echo "<div class='iconos'>";
-        echo "<button class='like'><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+        echo "<button class='like'><i class='fas fa-heart'  id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
             <button class='reply'><i class='fa fa-reply' style='font-size:36px'></i></button></div>";
         echo "<div class='info'>
             <h1>".$fila["title"]."</h1>
@@ -447,4 +516,55 @@ function cargarRespuestas(){
             <span class="fecha">Nov 16 . 8 min read</span>
         </div>
     */
+}
+
+
+function cargarUsuarioMenu($id){
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array( 'id' => $id);
+    //Seleccionamos al usuario mediante el id que nos proporcionen.
+    $stmt = $dbh->prepare("SELECT  id_user, username, name, surname, biography,email, last_login_date,profile_image  FROM USERS where id_user = :id");
+
+
+    $stmt->execute($data);
+    $fila = $stmt->fetch();
+    //Preparamos el array asociativo;
+    $persona=[
+        "id"=> $fila["id_user"],
+        "username"=>$fila["username"],
+        "nombre"=>$fila["name"],
+        "apellido"=>$fila["surname"],
+        "biografia"=>$fila["biography"],
+        "email"=>$fila["email"],
+        "ultimoLogin"=>$fila["last_login_date"],
+        "foto"=>$fila["profile_image"]
+    ];
+    //Mediante esta consulta contamos el número de preguntas que haya realizado el usuario.
+    $stmt = $dbh->prepare("SELECT  count(*) FROM QUESTIONS where id_user = :id");
+
+
+    $stmt->execute($data);
+    //Introducimos el dato recibido en el array asociativo y lo devolvemos
+    $count = $stmt->fetchColumn();
+    $persona["preguntas"]= $count;
+    close();
+    return $persona;
+}
+function cargarFotoPerfilMenu($id){
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array('id' => $id);
+    $stmt = $dbh->prepare("SELECT  id_user, username, profile_image FROM USERS where id_user = :id");
+    $stmt->execute($data);
+    $fila = $stmt->fetch();
+    //En caso de que no la encuentre, este if devuelve la ruta de una imagen por defecto para todos los usuarios que
+    //aun no hayan subido ninguna foto de perfil.
+    if ($fila['profile_image'] != null) {
+        echo $fila['profile_image'];
+    }else {
+        echo "../images/userProfile/.default.jpg";
+    }
 }

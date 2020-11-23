@@ -36,11 +36,11 @@
     </form>
     <!--Cargamos datos del usuario cogiendo el ID de la sesion del usuario logeado-->
     <?php $idUsuario = $_SESSION["idUsuario"];?>
-    <?php $usuario = cargarUsuario($idUsuario);?>
+    <?php $usuario = cargarUsuarioMenu($idUsuario);?>
     <?php if(isset($_SESSION["idUsuario"])){
     ?>
     <div id="infoUsu">
-    <a href="user.php"><img id="userFoto" src="<?php cargarFotoPerfil($idUsuario)?>"></a>
+    <a href="user.php"><img id="userFoto" src="<?php cargarFotoPerfilMenu($idUsuario)?>"></a>
     <a href="user.php" id="nombreApe"><?= $usuario["nombre"]." ".$usuario["apellido"] ?></a></div>
     <a href="cerrarsesion.php"><i class="fa fa-sign-out" style="font-size:36px"></i></a>
     <?php

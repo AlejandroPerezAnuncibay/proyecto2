@@ -109,10 +109,11 @@ section{
 
 @media (min-width: 768px) {
     /*Diseño Escritorio*/
-    main {
-        margin: 0 8%;
-    }
 
+    main{
+        margin: 0 8%;
+        padding-top: 50px;
+    }
     section{
         display: grid;
         grid-template-columns: repeat(2, auto);
