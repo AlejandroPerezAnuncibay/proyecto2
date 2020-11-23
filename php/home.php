@@ -66,6 +66,5 @@ session_start();
     </footer>
 
 </body>
-<script src="../js/likes.js"></script>
 <script src="../js/scroll.js"></script>
 </html>

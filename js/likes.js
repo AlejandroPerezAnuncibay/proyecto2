@@ -1,14 +1,11 @@
-
+$(document).ready(function () {
     var botonesLike = $(".like");
     for (x = 0; x<botonesLike.length;x++){
         botonesLike[x].addEventListener("click",likesPreguntas);
     }
-
+});
 function likesPreguntas(){
-        //i es el numero del boton de like de cada pregunta
-        var i = event.target;
-       // var idPregunta = $(".like").eq(i).attr("id");
-        alert($(".like").eq(i).attr("id"));
+        var idPregunta = this.id;
         $.ajax({
             type: "post",
             url: "../php/ajax.php",
