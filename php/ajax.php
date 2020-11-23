@@ -26,7 +26,7 @@ function checkEmail(){
     require_once "bbdd.php";
     $dbh = connect();
     $data = array("email" => $_POST["value"]);
-    $stmt = $dbh->prepare("SELECT COUNT(*) FROM USERS WHERE email LIKE :email LIMIT 1;");
+    $stmt = $dbh->prepare("SELECT COUNT(*) FROM USERS WHERE email LIKE :email LIMIT 1;"); 
 
     $stmt->execute($data);
     $aviable = $stmt->fetchColumn();
@@ -45,8 +45,9 @@ function likePregunta(){
 
     //busco el like por si esta dado, si esta dado, lo quito, si no esta, lo añado
     $stmt = $dbh->prepare("SELECT COUNT(*) FROM `LIKES_QUESTIONS` WHERE `id_question` = :idPregunta AND `id_user` = :idUsuario LIMIT 1;");
-
+    $stmt->execute($data);
     $response = $stmt->fetchColumn();
+
     if ($response==1){
         //el like ya esta dado, lo tenemos que deletear
         $stmt = $dbh->prepare("DELETE FROM `LIKES_QUESTIONS` WHERE `LIKES_QUESTIONS`.`id_user` = :idUsuario AND `LIKES_QUESTIONS`.`id_question` = :idPregunta;");
@@ -59,10 +60,10 @@ function likePregunta(){
     //vuelvo a buscar el like para saber si la operacion que se tenia que hacer se ha hecho correctamente
 
     $stmt = $dbh->prepare("SELECT COUNT(*) FROM `LIKES_QUESTIONS` WHERE `id_question` = :idPregunta AND `id_user` = :idUsuario LIMIT 1;");
+    $stmt->execute($data);
     $response = $stmt->fetchColumn();
-
     close();
 
-    echo $aviable;
+    echo $response;
     }
 }
