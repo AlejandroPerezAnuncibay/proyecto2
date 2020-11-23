@@ -16,6 +16,8 @@ session_start();
     <link rel="stylesheet" href="../style/login.css">
     <link rel="icon" type="image/png" href="../media/shortlogo.png">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="664586227547-s57mbe513n8ene86tmeemnt9iil6b1kf.apps.googleusercontent.com">
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/login.js"></script>
 
@@ -32,7 +34,7 @@ session_start();
             <input type="button" value="Sign up" class="btnSignup unactive changeForm">
         </div>
         <img src="../media/shortlogo.svg" alt="Logo" class="imgMovil">
-        <form action="./code.php" method="post" >
+        <form action="./code.php" method="post">
             <h1>Log in</h1>
             <i class="fa fa-user-circle">&nbsp;
                 <input type="text" name="username" class="username" placeholder="Username"></i>
@@ -45,11 +47,37 @@ session_start();
                 ?>
                     <p> <?= $_COOKIE["errorLog"] ?> </p>
 
-                <?php   setcookie("errorLog", null, -1);} ?>
+                <?php setcookie("errorLog", null, -1);
+                } ?>
             </div>
 
             <input type="submit" value="Log in" onclick="return validateForm('login')">
             <input type="button" value="Sign up" class="btnSignmbl changeForm">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <a href="#" onclick="signOut();">Sign out</a>
+            <script>
+                function onSignIn(googleUser) {
+                    // Useful data for your client-side scripts:
+                    var profile = googleUser.getBasicProfile();
+                    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                    console.log('Full Name: ' + profile.getName());
+                    console.log('Given Name: ' + profile.getGivenName());
+                    console.log('Family Name: ' + profile.getFamilyName());
+                    console.log("Image URL: " + profile.getImageUrl());
+                    console.log("Email: " + profile.getEmail());
+
+                    // The ID token you need to pass to your backend:
+                    var id_token = googleUser.getAuthResponse().id_token;
+                    console.log("ID Token: " + id_token);
+                }
+
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function() {
+                        console.log('User signed out.');
+                    });
+                }
+            </script>
         </form>
         <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
     </div>
@@ -63,22 +91,22 @@ session_start();
             <h1>Sign up</h1>
             <i class="fa fa-user-circle">&nbsp;
                 <input type="text" required name="user" class="username" placeholder="Username"></i>
-                <p id="errorUsername"></p>
+            <p id="errorUsername"></p>
             <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" class="password" placeholder="Password"></i>
-                <p id="errorPassword"></p>
-                <i class="fa fa-lock">&nbsp;
+            <p id="errorPassword"></p>
+            <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" id="password2" placeholder="Repeat the password"></i>
-                <p id="errorPassword2"></p>
+            <p id="errorPassword2"></p>
             <i class='far fa-address-card'>&nbsp;
                 <input type="text" name="nombre" id="nombre" required placeholder="Nombre"></i>
-                <p id="errorNombre"></p>
+            <p id="errorNombre"></p>
             <i class='fas fa-address-card'>&nbsp;
                 <input type="text" name="apellido" id="apellido" required placeholder="Apellido"></i>
-                <p id="errorApellido"></p>
+            <p id="errorApellido"></p>
             <i class="fa fa-at">&nbsp;
                 <input type="email" name="email" id="email" required placeholder="Correo electronico"></i>
-                <p id="errorEmail"></p>
+            <p id="errorEmail"></p>
             <!-- <i class="fa fa-file-image-o" id="fotoperfil">&nbsp;
                 <input type="file" name="fotoperfil" class="fotoperfil" value="foto de perfil"></i> -->
             <input type="submit" value="Sign up" onclick="return validateForm('signup')">
