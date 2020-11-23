@@ -184,7 +184,9 @@ i.fa-lock-open{
     }
     #imgUser{
         width: auto;
-        align-items: center;
+        margin-top: 20px;
+        margin-left: 200px;
+        margin-right: 50px;
     }
     #imgUser img{
         margin-right: 0;
@@ -195,7 +197,7 @@ i.fa-lock-open{
         font-size: 28px;
     }
     #infUsu{
-        width: 60%;
+        width: 65%;
         flex-direction: column;
         align-items: center;
     }
@@ -215,12 +217,13 @@ i.fa-lock-open{
     }
     #datosUsu #ultConex{
         position: absolute;
-        top: 260px;
-        right: 260px;
+        top: 280px;
+        right: 450px;
     }
     .button{
         padding: 18px;
         font-size: 2em;
+        font-family: montserrat;
     }
 }
 

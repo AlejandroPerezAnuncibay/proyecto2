@@ -41,7 +41,7 @@ session_start();
                     <img src="../media/shortlogo.svg" alt="Logo" id="imgPcs">
                     <h2 id="nombreEmpresa">Aergibide</h2>
                 </div>
-                <button class="button1"><a href="newquestions.php">Nueva Pregunta</a></button>
+                <a href="newquestions.php"><div class="button1"><p>Nueva Pregunta</p></div></a>
 
             </div>
             <section id="principal">
@@ -66,5 +66,6 @@ session_start();
     </footer>
 
 </body>
+<script src="../js/likes.js"></script>
 <script src="../js/scroll.js"></script>
 </html>

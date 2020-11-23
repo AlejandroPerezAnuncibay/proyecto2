@@ -10,8 +10,6 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../style/menu.css">
     <link rel="stylesheet" href="../style/preguntas.css">
-    <script src="../js/jquery-3.5.1.js"></script>
-    <script src="../js/likes.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 

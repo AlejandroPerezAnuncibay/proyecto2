@@ -150,10 +150,18 @@ main{
             margin-left: 2%;
             border-radius: 6%;
             font-size: 32px;
+            padding: 0;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .button1 a{
-            color:black;
-            font-weight: bold;
+        .button1 p{
+            color: black;
+            font-size: 24px;
+        }
+        a[href="newquestions.php"]{
+            width: 180px;
         }
 
         .btnSignin,.btnSignup{

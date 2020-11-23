@@ -99,6 +99,8 @@ function insertarPregunta($titulo,$descripcion,$etiqueta){
     $data = array('titulo'=>$titulo, 'desc' => $descripcion,'etiqueta'=>$etiqueta);
     $stmt = $dbh->prepare("insert into QUESTIONS (tit, password, name, surname, email) values(:usuario,:pass, :nombre,:apellido,:mail)");
     $stmt->execute($data);
+    close();
+    header("Location: home.php");
 
 }
 

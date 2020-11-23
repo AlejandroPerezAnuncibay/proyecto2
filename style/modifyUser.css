@@ -99,9 +99,31 @@ h1 {
 
 @media screen and (min-width: 700px){
     .box{
-        width: 70%;
+        width: 50%;
     }
     .popup{
-        width: 70%;
+        width: 30%;
+    }
+    .content form{
+        display: flex;
+        flex-direction: column;
+    }
+    .popup h2 {
+        font-size: 30px;
+
+    }
+    i{
+        width: 90%;
+
+    }
+    input[type="text"], input[type="password"], #email {
+        font-size: 14px;
+    }
+    label[for="submit"]{
+        font-family: elephans;
+        font-size: 24px;
+    }
+    i.fa-lock-open{
+        width: auto;
     }
 }
