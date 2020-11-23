@@ -16,7 +16,10 @@ if(isset($_SESSION["idUsuario"])){
 
     <title>Preguntas</title>
 </head>
-<?php require_once "code.php"?>
+<header>
+
+    <?php require_once "menu.php" ?>
+</header>
 <body>
 
     <?php require_once "menu.php" ?>
