@@ -344,3 +344,107 @@ function cargarLikesPregunta($id){
 
 }
 
+
+
+function cargarPregunta(){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array( 'id' => $_GET["pregunta"]);
+
+    //Seleccionamos los datos a recoger.
+    $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS where id_question = :id");
+    //Seleccionamos como vamos a leer los datos.
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+        $stmt->execute($data);
+        $fila = $stmt->fetch();
+        $tag = cargarTag($fila["id_topic"]);
+        $usuario = cargarCreadorPregunta($fila["id_user"]);
+        echo "<div class='iconos'>";
+        echo "<button class='like'><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+            <button class='reply'><i class='fa fa-reply' style='font-size:36px'></i></button></div>";
+        echo "<div class='info'>
+            <h1>".$fila["title"]."</h1>
+            <p>".$fila["text"]."</p>
+        </div>";
+        echo "<div id='etiquetas'>
+        <button class='labels' >".$tag."</button>
+       
+        </div>";
+        echo "
+        <div class='des1'>
+            <h2 class='usu'>".$usuario."</h2>
+            <span class='fecha'>".$fila["date"]."</span>
+        </div>";
+
+
+        /*
+         *      <div class="iconos">
+
+            <button class="like"><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+            <button class="reply"><i class="fa fa-reply" style='font-size:36px'></i></button>
+        </div>
+        <div class="info">
+            <h1>Titulo pregunta</h1>
+
+            <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+                Por scientie, musica, sport etc, litot Europa usa li sam vocabular.</p>
+        </div>
+
+
+        <div id="etiquetas">
+        <button class="labels" >Etiquetas</button>
+        <button class="labels" >Etiquetas</button>
+        <button class="labels" >Etiquetas</button>
+        </div>
+
+        <div class="des1">
+        <h2 class="usu">Usuario</h2>
+        <span class="fecha">Nov 16 . 8 min read</span>
+        </div>*/
+
+
+    close();
+}
+
+
+function cargarRespuestas(){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array( 'id' => $_GET["pregunta"]);
+
+    //Seleccionamos los datos a recoger.
+    $stmt = $dbh->prepare("SELECT  * FROM ANSWERS where id_question = :id");
+    //Seleccionamos como vamos a leer los datos.
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    $stmt->execute($data);
+    $contador = 0;
+    echo "<h1 class='respu'>RESPUESTAS</h1> <article id='replys'>";
+
+    while ($fila = $stmt->fetch()) {
+        $usuario = cargarCreadorPregunta($fila["id_user"]);
+
+        $contador = $contador +1;
+        echo "<h2>RESPUESTA ".$contador."</h2>";
+        echo " <p>".$fila["text"]."</p>";
+        echo "<div class='des2'>
+            <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
+            <span class='fecha'>".$fila["date"]."</span>
+        </div>";
+    }
+    echo "</article>";
+
+    /*
+      <h2>RESPUESTA 1</h2>
+        <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+            Por scientie, musica, sport etc, litot Europa usa li sam voca Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+            Por scientie, musica, sport etc, litot Europa usa li sam voc Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+            Por scientie, musica, sport etc, litot Europa usa li sam voc Europan lingues es membres del sam familie. Lor separat existentie es un myth.
+            Por scientie, musica, sport etc, litot Europa usa li sam voc </p>
+        <div class="des2">
+            <h2 class="usu">Usuario</h2>
+            <span class="fecha">Nov 16 . 8 min read</span>
+        </div>
+    */
+}

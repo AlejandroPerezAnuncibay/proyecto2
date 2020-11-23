@@ -11,6 +11,9 @@
     font-family: "elephans";
 
 }
+main{
+    padding-top: 50px;
+}
 /*MOVIL FIRST*/
 
 #principal{
@@ -73,6 +76,7 @@
     /*Diseño Escritorio*/
     main {
         margin: 0 8%;
+
     }
     #principal{
         border: solid 1px black;

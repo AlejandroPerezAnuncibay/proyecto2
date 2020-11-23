@@ -21,46 +21,10 @@
 <main>
     <section>
 
-        <div class="iconos">
-
-            <button class="like"><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
-            <button class="reply"><i class="fa fa-reply" style='font-size:36px'></i></button>
-        </div>
-        <div class="info">
-            <h1>Titulo pregunta</h1>
-
-            <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
-                Por scientie, musica, sport etc, litot Europa usa li sam vocabular.</p>
-        </div>
-
-
-        <div id="etiquetas">
-        <button class="labels" >Etiquetas</button>
-        <button class="labels" >Etiquetas</button>
-        <button class="labels" >Etiquetas</button>
-        </div>
-
-        <div class="des1">
-        <h2 class="usu">Usuario</h2>
-        <span class="fecha">Nov 16 . 8 min read</span>
-        </div>
-
+      <?php cargarPregunta() ?>
 
     </section>
-    <h1 class="respu">RESPUESTAS</h1>
-    <article id="replys">
-
-        <h2>RESPUESTA 1</h2>
-        <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth.
-            Por scientie, musica, sport etc, litot Europa usa li sam voca Europan lingues es membres del sam familie. Lor separat existentie es un myth.
-            Por scientie, musica, sport etc, litot Europa usa li sam voc Europan lingues es membres del sam familie. Lor separat existentie es un myth.
-            Por scientie, musica, sport etc, litot Europa usa li sam voc Europan lingues es membres del sam familie. Lor separat existentie es un myth.
-            Por scientie, musica, sport etc, litot Europa usa li sam voc </p>
-        <div class="des2">
-            <h2 class="usu">Usuario</h2>
-            <span class="fecha">Nov 16 . 8 min read</span>
-        </div>
-    </article>
+    <?php cargarRespuestas()?>
 
 </main>
 

@@ -102,6 +102,8 @@ section{
     margin-top: 4%;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid grey;
     /* margin-top: inherit;*/
 }
 
