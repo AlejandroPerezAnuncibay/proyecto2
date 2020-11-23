@@ -144,10 +144,16 @@ i.fa-search{
 }
 #infoUsu{
     display: flex;
-
+    align-items: center;
 }
-#infoUsu p{
+#infoUsu #nombreApe{
+    margin-left: 5px;
     display: none;
+}
+#infoUsu #nombreApe{
+    margin-left: 5px;
+    display: none;
+    color: black;
 }
 #pcbutton{
     display: none;
@@ -229,11 +235,7 @@ i.fa-door-open{
         /* border-right: 0.5px solid white; */
         background: transparent;
     }
-    #space{
-         height: 60px;
-
-     }
-    #infoUsu p{
+    #infoUsu #nombreApe{
         display: block;
     }
     i.fa-door-open{

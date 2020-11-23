@@ -40,8 +40,8 @@
     <?php if(isset($_SESSION["idUsuario"])){
     ?>
     <div id="infoUsu">
-    <a href="http://localhost:8765/proyecto2/php"><img id="userFoto" src="<?php cargarFotoPerfil($idUsuario)?>"></a>
-    <p><?= $usuario["nombre"]." ".$usuario["apellido"] ?></p></div>
+    <a href="user.php"><img id="userFoto" src="<?php cargarFotoPerfil($idUsuario)?>"></a>
+    <a href="user.php" id="nombreApe"><?= $usuario["nombre"]." ".$usuario["apellido"] ?></a></div>
     <a href="cerrarsesion.php"><i class="fa fa-sign-out" style="font-size:36px"></i></a>
     <?php
     }else{
@@ -51,6 +51,4 @@
     <?php
     }
     ?>
-</nav>
-</header>
 </html>

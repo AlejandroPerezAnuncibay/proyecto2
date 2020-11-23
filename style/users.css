@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "elephans";
+    src: url("../fonts/Elephans.ttf");
+}
 *{
     margin: 0;
 }
@@ -169,5 +172,55 @@ textarea{
 i.fa-lock-open{
     padding: 5px;
     border: none;
+}
+#1popup{
+    font-family: elephans;
+}
+
+@media screen and (min-width: 768px) {
+    #informacionTotal{
+        width: 60%;
+        justify-content: space-between;
+    }
+    #imgUser{
+        width: auto;
+        align-items: center;
+    }
+    #imgUser img{
+        margin-right: 0;
+        width: 150px;
+        height: 150px;
+    }
+    #imgUser #username{
+        font-size: 28px;
+    }
+    #infUsu{
+        width: 60%;
+        flex-direction: column;
+        align-items: center;
+    }
+    #datosUsu{
+        justify-content: space-around;
+    }
+
+    #datosUsu #numPreguntas{
+        order: 1;
+    }
+    #datosUsu #nombreApellido{
+        order: 2;
+    }
+    #datosUsu #bio{
+        order: 3;
+        display: block;
+    }
+    #datosUsu #ultConex{
+        position: absolute;
+        top: 260px;
+        right: 260px;
+    }
+    .button{
+        padding: 18px;
+        font-size: 2em;
+    }
 }
 
