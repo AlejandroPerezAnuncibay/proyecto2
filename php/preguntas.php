@@ -12,6 +12,8 @@
 
     <title>Preguntas</title>
 </head>
+<?php require_once "code.php"?>
+
 <body>
 <header>
     <?php require_once "menu.php" ?>

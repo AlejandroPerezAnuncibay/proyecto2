@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION["idUsuario"])){
 ?>
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="es">
 <head>
 
     <meta charset="UTF-8">
@@ -16,26 +16,27 @@ if(isset($_SESSION["idUsuario"])){
 
     <title>Preguntas</title>
 </head>
+<?php require_once "code.php"?>
 <body>
-<header>
-    <?php require_once "menu.php" ?>
-</header>
-<main>
-<div id="principal">
-    <form class="formulario" action="" method="">
-        <label for="title">Título</label>
-        <input type="text" name="title" id="title" placeholder="Escriba aqui un breve titulo">
-        <label for="description">Description</label>
-        <textarea name="description" id="description" placeholder="Describa su problema..."></textarea>
-        <label for="tags">Etiquetas</label>
-        <input type="text" name="tags" id="tags" placeholder="Escriba sus tags aqui separados por , o por un espacio">
-        <div id="botones">
-        <button class="button2" ><a href="#">SUBIR IMAGEN</a></button>
-        <input type="submit" value="Publicar pregunta" id="bttnSendQuestion">
-        </div>
 
-    </form>
-</div>
+    <?php require_once "menu.php" ?>
+
+<main>
+    <div id="principal">
+     <form class="formulario" action="" method="post">
+            <label for="title">Título</label>
+            <input type="text" name="title" id="title" placeholder="Escriba aqui un breve titulo">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" placeholder="Describa su problema..."></textarea>
+            <label for="tags">Etiquetas</label>
+            <input type="text" name="tags" id="tags" placeholder="Escriba sus tags aqui separados por , o por un espacio">
+            <div id="botones">
+            <button class="button2" ><a href="#">SUBIR IMAGEN</a></button>
+            <input type="submit" value="Publicar pregunta" id="bttnSendQuestion">
+            </div>
+
+        </form>
+    </div>
 </main>
 <footer>
         <?php require_once "footer.php" ?>

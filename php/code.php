@@ -257,9 +257,10 @@ function cargarTodasPreguntas()
         echo "<div class='preguntas'>";
         echo "<p> Likes: ".$likes."</p>";
         echo "<div class='iconos'>";
-        echo "<button class='like'><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
-                        <button><i class='fas fa-eye' style='font-size:36px'></i></button> </div>";
+        echo "<button id='".$fila["id_question"]."' class='like'><i class='far fa-thumbs-up' style='font-size:36px'></i></button>
+                   <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
+
         echo "<h4>".$fila["title"]."</h4>";
         echo "<h5>".$usuario."</h5>";
         echo "<p>".$fila["text"]."</p></div>";

@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -39,7 +39,7 @@ session_start();
                     <img src="../media/shortlogo.svg" alt="Logo" id="imgPcs">
                     <h2 id="nombreEmpresa">Aergibide</h2>
                 </div>
-                <button class="button1"><a href="#">Nueva Pregunta</a></button>
+                <button class="button1"><a href="newquestions.php">Nueva Pregunta</a></button>
 
             </div>
             <section id="principal">
