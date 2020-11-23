@@ -50,6 +50,7 @@ session_start();
                     <!--Pedimos los tags al servidor para mostrarlos-->
                     <?php cargarEtiquetas()?>
 
+
                 </div>
                 <!--Con esta peticion nos encargamos de generar todas las preguntas-->
                 <?php cargarTodasPreguntas()?>
@@ -65,5 +66,6 @@ session_start();
     </footer>
 
 </body>
+<script src="../js/likes.js"></script>
 <script src="../js/scroll.js"></script>
 </html>

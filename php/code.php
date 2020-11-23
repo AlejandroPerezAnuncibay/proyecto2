@@ -327,7 +327,7 @@ function cargarTodasPreguntas()
         echo "<div class='preguntas'>";
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span></p>";
         echo "<div class='iconos'>";
-        echo "<button id='".$fila["id_question"]."' value='".$contador."' class='like'><i class='fas fa-heart' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador +1;
@@ -424,6 +424,7 @@ function cargarPregunta(){
     //Seleccionamos los datos a recoger.
     $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS where id_question = :id");
     //Seleccionamos como vamos a leer los datos.
+    $contador = 0;
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
         $stmt->execute($data);
@@ -431,8 +432,9 @@ function cargarPregunta(){
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         echo "<div class='iconos'>";
-        echo "<button class='like'><i class='fas fa-heart'  id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
             <button class='reply'><i class='fa fa-reply' style='font-size:36px'></i></button></div>";
+            $contador = $contador +1;
         echo "<div class='info'>
             <h1>".$fila["title"]."</h1>
             <p>".$fila["text"]."</p>
