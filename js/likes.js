@@ -3,13 +3,17 @@ $(document).ready(function () {
     for (x = 0; x<botonesLike.length;x++){
         botonesLike[x].addEventListener("click",likesPreguntas);
     }
+    var botonesLikeRespuesta = $(".likeRespuesta");
+    for (x = 0; x<botonesLikeRespuesta.length;x++){
+        botonesLikeRespuesta[x].addEventListener("click",likesRespuestas);
+    }
 });
 function likesPreguntas(){
         var idPregunta = this.id;
         $.ajax({
             type: "post",
             url: "../php/ajax.php",
-            data: {action: "likePregunta", pregunta: idPregunta},
+            data: {action: "likePregunta", value: idPregunta},
             success: function (response) {
                 //obtengo el numero de likes de la pregunta
                 var numLikes = parseInt($("#contLikes"+idPregunta).text());
@@ -26,4 +30,30 @@ function likesPreguntas(){
             }
         });
         
+}
+function likesRespuestas(){
+    let variosIds = this.id;
+    let arrayIds = variosIds.split("-");
+    var idRespuesta = parseInt(arrayIds[0]);
+    var idPregunta = parseInt(arrayIds[1]);
+    alert(idRespuesta)
+    $.ajax({
+        type: "post",
+        url: "../php/ajax.php",
+        data: {action: "likeRespuesta", respuesta: idRespuesta, pregunta: idPregunta},
+        success: function (response) {
+            alert(response);
+            if (response==1){
+                $("#likeRespuesta"+idRespuesta).css("color", "red");
+                // $("#contLikes"+idRespuesta).empty();
+                // $("#contLikes"+idRespuesta).append(numLikes+1);
+            } else {
+                $("#likeRespuesta"+idRespuesta).css("color", "black");
+                // $("#contLikes"+idRespuesta).empty();
+                // $("#contLikes"+idRespuesta).append(numLikes-1);
+            }
+        }
+    });
+
+
 }
