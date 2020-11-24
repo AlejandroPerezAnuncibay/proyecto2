@@ -33,7 +33,18 @@
     <form class="buscador" action="#">
         <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
+        <div id="listabusqueda">
+     <ul class="searchlist" >
+            <li><a href=""></a>Busqueda</li>
+            <li><a href=""></a>Busqueda</li>
+            <li><a href=""></a>Busqueda</li>
+            <li><a href=""></a>Busqueda</li>
+            <li><a href=""></a>Busqueda</li>
+        </ul>
+    </div>
+       
     </form>
+    
     <!--Cargamos datos del usuario cogiendo el ID de la sesion del usuario logeado-->
     <?php $idUsuario = $_SESSION["idUsuario"];?>
     <?php $usuario = cargarUsuarioMenu($idUsuario);?>

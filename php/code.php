@@ -205,12 +205,15 @@ function cargarPreguntas($id){
         //Esta funcion se encarga de que, mientras encuentre filas, las enseñe generando la estructura HTML necesaria.
         $stmt->execute($data);
         while ($fila = $stmt->fetch()) {
+            $likes = cargarLikesPregunta($fila["id_question"]);
+            $replys = cargarReplysPregunta($fila["id_question"]);
+
             $tag = cargarTag($fila["id_topic"]);
             echo "<div class='pregunta'>";
             echo "<div class='interaccion'>";
-            echo "<p>LIKES</p><p>RESPUESTAS</p></div>";
+            echo "<p>Likes: ".$likes."</p><p>Replys: ".$replys."</p></div>";
             echo "<div class='titulotags'>";
-            echo "<h3 class='tituloPregunta'><a href='#'>" . $fila["title"] . "</a></h3>";
+            echo "<h3 class='tituloPregunta'><a href='preguntas.php?pregunta=".$fila["id_question"]."'>" . $fila["title"] . "</a></h3>";
             echo "<p> Tag: " . $tag . "</p></div>";
             echo "<div class='fechaPregunta'>";
             echo "<p>Creada el: " . $fila["date"] . "</p></div></div>";
@@ -227,12 +230,15 @@ function cargarPreguntas($id){
         //Esta funcion se encarga de que, mientras encuentre filas, las enseñe generando la estructura HTML necesaria.
         $stmt->execute($data);
         while ($fila = $stmt->fetch()) {
+            $likes = cargarLikesPregunta($fila["id_question"]);
+            $replys = cargarReplysPregunta($fila["id_question"]);
+
             $tag = cargarTag($fila["id_topic"]);
             echo "<div class='pregunta'>";
             echo "<div class='interaccion'>";
-            echo "<p>LIKES</p><p>RESPUESTAS</p></div>";
+            echo "<p>Likes: ".$likes."</p><p>Replys: ".$replys."</p></div>";
             echo "<div class='titulotags'>";
-            echo "<h3 class='tituloPregunta'><a href='#'>" . $fila["title"] . "</a></h3>";
+            echo "<h3 class='tituloPregunta'><a href='preguntas.php?pregunta=".$fila["id_question"]."'>" . $fila["title"] . "</a></h3>";
             echo "<p> Tag: " . $tag . "</p></div>";
             echo "<div class='fechaPregunta'>";
             echo "<p>Creada el: " . $fila["date"] . "</p></div></div>";
@@ -334,7 +340,7 @@ function cargarTodasPreguntas()
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador +1;
-        echo "<h4>".$fila["title"]."</h4>";
+        echo "<h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
         echo "<span class='fecha'>".$fila["date"]."        Tag: ".$tag."</span></div>";
