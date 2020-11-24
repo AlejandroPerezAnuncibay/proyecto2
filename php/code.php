@@ -343,7 +343,7 @@ function cargarTodasPreguntas()
         echo "<h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
-        echo "<span class='fecha'>".$fila["date"]."</span><span class='labels'>".$tag."</span></div>";
+        echo "<span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div>";
 
 
 
@@ -635,4 +635,20 @@ function buscarLikeRespuesta($idPregunta){
         return "black";
     }
 }
+function timeAgo($date){
+	   $timestamp = strtotime($date);	
+	   
+	   $strTime = array("second", "minute", "hour", "day", "month", "year");
+	   $length = array("60","60","24","30","12","10");
 
+	   $currentTime = time();
+	   if($currentTime >= $timestamp) {
+			$diff     = time()- $timestamp;
+			for($i = 0; $diff >= $length[$i] && $i < count($length)-1; $i++) {
+			$diff = $diff / $length[$i];
+			}
+
+			$diff = round($diff);
+			return $diff . " " . $strTime[$i] . "(s) ago ";
+	   }	
+}
