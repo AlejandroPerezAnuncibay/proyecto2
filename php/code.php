@@ -511,7 +511,7 @@ function cargarRespuestas(){
         $idRespuesta = $fila["id_answer"];
 
         $contador = $contador +1;
-        echo "<h2>RESPUESTA ".$contador."</h2>";
+        echo "<div id='respIzq'><h2>RESPUESTA ".$contador."</h2>";
         echo "<button  id='".$idRespuesta."-".$fila["id_question"]."' class='likeRespuesta'>
         <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
         echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorResuesta"."' class='mejorRespuesta'>
@@ -519,7 +519,7 @@ function cargarRespuestas(){
         echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
-            <span class='fecha'>".$fila["date"]."</span>
+            <span class='fecha'>".$fila["date"]."</span></div>
         </div>";
     }
     echo "</article>";

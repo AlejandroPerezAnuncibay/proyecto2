@@ -60,9 +60,12 @@ require_once "code.php"?>
             </div>";
 
 
-       }?> <label class='button2'  for="subida">SUBIR IMAGEN</label>
-         <input type="file" hidden id="subida" multiple="" name="imagen">
-         <input type='submit'  value='Publicar <?=$mensaje?>' id='bttnSendQuestion'>
+       }?>
+         <div class="box">
+             <label class='button2'  for="subida">SUBIR IMAGEN</label>
+             <input type="file" hidden id="subida" multiple="" name="imagen">
+             <input type='submit'  value='Publicar <?=$mensaje?>' id='bttnSendQuestion'>
+         </div>
         </form>
     </div>
 </main>
