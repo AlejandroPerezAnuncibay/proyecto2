@@ -312,7 +312,7 @@ function cargarTodasPreguntas()
     $dbh = connect();
 
     //Seleccionamos los datos a recoger.
-    $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS");
+    $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS order by id_question desc");
     //Seleccionamos como vamos a leer los datos.
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -433,7 +433,7 @@ function cargarPregunta(){
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         echo "<div class='iconos'>";
         echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
-            <button class='reply'><i class='fa fa-reply' style='font-size:36px'></i></button></div>";
+           <a href='newquestions.php?reply=".$fila["id_question"]."'> <i class='fa fa-reply' style='font-size:36px'></i></a></div>";
             $contador = $contador +1;
         echo "<div class='info'>
             <h1>".$fila["title"]."</h1>
