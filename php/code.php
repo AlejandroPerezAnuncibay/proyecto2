@@ -328,7 +328,6 @@ function cargarTodasPreguntas()
 
         echo "<div class='preguntas'>";
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
-        echo " ";
 
         echo "<div class='iconos'>";
         echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
@@ -435,8 +434,11 @@ function cargarPregunta(){
         $fila = $stmt->fetch();
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
+        $likes = cargarLikesPregunta($fila["id_question"]);
+        $replys = cargarReplysPregunta($fila["id_question"]);
         echo "<div class='iconos'>";
-        echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
+        echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px;color:".buscarLike($fila["id_question"])."'></i></button>
            <a href='newquestions.php?reply=".$fila["id_question"]."'> <i class='fa fa-reply' style='font-size:36px'></i></a></div>";
             $contador = $contador +1;
         echo "<div class='info'>
@@ -503,6 +505,7 @@ function cargarRespuestas(){
 
         $contador = $contador +1;
         echo "<h2>RESPUESTA ".$contador."</h2>";
+        echo "<i class='fas fa-check'></i>";
         echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
@@ -591,4 +594,19 @@ function cargarReplysPregunta($id){
 
     return $count;
 
+}
+function buscarLike($idPregunta){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array("idPregunta"=>$idPregunta,"idUsuario"=>$_SESSION["idUsuario"]);
+    $stmt = $dbh->prepare("SELECT COUNT(*) FROM LIKES_QUESTIONS WHERE id_user = :idUsuario AND id_question = :idPregunta LIMIT 1;");
+    $stmt->execute($data);
+    $respuesta = $stmt->fetchColumn();
+    close();
+
+    if ($respuesta==1){
+        return "red";
+    }else {
+        return "black";
+    }
 }
