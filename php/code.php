@@ -330,7 +330,7 @@ function cargarTodasPreguntas()
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
 
         echo "<div class='iconos'>";
-        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' style='font-size:36px;color:".buscarLike($fila["id_question"],$_SESSION["idUsuario"])."'  value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador +1;
@@ -505,6 +505,7 @@ function cargarRespuestas(){
 
         $contador = $contador +1;
         echo "<h2>RESPUESTA ".$contador."</h2>";
+        echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px;color:".buscarLike($fila["id_question"])."'></i></button>";
         echo "<i class='fas fa-check'></i>";
         echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
