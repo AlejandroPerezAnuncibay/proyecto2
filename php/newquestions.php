@@ -31,30 +31,37 @@ require_once "code.php"?>
         <?php
             if (isset($_GET["reply"])){
                 $action = "carga.php?reply=".$_GET["reply"];
+                $mensaje = "RESPUESTA";
+                $placeholder = "Introduzca la respuesta...";
             }else{
                 $action = "carga.php?insertar=true";
+                $mensaje ="PREGUNTA";
+                $placeholder="Introduzca la descripcion a la pregunta...";
             }
 
         ?>
      <form class="formulario" action="<?=$action?>" method="post">
-            <label for="title">Título</label>
-            <input type="text" name="title" id="title" placeholder="Escriba aqui un breve titulo">
+           <?php   if(!isset($_GET["reply"])){
+            echo "<label for='title'>Título</label>
+            <input type='text' name='title' id='title' placeholder='Escriba aqui un breve titulo'>";
+            }?>
             <label for="description">Description</label>
-            <textarea name="description" maxlength="255" style="width: 100%;height: 82px" id="description" placeholder="Describa su problema..."></textarea>
-            <label for="tags">Etiquetas</label>
-         <?php if(!isset($reply)){
+            <textarea name="description" maxlength="255" style="width: 100%;height: 82px" id="description" placeholder="<?=$placeholder?>"></textarea>
 
-         echo "<div id='etiquetas'>";
-            cargarEtiquetas();
-            echo"</div>";
-            echo "<input type='text' name='tags' id='tags' hidden>
+         <?php if(!isset($_GET["reply"])){
+
+             echo "<label for='tags'>Etiquetas</label>";
+             echo "<div id='etiquetas'>";
+             cargarEtiquetas();
+             echo"</div>";
+             echo "<input type='text' name='tags' id='tags' hidden>
                 <div id='botones'>
-            <button class='button2' ><a href='#'>SUBIR IMAGEN</a></button>
-            <input type='submit' value='Publicar pregunta' id='bttnSendQuestion'>
+           
             </div>";
 
 
-       }?>
+       }?> <button class='button2' ><a href='#'>SUBIR IMAGEN</a></button>
+         <input type='submit' value='Publicar <?=$mensaje?>' id='bttnSendQuestion'>
         </form>
     </div>
 </main>

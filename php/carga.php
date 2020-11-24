@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+if (isset($_GET["reply"])){
+    insertarRespuesta($_POST["description"]);
+}else
 if (isset($_GET["insertar"]))
 {
 
@@ -122,4 +125,24 @@ function sacarIdEtiqueta($etiqueta){
     $fila = $stmt->fetch();
 
     return $fila["id_topic"];
+}
+
+
+function insertarRespuesta($descripcion){
+
+
+    require_once "bbdd.php";
+    $dbh = connect();
+    $idUsuario = $_SESSION["idUsuario"];
+
+    $data = array( 'desc' => $descripcion, 'usuario'=>$idUsuario, 'idPregunta'=>$_GET["reply"]);
+
+    $stmt = $dbh->prepare("insert into ANSWERS (text,id_question, id_user) values(:desc, :idPregunta,:usuario)");
+    $stmt->execute($data);
+
+    close();
+    header("Location: preguntas.php?pregunta=".$_GET["reply"]);
+
+
+
 }
