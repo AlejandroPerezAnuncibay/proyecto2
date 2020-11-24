@@ -514,7 +514,8 @@ function cargarRespuestas(){
         echo "<h2>RESPUESTA ".$contador."</h2>";
         echo "<button  id='".$idRespuesta."-".$fila["id_question"]."' class='likeRespuesta'>
         <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
-        echo "<i class='fas fa-check'></i>";
+        echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorResuesta"."' class='mejorRespuesta'>
+        <i class='fas fa-check'></i></button>";
         echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>

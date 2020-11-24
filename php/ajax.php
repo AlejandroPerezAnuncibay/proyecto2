@@ -7,6 +7,7 @@ if (isset($_POST["action"])){
         case "checkEmail": checkEmail();break;
         case "likePregunta": likePregunta();break;
         case "likeRespuesta": likeRespuesta();break;
+        case "mejorRespuesta": mejorRespuesta();break;
     }
 
 }
@@ -98,6 +99,22 @@ function likeRespuesta(){
 
     //$response=$_POST["respuesta"];
     close();
+    echo $response;
+    }
+}
+function mejorRespuesta(){
+    session_start();
+    if(isset($_SESSION["idUsuario"])){
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array("idUsuario" => $_SESSION["idUsuario"], "idRespuesta"=>$_POST["respuesta"],"idPregunta"=>$_POST["pregunta"]);
+    $stmt = $dbh ->prepare("SELECT best_answer FROM `ANSWERS` WHERE `id_question` = :idPregunta AND `id_answer` = :idRespuesta;");
+    $stmt->execute($data);
+    $response = $stmt->fetch();
+    close();
+    //$response = "SELECT best_answer FROM `ANSWERS` WHERE `id_question` = ".$_POST["pregunta"]." AND `id_answer` = ".$_POST["respuesta"]."";
+    $response = $data["idPregunta"];
     echo $response;
     }
 }

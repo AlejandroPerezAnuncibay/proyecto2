@@ -7,6 +7,10 @@ $(document).ready(function () {
     for (x = 0; x<botonesLikeRespuesta.length;x++){
         botonesLikeRespuesta[x].addEventListener("click",likesRespuestas);
     }
+    var botonesMejorRespuesta = $(".mejorRespuesta");
+    for (x = 0; x<botonesMejorRespuesta.length;x++){
+        botonesMejorRespuesta[x].addEventListener("click",mejorRespuesta);
+    }
 });
 function likesPreguntas(){
         var idPregunta = this.id;
@@ -54,6 +58,19 @@ function likesRespuestas(){
             }
         }
     });
-
+}
+function mejorRespuesta(){
+    let variosIds = this.id;
+    let arrayIds = variosIds.split("-");
+    var idRespuesta = parseInt(arrayIds[0]);
+    var idPregunta = parseInt(arrayIds[1]);
+    $.ajax({
+        type: "post",
+        url: "../php/ajax.php",
+        data: {action: "mejorRespuesta", respuesta: idRespuesta, pregunta: idPregunta},
+        success: function (response) {
+            alert(response);
+        }
+    });
 
 }
