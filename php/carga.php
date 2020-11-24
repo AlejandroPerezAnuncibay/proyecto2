@@ -4,7 +4,7 @@ session_start();
 if (isset($_GET["insertar"]))
 {
 
-    insertarPregunta($_POST["title"],$_POST["description"],$_POST["tags"]);
+   insertarPregunta($_POST["title"],$_POST["description"],$_POST["tags"]);
 }else {
 // Recibo los datos de la imagen
     $nombre_img = $_FILES['imagen']['name'];
@@ -93,14 +93,33 @@ if (isset($_GET["insertar"]))
 
 
 function insertarPregunta($titulo,$descripcion,$etiqueta){
+
+
     require_once "bbdd.php";
     $dbh = connect();
-
-    $data = array('titulo'=>$titulo, 'desc' => $descripcion,'etiqueta'=>$etiqueta);
-    $stmt = $dbh->prepare("insert into QUESTIONS (tit, password, name, surname, email) values(:usuario,:pass, :nombre,:apellido,:mail)");
+    $idUsuario = $_SESSION["idUsuario"];
+    $eti = sacarIdEtiqueta($etiqueta);
+    $data = array('titulo'=>$titulo, 'desc' => $descripcion, 'usuario'=>$idUsuario,'etiqueta'=>$eti);
+    $stmt = $dbh->prepare("insert into QUESTIONS (title, text, id_user, id_topic) values(:titulo,:desc, :usuario,:etiqueta)");
     $stmt->execute($data);
+
     close();
     header("Location: home.php");
 
+
+
 }
 
+
+function sacarIdEtiqueta($etiqueta){
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array('etiqueta'=>$etiqueta);
+    $stmt = $dbh->prepare("SELECT id_topic, name from TOPICS where name = :etiqueta");
+    $stmt->execute($data);
+    close();
+    $fila = $stmt->fetch();
+
+    return $fila["id_topic"];
+}

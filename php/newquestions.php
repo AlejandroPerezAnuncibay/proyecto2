@@ -32,11 +32,11 @@ require_once "code.php"?>
             <label for="title">Título</label>
             <input type="text" name="title" id="title" placeholder="Escriba aqui un breve titulo">
             <label for="description">Description</label>
-            <textarea name="description" id="description" placeholder="Describa su problema..."></textarea>
+            <textarea name="description" style="width: 681px;height: 82px" id="description" placeholder="Describa su problema..."></textarea>
             <label for="tags">Etiquetas</label>
          <div id="etiquetas">
             <?php cargarEtiquetas() ?></div>
-         <input type="text" name="tags" id="tags" disabled placeholder="Etiquetas">
+         <input type="text" name="tags" id="tags" hidden placeholder="Etiquetas">
 
             <div id="botones">
             <button class="button2" ><a href="#">SUBIR IMAGEN</a></button>

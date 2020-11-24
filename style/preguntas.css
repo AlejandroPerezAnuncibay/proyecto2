@@ -12,7 +12,9 @@
 
 }
 /*MOVIL FIRST*/
-
+main{
+    padding-top: 50px;
+}
 section{
     display: grid;
     grid-template-columns: 25% 75%;
@@ -112,7 +114,7 @@ section{
 
     main{
         margin: 0 8%;
-        padding-top: 50px;
+
     }
     section{
         display: grid;

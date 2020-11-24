@@ -45,12 +45,11 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
         </div>
         <div id="infUsu">
             <div id="datosUsu">
-                <p id="nombreApellido"><?= $persona["nombre"]?> <?=$persona["apellido"]?></p>
+                <p id="nombreApellido"><?= $persona["nombre"]?> <?=$persona["apellido"]?> &nbsp;&nbsp; <span id="ultConex"> Ultima conexión: <?=$persona["ultimoLogin"]?></span></p>
 
                 <p id="numPreguntas"><?=$persona["preguntas"]?> Preguntas <i class="fa fa-question-circle">&nbsp;</i></p>
 
                 <p id="bio"><?= $persona["biografia"]?></p>
-                <p id="ultConex">Ultima conexión: <?=$persona["ultimoLogin"]?></p>
             </div>
         </div>
     </div>

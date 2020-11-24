@@ -87,7 +87,8 @@ main{
     margin-bottom: 5%;
 }
 .button2 a{
-    color:black;
+    color:white;
+
 }
 @media (min-width: 768px) {
     /*Diseño Escritorio*/
@@ -118,18 +119,18 @@ main{
     }
     .button2{
 
-        background-color: white;
+        background-color: black;
         border: 2px solid #ffb600;
         padding: 15px 70px;
         text-align: center;
         font-size: 22px;
         cursor: pointer;
-        color: black;
+        color: white;
 
 
     }
     .button2 a{
-        color:black;
+        color:white;
     }
     .formulario label{
         font-size:30px;
