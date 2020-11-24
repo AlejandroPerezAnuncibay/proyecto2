@@ -426,12 +426,13 @@ function cargarPregunta(){
     //Seleccionamos como vamos a leer los datos.
     $contador = 0;
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
         $stmt->execute($data);
         $fila = $stmt->fetch();
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
+        $likes = cargarLikesPregunta($fila["id_question"]);
         echo "<div class='iconos'>";
+        echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span></p>";
         echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px;color:".buscarLike($fila["id_question"],$_SESSION["idUsuario"])."'></i></button>
            <a href='newquestions.php?reply=".$fila["id_question"]."'> <i class='fa fa-reply' style='font-size:36px'></i></a></div>";
             $contador = $contador +1;
