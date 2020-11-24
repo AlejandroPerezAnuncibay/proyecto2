@@ -25,7 +25,7 @@
     <ul id="menuList">
         <li id="btnCal"><a class="active" href="home.php">Inicio</a></li>
         <li id="btnUsu"><a href="user.php">Mi perfil</a></li>
-        <li><a href="newquestions.php">Nuevas Preguntas</a></li>
+        <li><a href="#">Preguntas</a></li>
         <li><a href="#">Sin responder</a></li>
         <li class="salir"><a href="cerrarsesion.php">Cerrar sesion</a></li>
     </ul>

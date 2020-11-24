@@ -53,7 +53,7 @@ session_start();
 
             <input type="submit" value="Log in" onclick="return validateForm('login')">
             <input type="button" value="Sign up" class="btnSignmbl changeForm">
-            <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
             <a href="#" onclick="signOut();">Sign out</a>
             <script>
                 function onSignIn(googleUser) {
@@ -77,7 +77,7 @@ session_start();
                         console.log('User signed out.');
                     });
                 }
-            </script> -->
+            </script>
         </form>
         <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
     </div>
