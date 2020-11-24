@@ -324,10 +324,14 @@ function cargarTodasPreguntas()
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         $likes = cargarLikesPregunta($fila["id_question"]);
+        $replys = cargarReplysPregunta($fila["id_question"]);
+
         echo "<div class='preguntas'>";
-        echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span></p>";
+        echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
+        echo " ";
+
         echo "<div class='iconos'>";
-        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' style='font-size:36px;color:".buscarLike($fila["id_question"],$_SESSION["idUsuario"])."' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador +1;
@@ -426,14 +430,13 @@ function cargarPregunta(){
     //Seleccionamos como vamos a leer los datos.
     $contador = 0;
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
         $stmt->execute($data);
         $fila = $stmt->fetch();
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
-        $likes = cargarLikesPregunta($fila["id_question"]);
         echo "<div class='iconos'>";
-        echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span></p>";
-        echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px;color:".buscarLike($fila["id_question"],$_SESSION["idUsuario"])."'></i></button>
+        echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
            <a href='newquestions.php?reply=".$fila["id_question"]."'> <i class='fa fa-reply' style='font-size:36px'></i></a></div>";
             $contador = $contador +1;
         echo "<div class='info'>
@@ -571,21 +574,21 @@ function cargarFotoPerfilMenu($id){
     }else {
         echo "../images/userProfile/.default.jpg";
     }
-    close();
 }
-function buscarLike($idPregunta,$idUsuario){
+
+function cargarReplysPregunta($id){
     require_once "bbdd.php";
     $dbh = connect();
-    $data = array("idPregunta"=>$idPregunta,"idUsuario"=>$idUsuario);
-    $stmt = $dbh->prepare("SELECT COUNT(*) FROM LIKES_QUESTIONS WHERE id_user = :idUsuario AND id_question = :idPregunta LIMIT 1;");
+
+    $data = array( 'id' => $id);
+    $stmt = $dbh->prepare("SELECT  count(*) FROM ANSWERS where id_question = :id");
+
+
     $stmt->execute($data);
-    $respuesta = $stmt->fetchColumn();
+    $count = $stmt->fetchColumn();
     close();
 
-    if ($respuesta==1){
-        return "red";
-    }else {
-        return "black";
-    }
+
+    return $count;
 
 }
