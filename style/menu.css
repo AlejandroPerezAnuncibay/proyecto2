@@ -136,23 +136,7 @@ i.fa-search{
     cursor: pointer;
     border-bottom: none;
 }
-#listabusqueda{
-    position: absolute;
-    top:85%;
-    background-color: black;
-     background: rgba(34,34,34,0.75);
-     width: 35%;
-    color: white;
-    border-radius: 2%;
-    display: none;
 
-}
-
-.searchlist li {
-    padding: 6px 12px;
-
-
-}
 #userFoto{
     width: 40px;
     height: 40px;
@@ -204,6 +188,22 @@ i.fa-door-open{
     }
     .buscador{
         width:35%;
+
+    }
+    #listabusqueda{
+        position: absolute;
+        top:85%;
+        background-color: black;
+        background: rgba(34,34,34,0.75);
+        width: 35%;
+        color: white;
+        border-radius: 0% 0% 2% 2%;
+
+    }
+
+    .searchlist li {
+        padding: 6px 12px;
+
 
     }
     #menu #menuList li.salir{

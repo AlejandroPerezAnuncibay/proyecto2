@@ -73,8 +73,11 @@ main{
     font-size: 22px;
     cursor: pointer;
     color: black;
+    width: 100%;
 
-
+}
+.box{
+    display: block;
 }
 .button2{
 
@@ -85,6 +88,7 @@ main{
     font-size: 22px;
     cursor: pointer;
     margin-bottom: 5%;
+    width: 100%;
 }
 .button2 a{
     color:white;
@@ -96,6 +100,11 @@ main{
         margin: 0 8%;
 
     }
+    .box{
+         display: flex;
+         justify-content: space-around;
+         margin-top: 30px;
+     }
     #principal{
         border: solid 1px black;
         border-radius: 6%;
@@ -107,12 +116,6 @@ main{
         flex-direction: row;
     }
     #bttnSendQuestion{
-        background-color:#ffb600;
-        border: 2px solid black;
-        padding: 15px 32px;
-        text-align: center;
-        font-size: 22px;
-        cursor: pointer;
         margin-bottom: 5%;
         color: black;
 

@@ -87,7 +87,7 @@ section{
     border-bottom: solid 0.5px grey;
     margin:5%;
     padding-bottom: 5%;
-
+    text-align: center;
 }
 #replys{
     margin: 5%;
@@ -100,13 +100,32 @@ section{
     color:#ffb600;
 
 }
+#replys p{
+    word-break: break-word;
+    width: 80%;
+    font-family: montserrat;
+}
 .des2{
     margin-top: 4%;
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
-    border-bottom: 0.5px solid grey;
-    /* margin-top: inherit;*/
+}
+.info p{
+    word-wrap: break-word;
+    width: 80%;
+    max-width: 80%;
+    font-family: montserrat;
+}
+.like,
+.likeRespuesta {
+    background: none;
+    outline: none;
+    font-size: 36px;
+    border: none;
+}
+.fa-heart, .fa-check{
+    font-size: 36px;
 }
 
 @media (min-width: 768px) {
@@ -118,7 +137,7 @@ section{
     }
     section{
         display: grid;
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns:30% 70%;
         grid-template-rows: repeat(2, auto);
         margin: 5%;
         max-width: 100%;
@@ -142,5 +161,16 @@ section{
     }
 
 
-
+    #replys{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-family: montserrat;
+    }
+    #replys #respIzq{
+        width: 60%;
+    }
+    #replys #repDer{
+        width: 60%;
+    }
 }
