@@ -343,7 +343,7 @@ function cargarTodasPreguntas()
         echo "<h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
-        echo "<span class='fecha'>".$fila["date"]."        Tag: ".$tag."</span></div>";
+        echo "<span class='fecha'>".$fila["date"]."</span><span class='labels'>".$tag."</span></div>";
 
 
 
