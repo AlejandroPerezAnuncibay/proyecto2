@@ -60,16 +60,18 @@ function likesRespuestas(){
     });
 }
 function mejorRespuesta(){
-    let variosIds = this.id;
-    let arrayIds = variosIds.split("-");
-    var idRespuesta = parseInt(arrayIds[0]);
-    var idPregunta = parseInt(arrayIds[1]);
+    var idBoton = this.id;
+    let arrayIds = idBoton.split("-");
+    var idRespuesta = arrayIds[0];
+    var idPregunta = arrayIds[1];
     $.ajax({
         type: "post",
         url: "../php/ajax.php",
         data: {action: "mejorRespuesta", respuesta: idRespuesta, pregunta: idPregunta},
         success: function (response) {
-            alert(response);
+            alert(idBoton);
+           //response el el id de la antigua mejor respuesta, hay que añadirle el id de la pregunta para formar el id entero
+           $("#"+idBoton).css("color", "green");
         }
     });
 
