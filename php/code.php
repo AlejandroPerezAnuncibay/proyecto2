@@ -399,7 +399,7 @@ function cargarEtiquetas(){
 
     $stmt->execute();
     while ($fila = $stmt->fetch()) {
-       echo  "<button class='labels' value='".$fila["name"]."' type='button' >".$fila["name"]."</button>";
+       echo  "<a href='home.php?tag='" .$fila["name"]. " ></a><button class='labels'  value='".$fila["name"]."' type='button' >".$fila["name"]."</button>";
 
     }
     close();
@@ -511,6 +511,7 @@ function cargarRespuestas(){
         $idRespuesta = $fila["id_answer"];
 
         $contador = $contador +1;
+        echo "<div class='respuesta'>";
         echo "<div class='respIzq'><h2>RESPUESTA ".$contador."</h2>";
         echo "<button  id='".$idRespuesta."-".$fila["id_question"]."' class='likeRespuesta'>
         <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
@@ -521,7 +522,7 @@ function cargarRespuestas(){
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
             <span class='fecha'>".timeAgo($fila["date"])."</span></div>
         </div>";
-        echo "<div class='respDer' <p>".$fila["text"]."</p></div";
+        echo "</div>";
     }
     echo "</article>";
 
@@ -672,5 +673,33 @@ function timeAgo($date){
 }
 
 function cargarPreguntasSinRespuesta(){
+    require_once "bbdd.php";
+    $dbh = connect();
 
+    $stmt = $dbh->prepare("SELECT QUESTIONS.* FROM QUESTIONS LEFT JOIN ANSWERS ON QUESTIONS.id_question = ANSWERS.id_question WHERE ANSWERS.id_question is null order by id_question desc ");
+    $stmt->execute();
+    $contador = 0;
+    //Mientras se encuentren preguntas, esta repetitiva se encarga de generar la estructura HTML necesaria.
+    while ($fila = $stmt->fetch()) {
+
+        $tag = cargarTag($fila["id_topic"]);
+        $usuario = cargarCreadorPregunta($fila["id_user"]);
+        $likes = cargarLikesPregunta($fila["id_question"]);
+        $replys = cargarReplysPregunta($fila["id_question"]);
+
+        echo "<div class='preguntas'>";
+        echo "<p> Likes: <span id='contLikes" . $fila["id_question"] . "'>" . $likes . "</span><br>Replys: <span id='contReplys" . $fila["id_question"] . "'>" . $replys . "</span></p>";
+
+        echo "<div class='iconos'>";
+        echo "<button id='" . $fila["id_question"] . "'  class='like'><i class='fas fa-heart' style='font-size:36px;color:" . buscarLike($fila["id_question"]) . "'  value='" . $contador . "' id='like" . $fila["id_question"] . "' style='font-size:36px'></i></button>
+                   <a href='preguntas.php?pregunta=" . $fila["id_question"] . "' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
+        echo "<div class='info'>";
+        $contador = $contador + 1;
+        echo "<h4><a href='preguntas.php?pregunta=" . $fila["id_question"] . "'> " . $fila["title"] . "</a></h4>";
+        echo "<a href='user.php?id=" . $fila["id_user"] . "'><h5>$usuario</h2></a>";
+        echo "<p>" . $fila["text"] . "</p></div>";
+        echo "<div class='fechaTag'><span class='fecha'>" . timeAgo($fila["date"]) . "</span><span class='labels'>" . $tag . "</span></div></div>";
+
+    }
+        close();
 }

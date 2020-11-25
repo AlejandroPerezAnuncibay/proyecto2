@@ -2,7 +2,9 @@
     font-family: "elephans";
     src: url("../fonts/Elephans.ttf");
 }
-
+input:active,button:active{
+    outline: none;
+}
 * {
     margin: 0;
     padding: 0;
