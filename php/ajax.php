@@ -75,8 +75,8 @@ function likeRespuesta(){
     if(isset($_SESSION["idUsuario"])){
     require_once "bbdd.php";
     $dbh = connect();
-    $ostias = $_POST["respuesta"];
-    $data = array("respuesta" => $ostias, "idUsuario" => $_SESSION["idUsuario"], "idPregunta" => $_POST["pregunta"]);
+    $respuesta = $_POST["respuesta"];
+    $data = array("respuesta" => $respuesta, "idUsuario" => $_SESSION["idUsuario"], "idPregunta" => $_POST["pregunta"]);
 
     // //busco el like por si esta dado, si esta dado, lo quito, si no esta, lo añado
     // $stmt = $dbh->prepare("SELECT COUNT(*) FROM `LIKES_ANSWERS` WHERE `id_answer` = :idRespuesta AND `id_user` = :idUsuario LIMIT 1;");
@@ -105,16 +105,42 @@ function likeRespuesta(){
 function mejorRespuesta(){
     session_start();
     if(isset($_SESSION["idUsuario"])){
-    require_once "bbdd.php";
-    $dbh = connect();
+            require_once "bbdd.php";
+            $dbh = connect();
+            //primero miro que la pregunta sea del usuario que esta logueado
+            $data = array("idUsuario" => $_SESSION["idUsuario"],"idPregunta"=> $_POST["pregunta"]);
+            $stmt = $dbh ->prepare("SELECT COUNT(*) FROM `QUESTIONS` WHERE `id_question` = :idPregunta AND `id_user` = :idUsuario LIMIT 1;");
+            $stmt->execute($data);
+            $response = $stmt->fetchColumn();
 
-    $data = array("idUsuario" => $_SESSION["idUsuario"], "idRespuesta"=>$_POST["respuesta"],"idPregunta"=>$_POST["pregunta"]);
-    $stmt = $dbh ->prepare("SELECT best_answer FROM `ANSWERS` WHERE `id_question` = :idPregunta AND `id_answer` = :idRespuesta;");
-    $stmt->execute($data);
-    $response = $stmt->fetch();
-    close();
-    //$response = "SELECT best_answer FROM `ANSWERS` WHERE `id_question` = ".$_POST["pregunta"]." AND `id_answer` = ".$_POST["respuesta"]."";
-    $response = $data["idPregunta"];
-    echo $response;
+            //si la respuesta es 1 es que la pregunta es del usuario logeado, por lo que podra marcar una respuesta como "la mejor"
+            if ($response==1){
+                //antes de marcar una respuesta como la mejor tenemos que buscar si hay alguna otra respuesta como la mejor para cambiarlas
+                $data = array("idPregunta"=> $_POST["pregunta"]);
+                $stmt = $dbh ->prepare("SELECT `id_answer` FROM `ANSWERS` WHERE `id_question` = :idPregunta AND `best_answer` = 1 LIMIT 1;");
+                $stmt->execute($data);
+                $idMejorRespuesta = $stmt->fetchColumn();
+                //la respuesta es el id de la mejor respuesta en caso de que exista mejor respuesta
+
+
+                //si la respuesta(idMejorRespuesta) NO esta vacia significa que hay una mejor respuesta, por lo que la borramos
+                if ($idMejorRespuesta!=""){
+                    $data = array("idRespuesta"=> $idMejorRespuesta,"idPregunta"=> $_POST["pregunta"]);
+                    $stmt = $dbh->prepare("UPDATE `ANSWERS` SET `best_answer` = '0' WHERE `ANSWERS`.`id_question` = :idPregunta AND `ANSWERS`.`id_answer` = :idRespuesta;");
+                    $stmt->execute($data);
+                }
+                //si la mejor respuesta es la misma que la respuesta que se ha clikado no queremos añadir de nuevo que es mejor pregunta, queremos que se mantenga borrada (funcionalidad de quitar una mejor respuesta)
+
+                if ($idMejorRespuesta!=$_POST["respuesta"]){
+                //ahora hemos quitado como mejor respuesta la que habia antes, ahora toca añadir la que han clikado
+                $data = array("idRespuesta"=> $_POST["respuesta"], "idPregunta"=> $_POST["pregunta"]);
+                $stmt = $dbh->prepare("UPDATE `ANSWERS` SET `best_answer` = '1' WHERE `ANSWERS`.`id_question` = :idPregunta AND `ANSWERS`.`id_answer` = :idRespuesta;");
+                $stmt->execute($data);
+                $count = $stmt->rowCount();
+                //si count es 1 significa que la update se ha realizado con exito
+                }
+            }
+            close();
+            echo $idMejorRespuesta; //esta variable es la aintigua mejor respuesta, la mando para cabiar el color del tick de la antigua mejor respuesta.
     }
 }

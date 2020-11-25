@@ -336,7 +336,7 @@ function cargarTodasPreguntas()
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
 
         echo "<div class='iconos'>";
-        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' style='font-size:36px;color:".buscarLike($fila["id_question"],$_SESSION["idUsuario"])."'  value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' style='font-size:36px;color:".buscarLike($fila["id_question"])."'  value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador +1;
@@ -513,9 +513,10 @@ function cargarRespuestas(){
         $contador = $contador +1;
         echo "<div class='respIzq'><h2>RESPUESTA ".$contador."</h2>";
         echo "<button  id='".$idRespuesta."-".$fila["id_question"]."' class='likeRespuesta'>
-        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
-        echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorResuesta"."' class='mejorRespuesta'>
-        <i class='fas fa-check'></i></button>";
+        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
+        echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorRespuesta"."' class='mejorRespuesta'>
+        <i class='fas fa-check' style='color:".buscarMejorRespuesta($idRespuesta,$fila["id_question"])."'></i></button>";
+        echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
             <span class='fecha'>".timeAgo($fila["date"])."</span></div>
@@ -635,6 +636,22 @@ function buscarLikeRespuesta($idPregunta){
     }else {
         return "black";
     }
+}
+function buscarMejorRespuesta($idRespuesta,$idPregunta){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array("idPregunta"=>$idPregunta,"idRespuesta"=>$idRespuesta);
+    $stmt = $dbh->prepare("SELECT COUNT(*) FROM ANSWERS WHERE id_answer = :idRespuesta AND id_question = :idPregunta AND best_answer=1;");
+    $stmt->execute($data);
+    $respuesta = $stmt->fetchColumn();
+    close();
+
+    if ($respuesta==1){
+        return "green";
+    } else {
+        return "black";
+    }
+
 }
 function timeAgo($date){
 	   $timestamp = strtotime($date);	
