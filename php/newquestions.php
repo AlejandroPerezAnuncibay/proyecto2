@@ -62,8 +62,8 @@ require_once "code.php"?>
 
        }?>
          <div class="box">
-             <label class='button2'  for="subida">SUBIR IMAGEN</label>
-             <input type="file" hidden id="subida" multiple="" name="imagen">
+             <label class='button2'  for="imagen">SUBIR IMAGEN</label>
+             <input type="file" hidden id="imagen"  name="imagen">
              <input type='submit'  value='Publicar <?=$mensaje?>' id='bttnSendQuestion'>
          </div>
         </form>
@@ -74,7 +74,9 @@ require_once "code.php"?>
 </footer>
 </body>
     <script src="../js/etiquetas.js"></script>
-</html>
+    <script src="../js/newquestion.js"></script>
+
+    </html>
 <?php
 }else{
     header("location:index.php");

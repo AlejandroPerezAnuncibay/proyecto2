@@ -6,8 +6,48 @@ if (isset($_GET["reply"])){
 }else
 if (isset($_GET["insertar"]))
 {
-    subidaArchivos();
-   insertarPregunta($_POST["title"],$_POST["description"],$_POST["tags"]);
+    //Como el elemento es un arreglos utilizamos foreach para extraer todos los valores
+
+    require_once "bbdd.php";
+    $dbh = connect();
+    $idUsuario = $_SESSION["idUsuario"];
+    $eti = sacarIdEtiqueta($_POST["tags"]);
+    $data = array('titulo'=>$_POST["title"], 'desc' => $_POST["description"], 'usuario'=>$idUsuario,'etiqueta'=>$eti);
+    $stmt = $dbh->prepare("insert into QUESTIONS (title, text, id_user, id_topic) values(:titulo,:desc, :usuario,:etiqueta)");
+    $stmt->execute($data);
+    $lastId = $dbh->lastInsertId();
+
+
+    // Recibo los datos de la imagen
+    $nombre_img = $_FILES['imagen']['name'];
+    $tipo = $_FILES['imagen']['type'];
+    $tamano = $_FILES['imagen']['size'];
+    $extension = pathinfo($nombre_img, PATHINFO_EXTENSION);
+    $directorio = "";
+
+//Si existe imagen y tiene un tamaño correcto
+
+    //indicamos los formatos que permitimos subir a nuestro servidor
+    if (($_FILES["imagen"]["type"] == "image/gif")
+        || ($_FILES["imagen"]["type"] == "image/jpeg")
+        || ($_FILES["imagen"]["type"] == "image/jpg")
+        || ($_FILES["imagen"]["type"] == "image/png")) {
+        // Ruta donde se guardarán las imágenes que subamos
+        $directorio = /*$_SERVER['DOCUMENT_ROOT'].*/
+            '/vagrant/images/userProfile/';
+        // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $_SESSION["nombreUsuario"] . "." . $extension);
+
+    } else {
+        //si no cumple con el formato
+        echo "No se puede subir una imagen con ese formato ";
+    }
+/*
+    $data = array('id'=>$lastId, 'ruta'=>$directorio .$lastId. "." . $extension);
+    $stmt = $dbh->prepare("UPDATE QUESTIONS SET questionImage = :ruta WHERE id_question=:id");
+    $stmt->execute($data);*/
+    close();
+    header("Location: home.php");
 }else {
 // Recibo los datos de la imagen
     $nombre_img = $_FILES['imagen']['name'];
@@ -95,24 +135,6 @@ if (isset($_GET["insertar"]))
 }
 
 
-function insertarPregunta($titulo,$descripcion,$etiqueta){
-
-
-    require_once "bbdd.php";
-    $dbh = connect();
-    $idUsuario = $_SESSION["idUsuario"];
-    $eti = sacarIdEtiqueta($etiqueta);
-    $data = array('titulo'=>$titulo, 'desc' => $descripcion, 'usuario'=>$idUsuario,'etiqueta'=>$eti);
-    $stmt = $dbh->prepare("insert into QUESTIONS (title, text, id_user, id_topic) values(:titulo,:desc, :usuario,:etiqueta)");
-    $stmt->execute($data);
-
-    close();
-    header("Location: home.php");
-
-
-
-}
-
 
 function sacarIdEtiqueta($etiqueta){
     require_once "bbdd.php";
@@ -141,41 +163,9 @@ function insertarRespuesta($descripcion){
     $stmt->execute($data);
 
     close();
+
     header("Location: preguntas.php?pregunta=".$_GET["reply"]);
 
 
-
-}
-
-
-function subidaArchivos(){
-//Como el elemento es un arreglos utilizamos foreach para extraer todos los valores
-foreach($_FILES["archivo"]['tmp_name'] as $key => $tmp_name)
-    {
-        //Validamos que el archivo exista
-        if($_FILES["archivo"]["name"][$key]) {
-            $filename = $_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
-            $source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
-
-            $directorio = '../images/questionMedia/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
-
-            //Validamos si la ruta de destino existe, en caso de no existir la creamos
-            if(!file_exists($directorio)){
-                mkdir($directorio, 0777) or die("No se puede crear el directorio de extracci&oacute;n");
-            }
-
-            $dir=opendir($directorio); //Abrimos el directorio de destino
-            $target_path = $directorio.'/'.$filename; //Indicamos la ruta de destino, así como el nombre del archivo
-
-            //Movemos y validamos que el archivo se haya cargado correctamente
-            //El primer campo es el origen y el segundo el destino
-            if(move_uploaded_file($source, $target_path)) {
-                echo "El archivo $filename se ha almacenado en forma exitosa.<br>";
-            } else {
-                echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
-            }
-            closedir($dir); //Cerramos el directorio de destino
-        }
-    }
 
 }
