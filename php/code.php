@@ -514,7 +514,7 @@ function cargarRespuestas(){
         echo "<div class='respuesta'>";
         echo "<div class='respIzq'><h2>RESPUESTA ".$contador."</h2>";
         echo "<button  id='".$idRespuesta."-".$fila["id_question"]."' class='likeRespuesta'>
-        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
+        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px;color:".buscarLikeRespuesta($idRespuesta)."'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
         echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorRespuesta"."' class='mejorRespuesta'>
         <i class='fas fa-check' style='color:".buscarMejorRespuesta($idRespuesta,$fila["id_question"])."'></i></button>";
         echo " <p>".$fila["text"]."</p>";
@@ -622,12 +622,11 @@ function buscarLike($idPregunta){
         return "black";
     }
 }
-function buscarLikeRespuesta($idPregunta){
-    //TODO hacer esta funcion
+function buscarLikeRespuesta($idAnswer){
     require_once "bbdd.php";
     $dbh = connect();
-    $data = array("idPregunta"=>$idPregunta,"idUsuario"=>$_SESSION["idUsuario"]);
-    $stmt = $dbh->prepare("SELECT COUNT(*) FROM LIKES_QUESTIONS WHERE id_user = :idUsuario AND id_question = :idPregunta LIMIT 1;");
+    $data = array("idRespuesta"=>$idAnswer,"idUsuario"=>$_SESSION["idUsuario"]);
+    $stmt = $dbh->prepare("SELECT COUNT(*) FROM LIKES_ANSWERS WHERE id_user = :idUsuario AND id_answer = :idRespuesta LIMIT 1;");
     $stmt->execute($data);
     $respuesta = $stmt->fetchColumn();
     close();
