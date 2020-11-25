@@ -69,9 +69,9 @@ function mejorRespuesta(){
         url: "../php/ajax.php",
         data: {action: "mejorRespuesta", respuesta: idRespuesta, pregunta: idPregunta},
         success: function (response) {
-            alert(idBoton);
            //response el el id de la antigua mejor respuesta, hay que añadirle el id de la pregunta para formar el id entero
-           $("#"+idBoton).css("color", "green");
+           $("#"+idBoton).children().css("color", "green");
+           $("#"+response+"-"+idPregunta+"-mejorRespuesta").children().css("color", "black");
         }
     });
 

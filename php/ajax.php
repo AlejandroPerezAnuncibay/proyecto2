@@ -122,18 +122,23 @@ function mejorRespuesta(){
                 $idMejorRespuesta = $stmt->fetchColumn();
                 //la respuesta es el id de la mejor respuesta en caso de que exista mejor respuesta
 
-                //si la respuesta NO esta vacia significa que hay una mejor respuesta, por lo que la borramos
+
+                //si la respuesta(idMejorRespuesta) NO esta vacia significa que hay una mejor respuesta, por lo que la borramos
                 if ($idMejorRespuesta!=""){
                     $data = array("idRespuesta"=> $idMejorRespuesta,"idPregunta"=> $_POST["pregunta"]);
                     $stmt = $dbh->prepare("UPDATE `ANSWERS` SET `best_answer` = '0' WHERE `ANSWERS`.`id_question` = :idPregunta AND `ANSWERS`.`id_answer` = :idRespuesta;");
                     $stmt->execute($data);
                 }
+                //si la mejor respuesta es la misma que la respuesta que se ha clikado no queremos añadir de nuevo que es mejor pregunta, queremos que se mantenga borrada (funcionalidad de quitar una mejor respuesta)
+
+                if ($idMejorRespuesta!=$_POST["respuesta"]){
                 //ahora hemos quitado como mejor respuesta la que habia antes, ahora toca añadir la que han clikado
                 $data = array("idRespuesta"=> $_POST["respuesta"], "idPregunta"=> $_POST["pregunta"]);
                 $stmt = $dbh->prepare("UPDATE `ANSWERS` SET `best_answer` = '1' WHERE `ANSWERS`.`id_question` = :idPregunta AND `ANSWERS`.`id_answer` = :idRespuesta;");
                 $stmt->execute($data);
                 $count = $stmt->rowCount();
                 //si count es 1 significa que la update se ha realizado con exito
+                }
             }
             close();
             echo $idMejorRespuesta; //esta variable es la aintigua mejor respuesta, la mando para cabiar el color del tick de la antigua mejor respuesta.
