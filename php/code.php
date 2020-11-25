@@ -241,7 +241,7 @@ function cargarPreguntas($id){
             echo "<h3 class='tituloPregunta'><a href='preguntas.php?pregunta=".$fila["id_question"]."'>" . $fila["title"] . "</a></h3>";
             echo "<p> Tag: " . $tag . "</p></div>";
             echo "<div class='fechaPregunta'>";
-            echo "<p>Creada el: " . $fila["date"] . "</p></div></div>";
+            echo "<p>Creada el: " . timeAgo($fila["date"]) . "</p></div></div>";
 
 
             //Estructura a generar
