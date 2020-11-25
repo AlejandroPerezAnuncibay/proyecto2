@@ -115,6 +115,7 @@ section{
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
+    flex-direction: column;
 }
 .info p{
     word-wrap: break-word;
@@ -142,10 +143,10 @@ section{
     font-family: montserrat;
 }
 #replys .respIzq{
-    width: 40%;
+    width: 30%;
 }
 #replys .respDer{
-    width: 60%;
+    width: 70%;
 }
 #replys .respDer, .fecha{
     font-family: montserrat;
