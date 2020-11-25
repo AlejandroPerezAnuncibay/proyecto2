@@ -262,7 +262,11 @@
             margin:3%;
             max-width: 100%;
         }
-
+        .fechaTag {
+            
+            width: 100%;
+            flex-direction: row;
+        }
         .fecha{
             margin-left: 2%;
         }
