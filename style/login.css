@@ -2,6 +2,10 @@
     font-family: "elephans";
     src: url("../fonts/Elephans.ttf");
 }
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat.ttf");
+}
 *{
     margin: 0 auto;
 }

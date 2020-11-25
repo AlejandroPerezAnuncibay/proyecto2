@@ -2,6 +2,11 @@
     font-family: "elephans";
     src: url("../fonts/Elephans.ttf");
 }
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat.ttf");
+}
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -96,7 +101,7 @@
         grid-template-rows:70% 30%;
     margin: 5%;
     max-width: 100%;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
     border-bottom: solid 0.5px grey;
     }
     .iconos {
@@ -136,11 +141,20 @@
         margin-top: auto;
         font-size: 20px;
         font-family: montserrat;
+        padding-bottom: 10px;
     }
     .info h5{
         color:#ffb600;
     }
-
+    .fechaTag{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 35%;
+    }
+    .fechaTag .labels{
+        width: 30%;
+    }
 
     @media (min-width: 768px) {
         /*Diseño Escritorio*/

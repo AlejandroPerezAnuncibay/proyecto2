@@ -2,6 +2,10 @@
     font-family: "elephans";
     src: url("../fonts/Elephans.ttf");
 }
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat.ttf");
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -58,7 +62,9 @@ main{
 #description{
     margin-bottom: 5%;
     height: 180px;
-
+    font-family: montserrat;
+    font-size: 16px;
+    padding:10px;
 }
 #botones{
     display: flex;
@@ -97,7 +103,8 @@ main{
 @media (min-width: 768px) {
     /*Diseño Escritorio*/
     main {
-        margin: 0 8%;
+        margin: 0 auto;
+        width: 60%;
 
     }
     .box{
@@ -118,7 +125,7 @@ main{
     #bttnSendQuestion{
         margin-bottom: 5%;
         color: black;
-
+        width: 40%;
     }
     .button2{
 
@@ -129,7 +136,7 @@ main{
         font-size: 22px;
         cursor: pointer;
         color: white;
-
+        width: 40%;
 
     }
     .button2 a{

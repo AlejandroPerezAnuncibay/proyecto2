@@ -2,6 +2,10 @@
     font-family: "elephans";
     src: url("../fonts/Elephans.ttf");
 }
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat.ttf");
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -48,7 +52,8 @@ section{
 }
 .info h1{
     margin-bottom: 4%;
-    font-size: 25px
+    font-size: 25px;
+    word-break: break-word;
 }
 .des1{
     grid-column: 2/3;
@@ -118,7 +123,8 @@ section{
     font-family: montserrat;
 }
 .like,
-.likeRespuesta {
+.likeRespuesta,
+.fa-check{
     background: none;
     outline: none;
     font-size: 36px;
@@ -128,11 +134,36 @@ section{
     font-size: 36px;
 }
 
+
+#replys{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: montserrat;
+}
+#replys .respIzq{
+    width: 40%;
+}
+#replys .respDer{
+    width: 60%;
+}
+#replys .respDer, .fecha{
+    font-family: montserrat;
+    word-break: break-word;
+}
+#listabusqueda{
+    display: none;
+}
+.fecha{
+    font-size: 12px;
+    padding-top: 5px;
+}
 @media (min-width: 768px) {
     /*Diseño Escritorio*/
 
     main{
-        margin: 0 8%;
+        margin: 0 auto;
+        width: 60%;
 
     }
     section{
@@ -161,16 +192,4 @@ section{
     }
 
 
-    #replys{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-family: montserrat;
-    }
-    #replys #respIzq{
-        width: 60%;
-    }
-    #replys #repDer{
-        width: 60%;
-    }
 }

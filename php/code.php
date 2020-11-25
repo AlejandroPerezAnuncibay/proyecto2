@@ -343,7 +343,7 @@ function cargarTodasPreguntas()
         echo "<h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
-        echo "<span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div>";
+        echo "<div class='fechaTag'><span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div>";
 
 
 
@@ -511,16 +511,16 @@ function cargarRespuestas(){
         $idRespuesta = $fila["id_answer"];
 
         $contador = $contador +1;
-        echo "<div id='respIzq'><h2>RESPUESTA ".$contador."</h2>";
+        echo "<div class='respIzq'><h2>RESPUESTA ".$contador."</h2>";
         echo "<button  id='".$idRespuesta."-".$fila["id_question"]."' class='likeRespuesta'>
-        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
+        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
         echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorResuesta"."' class='mejorRespuesta'>
         <i class='fas fa-check'></i></button>";
-        echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
             <span class='fecha'>".timeAgo($fila["date"])."</span></div>
         </div>";
+        echo "<div class='respDer' <p>".$fila["text"]."</p></div";
     }
     echo "</article>";
 
