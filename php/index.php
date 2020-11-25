@@ -25,7 +25,7 @@ session_start();
 
 <body>
     <div id="color">
-        <img src="../media/shortlogo.svg" alt="Logo" id="imgPcs">
+        <img src="../media/shortlogoVectorizado.png" alt="Logo" id="imgPcs">
         <h2 id="nombreEmpresa">Aergibide</h2>
     </div>
     <div id="login">
@@ -45,7 +45,7 @@ session_start();
                 //En caso de que se necesite esta cookie mostrará un mensaje informativo al usuario
                 if (isset($_COOKIE["errorLog"])) {
                 ?>
-                    <p> <?= $_COOKIE["errorLog"] ?> </p>
+                    <p style="color: red;"> <?= $_COOKIE["errorLog"] ?> </p>
 
                 <?php setcookie("errorLog", null, -1);
                 } ?>
@@ -112,7 +112,7 @@ session_start();
             <input type="submit" value="Sign up" onclick="return validateForm('signup')">
             <input type="button" value="Log in" class="btnSignmbl changeForm">
         </form>
-        <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
+        <p class="newaccount">Dont have an account? <a href="home.php"> Enter as a guest</a></p>
     </div>
 </body>
 

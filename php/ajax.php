@@ -70,32 +70,34 @@ function likePregunta(){
     }
 }
 function likeRespuesta(){
+    //TODO arreglar esta puta mierda
     session_start();
     if(isset($_SESSION["idUsuario"])){
     require_once "bbdd.php";
     $dbh = connect();
-    $data = array("idRespuesta" => $_POST["respuesta"], "idUsuario" => $_SESSION["idUsuario"]);
+    $respuesta = $_POST["respuesta"];
+    $data = array("respuesta" => $respuesta, "idUsuario" => $_SESSION["idUsuario"], "idPregunta" => $_POST["pregunta"]);
 
-    //busco el like por si esta dado, si esta dado, lo quito, si no esta, lo añado
-    $stmt = $dbh->prepare("SELECT COUNT(*) FROM `LIKES_ANSWERS` WHERE `id_answer` = :idRespuesta AND `id_user` = :idUsuario LIMIT 1;");
+    // //busco el like por si esta dado, si esta dado, lo quito, si no esta, lo añado
+    // $stmt = $dbh->prepare("SELECT COUNT(*) FROM `LIKES_ANSWERS` WHERE `id_answer` = :idRespuesta AND `id_user` = :idUsuario LIMIT 1;");
+    // $stmt->execute($data);
+    // $response = $stmt->fetchColumn();
+
+    // if ($response==1){
+    //     //el like ya esta dado, lo tenemos que deletear
+    //     $stmt = $dbh->prepare("DELETE FROM `LIKES_ANSWERS` WHERE `LIKES_ANSWERS`.`id_question` = :idPregunta AND `LIKES_ANSWERS`.`id_answer` = :idRespuesta AND `LIKES_ANSWERS`.`id_user` = :idUsuario");
+    //     $stmt->execute($data);
+    // } else {
+    //     //el like no esta dado, lo tenemos que instertar
+    //     $stmt = $dbh->prepare("INSERT INTO `LIKES_ANSWERS` (`id_question`, `id_answer`, `id_user`) VALUES (:idPregunta, :idRespuesta, :idUsuario);");
+    //     $stmt->execute($data);
+    // }
+
+    $stmt = $dbh->prepare("SELECT COUNT(*) FROM `LIKES_ANSWERS` WHERE `id_answer` = :respuesta AND `id_user` = 1 LIMIT 1;");
     $stmt->execute($data);
     $response = $stmt->fetchColumn();
 
-    $data = array("idRespuesta" => $_POST["respuesta"], "idUsuario" => $_SESSION["idUsuario"], "idPregunta" => $_POST["pregunta"]);
-    if ($response==1){
-        //el like ya esta dado, lo tenemos que deletear
-        $stmt = $dbh->prepare("DELETE FROM `LIKES_ANSWERS` WHERE `LIKES_ANSWERS`.`id_question` = :idPregunta AND `LIKES_ANSWERS`.`id_answer` = :idRespuesta AND `LIKES_ANSWERS`.`id_user` = :idUsuario");
-        $stmt->execute($data);
-    } else {
-        //el like no esta dado, lo tenemos que instertar
-        $stmt = $dbh->prepare("INSERT INTO `LIKES_ANSWERS` (`id_question`, `id_answer`, `id_user`) VALUES (:idPregunta, :idRespuesta, :idUsuario);");
-        $stmt->execute($data);
-    }
-    $data = array("idRespuesta" => $_POST["respuesta"], "idUsuario" => $_SESSION["idUsuario"]);
-    $stmt = $dbh->prepare("SELECT COUNT(*) FROM `LIKES_ANSWERS` WHERE `id_answer` = :idRespuesta AND `id_user` = :idUsuario LIMIT 1;");
-    $stmt->execute($data);
-    $response = $stmt->fetchColumn();
-
+    //$response=$_POST["respuesta"];
     close();
     echo $response;
     }
@@ -137,13 +139,8 @@ function mejorRespuesta(){
                 $count = $stmt->rowCount();
                 //si count es 1 significa que la update se ha realizado con exito
                 }
-
-                echo $idMejorRespuesta; //esta variable es la aintigua mejor respuesta, la mando para cabiar el color del tick de la antigua mejor respuesta.
-            }else {
-                //la pregunta no es del usuario
-                echo "0";
             }
-
             close();
+            echo $idMejorRespuesta; //esta variable es la aintigua mejor respuesta, la mando para cabiar el color del tick de la antigua mejor respuesta.
     }
 }

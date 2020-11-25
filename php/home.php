@@ -14,7 +14,6 @@ session_start();
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/likes.js"></script>
-    <link rel="stylesheet" href="http://localhost:8765/proyecto2/style/home.css">
 
     <title>Home</title>
 </head>

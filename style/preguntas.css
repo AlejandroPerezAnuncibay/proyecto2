@@ -55,8 +55,12 @@ section{
     font-size: 25px;
     word-break: break-word;
 }
+.info img{
+    width: 40%;
+    padding-top: 15px;
+}
 .des1{
-    grid-column: 2/3;
+    grid-column: 1/3;
     grid-row:3/4;
     display: flex;
     justify-content: space-between;
@@ -113,7 +117,7 @@ section{
 .des2{
     margin-top: 4%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding-bottom: 10px;
 }
 .info p{
@@ -133,7 +137,9 @@ section{
 .fa-heart, .fa-check{
     font-size: 36px;
 }
-
+.fa-check{
+    padding: 15px;
+}
 
 #replys{
     display: flex;
@@ -142,10 +148,10 @@ section{
     font-family: montserrat;
 }
 #replys .respIzq{
-    width: 40%;
+    width: 30%;
 }
 #replys .respDer{
-    width: 60%;
+    width: 70%;
 }
 #replys .respDer, .fecha{
     font-family: montserrat;
@@ -157,9 +163,19 @@ section{
 .fecha{
     font-size: 12px;
     padding-top: 5px;
+    padding-left: 15px;
 }
 .respuesta{
     border-bottom: 0.5px solid gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.mejorRespuesta{
+    background: none;
+    border: none;
+    outline: none;
 }
 @media (min-width: 768px) {
     /*Diseño Escritorio*/

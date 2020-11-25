@@ -450,6 +450,7 @@ function cargarPregunta(){
         echo "<div class='info'>
             <h1>".$fila["title"]."</h1>
             <p>".$fila["text"]."</p>
+            <img src='../media/jorge.jpg'>
         </div>";
         echo "<div id='etiquetas'>
         <button class='labels' >".$tag."</button>
@@ -517,11 +518,11 @@ function cargarRespuestas(){
         <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px;color:".buscarLikeRespuesta($idRespuesta)."'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
         echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorRespuesta"."' class='mejorRespuesta'>
         <i class='fas fa-check' style='color:".buscarMejorRespuesta($idRespuesta,$fila["id_question"])."'></i></button>";
-        echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
             <span class='fecha'>".timeAgo($fila["date"])."</span></div>
         </div>";
+        echo "<div class='respDer'> <p>".$fila["text"]."</p></div>";
         echo "</div>";
     }
     echo "</article>";

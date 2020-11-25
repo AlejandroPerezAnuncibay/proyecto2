@@ -150,20 +150,19 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        width: 35%;
-        flex-direction: column;
-    }
-    .fechaTag .labels{
+        flex-direction: row;
         width: 100%;
     }
-
+    .labels{
+        width: 30%;
+    }
     @media (min-width: 768px) {
         /*Diseño Escritorio*/
         main{
             margin: 0 8%;
         }
         .fechaTag .labels{
-            width: 30%;
+            width: 20%;
         }
         /*Primer div*/
         #titulop{
