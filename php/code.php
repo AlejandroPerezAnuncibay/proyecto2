@@ -458,7 +458,7 @@ function cargarPregunta(){
         echo "
         <div class='des1'>
             <h2 class='usu'>".$usuario."</h2>
-            <span class='fecha'>".$fila["date"]."</span>
+            <span class='fecha'>".timeAgo($fila["date"])."</span>
         </div>";
 
 
@@ -519,7 +519,7 @@ function cargarRespuestas(){
         echo " <p>".$fila["text"]."</p>";
         echo "<div class='des2'>
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
-            <span class='fecha'>".$fila["date"]."</span></div>
+            <span class='fecha'>".timeAgo($fila["date"])."</span></div>
         </div>";
     }
     echo "</article>";
@@ -558,7 +558,7 @@ function cargarUsuarioMenu($id){
         "apellido"=>$fila["surname"],
         "biografia"=>$fila["biography"],
         "email"=>$fila["email"],
-        "ultimoLogin"=>$fila["last_login_date"],
+        "ultimoLogin"=>timeAgo($fila["last_login_date"]),
         "foto"=>$fila["profile_image"]
     ];
     //Mediante esta consulta contamos el número de preguntas que haya realizado el usuario.
