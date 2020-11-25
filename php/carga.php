@@ -15,6 +15,7 @@ if (isset($_GET["insertar"]))
     $data = array('titulo'=>$_POST["title"], 'desc' => $_POST["description"], 'usuario'=>$idUsuario,'etiqueta'=>$eti);
     $stmt = $dbh->prepare("insert into QUESTIONS (title, text, id_user, id_topic) values(:titulo,:desc, :usuario,:etiqueta)");
     $stmt->execute($data);
+
     $lastId = $dbh->lastInsertId();
 
 
@@ -33,19 +34,20 @@ if (isset($_GET["insertar"]))
         || ($_FILES["imagen"]["type"] == "image/jpg")
         || ($_FILES["imagen"]["type"] == "image/png")) {
         // Ruta donde se guardarán las imágenes que subamos
-        $directorio = /*$_SERVER['DOCUMENT_ROOT'].*/
-            '/vagrant/images/userProfile/';
+        $directorio = '/vagrant/images/questionMedia/';
         // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
-        move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $_SESSION["nombreUsuario"] . "." . $extension);
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $lastId. "." . $extension);
 
     } else {
         //si no cumple con el formato
         echo "No se puede subir una imagen con ese formato ";
+        header("Location: index.php");
     }
-/*
-    $data = array('id'=>$lastId, 'ruta'=>$directorio .$lastId. "." . $extension);
-    $stmt = $dbh->prepare("UPDATE QUESTIONS SET questionImage = :ruta WHERE id_question=:id");
-    $stmt->execute($data);*/
+        $ruta=$directorio.$lastId.".".$extension;
+
+        $data = array('id'=>$lastId, 'ruta'=>$ruta);
+        $stmt = $dbh->prepare("UPDATE QUESTIONS SET questionImage = :ruta WHERE id_question=:id");
+        $stmt->execute($data);
     close();
     header("Location: home.php");
 }else {

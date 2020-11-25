@@ -40,7 +40,7 @@ require_once "code.php"?>
             }
 
         ?>
-     <form class="formulario" action="<?=$action?>" method="post">
+     <form class="formulario" action="<?=$action?>" method="post" enctype="multipart/form-data" >
            <?php   if(!isset($_GET["reply"])){
             echo "<label for='title'>Título</label>
             <input type='text' name='title' id='title' placeholder='Escriba aqui un breve titulo'>";

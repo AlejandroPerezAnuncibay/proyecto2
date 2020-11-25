@@ -53,7 +53,14 @@ session_start();
 
                 </div>
                 <!--Con esta peticion nos encargamos de generar todas las preguntas-->
-                <?php cargarTodasPreguntas()?>
+
+                <?php
+                if (isset($_GET["sin"])){
+                    cargarPreguntasSinRespuesta();
+                }else
+                    cargarTodasPreguntas();
+
+                    ?>
 
 
 

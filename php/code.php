@@ -343,7 +343,7 @@ function cargarTodasPreguntas()
         echo "<h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
-        echo "<div class='fechaTag'><span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div>";
+        echo "<div class='fechaTag'><span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div></div>";
 
 
 
@@ -652,4 +652,8 @@ function timeAgo($date){
 			$diff = round($diff);
 			return $diff . " " . $strTime[$i] . "(s) ago ";
 	   }	
+}
+
+function cargarPreguntasSinRespuesta(){
+
 }
