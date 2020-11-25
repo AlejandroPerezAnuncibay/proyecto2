@@ -76,6 +76,9 @@ i{
 i.fa-search{
     color: white;
 }
+#listabusqueda{
+    display: none;
+}
 .checkbtn {
     font-size: 30px;
     display: block;
