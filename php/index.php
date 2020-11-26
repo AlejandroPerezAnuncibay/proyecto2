@@ -45,7 +45,7 @@ session_start();
                 //En caso de que se necesite esta cookie mostrará un mensaje informativo al usuario
                 if (isset($_COOKIE["errorLog"])) {
                 ?>
-                    <p style="color: red;"> <?= $_COOKIE["errorLog"] ?> </p>
+                    <p id="errorLog"> <?= $_COOKIE["errorLog"] ?> </p>
 
                 <?php setcookie("errorLog", null, -1);
                 } ?>

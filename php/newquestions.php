@@ -52,7 +52,7 @@ require_once "code.php"?>
 
              echo "<label for='tags'>Etiquetas</label>";
              echo "<div id='etiquetas'>";
-             cargarEtiquetas();
+             cargarEtiquetasSinEnlace();
              echo"</div>";
              echo "<input type='text' name='tags' id='tags' hidden>
                 <div id='botones'>

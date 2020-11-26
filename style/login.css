@@ -123,6 +123,9 @@ input[type="file"]{
 #fotoperfil, #color, h1, .btncambiar{
     display: none;
 }
+#errorLog{
+    color: #ffb600;
+}
 
 @media screen and (min-width: 768px){
     body{
@@ -243,5 +246,8 @@ input[type="file"]{
     }
     #login{
         display: flex;
+    }
+    #errorLog{
+        color: black;
     }
 }

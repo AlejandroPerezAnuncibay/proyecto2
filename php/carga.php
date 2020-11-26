@@ -34,7 +34,7 @@ if (isset($_GET["insertar"]))
         || ($_FILES["imagen"]["type"] == "image/jpg")
         || ($_FILES["imagen"]["type"] == "image/png")) {
         // Ruta donde se guardarán las imágenes que subamos
-        $directorio = '/vagrant/images/questionMedia/';
+        $directorio = '../images/questionMedia/';
         // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
         move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $lastId. "." . $extension);
 
@@ -67,7 +67,7 @@ if (isset($_GET["insertar"]))
         || ($_FILES["imagen"]["type"] == "image/png")) {
         // Ruta donde se guardarán las imágenes que subamos
         $directorio = /*$_SERVER['DOCUMENT_ROOT'].*/
-            '/vagrant/images/userProfile/';
+            '../images/userProfile/';
         // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
         move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $_SESSION["nombreUsuario"] . "." . $extension);
 

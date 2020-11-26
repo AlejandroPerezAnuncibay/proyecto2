@@ -75,12 +75,11 @@ section{
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-}
-#etiquetas{
     grid-column: 2/3;
     grid-row: 2/3;
 
 }
+
 
 .labels {
     background-color: white;
@@ -91,6 +90,9 @@ section{
     text-align: center;
     font-size: 15px;
     cursor: pointer;
+}
+.labels a{
+    color: black;
 }
 .respu{
     border-bottom: solid 0.5px grey;
@@ -119,6 +121,7 @@ section{
     display: flex;
     justify-content: flex-start;
     padding-bottom: 10px;
+    flex-direction: column;
 }
 .info p{
     word-wrap: break-word;
@@ -199,6 +202,7 @@ section{
         grid-column: 2/3;
         grid-row: 2/3;
         width: 75%;
+        justify-content: space-between;
 
     }
     .des1{
