@@ -64,7 +64,7 @@
         font-size: 16px;
         cursor: pointer;
     }
-    .button1 a{
+    .button1 p{
         color: #ffb600;
 
     }
@@ -94,6 +94,9 @@
         cursor: pointer;
         width: 30%;
 
+    }
+    .labels a{
+        color:black;
     }
     .preguntas{
     display: grid;
@@ -155,6 +158,15 @@
     }
     .labels{
         width: 30%;
+    }
+
+    .titleBorrar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .titleBorrar i{
+        cursor: pointer;
     }
     @media (min-width: 768px) {
         /*Diseño Escritorio*/

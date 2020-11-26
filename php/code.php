@@ -232,13 +232,18 @@ function cargarPreguntas($id){
         while ($fila = $stmt->fetch()) {
             $likes = cargarLikesPregunta($fila["id_question"]);
             $replys = cargarReplysPregunta($fila["id_question"]);
+            if ($_SESSION["idUsuario"] === $fila["id_user"]){
+                $posicionBorrar = "inline-block";
+            }else{
+                $posicionBorrar = "none";
+            }
 
             $tag = cargarTag($fila["id_topic"]);
             echo "<div class='pregunta'>";
             echo "<div class='interaccion'>";
             echo "<p>Likes: ".$likes."</p><p>Replys: ".$replys."</p></div>";
             echo "<div class='titulotags'>";
-            echo "<h3 class='tituloPregunta'><a href='preguntas.php?pregunta=".$fila["id_question"]."'>" . $fila["title"] . "</a></h3>";
+            echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."'> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></a></div>";
             echo "<p> Tag: " . $tag . "</p></div>";
             echo "<div class='fechaPregunta'>";
             echo "<p>Creada: " . timeAgo($fila["date"]) . "</p></div></div>";
@@ -324,9 +329,21 @@ function cargarTodasPreguntas()
 
     $stmt->execute();
     $contador = 0;
+    if(isset($_SESSION["idUsuario"])){
+        $posicion = "inline-block";
+    }else{
+        $posicion = "none";
+    }
+
     //Mientras se encuentren preguntas, esta repetitiva se encarga de generar la estructura HTML necesaria.
     while ($fila = $stmt->fetch()) {
+        if ($_SESSION["idUsuario"] === $fila["id_user"]){
+            $posicionBorrar = "inline-block";
+        }else{
+            $posicionBorrar = "none";
+        }
 
+        
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         $likes = cargarLikesPregunta($fila["id_question"]);
@@ -336,11 +353,11 @@ function cargarTodasPreguntas()
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
 
         echo "<div class='iconos'>";
-        echo "<button id='".$fila["id_question"]."'  class='like'><i class='fas fa-heart' style='font-size:36px;color:".buscarLike($fila["id_question"])."'  value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+        echo "<button id='".$fila["id_question"]."' style='display:$posicion;' class='like'><i class='fas fa-heart' style='font-size:36px;color:".buscarLike($fila["id_question"])."'  value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador +1;
-        echo "<h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4>";
+        echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."' <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></div>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
         echo "<div class='fechaTag'><span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div></div>";
@@ -399,7 +416,7 @@ function cargarEtiquetas(){
 
     $stmt->execute();
     while ($fila = $stmt->fetch()) {
-       echo  "<a href='home.php?tag='" .$fila["name"]. " ></a><button class='labels'  value='".$fila["name"]."' type='button' >".$fila["name"]."</button>";
+       echo  " <button class='labels'  value='<".$fila["name"].">' type='button' > <a href='home.php?tag=".$fila["id_topic"]."'>".$fila["name"]."</a></button>";
 
     }
     close();
@@ -429,6 +446,11 @@ function cargarPregunta(){
     require_once "bbdd.php";
     $dbh = connect();
     $data = array( 'id' => $_GET["pregunta"]);
+    if(isset($_SESSION["idUsuario"])){
+        $posicion = "inline-block";
+    }else{
+        $posicion = "none";
+    }
 
     //Seleccionamos los datos a recoger.
     $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS where id_question = :id");
@@ -442,19 +464,32 @@ function cargarPregunta(){
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         $likes = cargarLikesPregunta($fila["id_question"]);
         $replys = cargarReplysPregunta($fila["id_question"]);
-        echo "<div class='iconos'>";
+        if (isset($fila["questionImage"]))
+        {
+            $posicion = "block";
+        }else{
+            $posicion = "none";
+        }
+    if ($_SESSION["idUsuario"] === $fila["id_user"]){
+        $posicionBorrar = "inline-block";
+    }else{
+        $posicionBorrar = "none";
+    }
+
+    echo "<div class='iconos'>";
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
-        echo "<button  id='".$fila["id_question"]."' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px;color:".buscarLike($fila["id_question"])."'></i></button>
-           <a href='newquestions.php?reply=".$fila["id_question"]."'> <i class='fa fa-reply' style='font-size:36px'></i></a></div>";
+        echo "<button  id='".$fila["id_question"]."' style='display:$posicion;' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px;color:".buscarLike($fila["id_question"])."'></i></button>
+          </div>";
             $contador = $contador +1;
         echo "<div class='info'>
-            <h1>".$fila["title"]."</h1>
+            <div id='titleBorrar'>
+            <h1>".$fila["title"]."</h1> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></div>
             <p>".$fila["text"]."</p>
-            <img src='../media/jorge.jpg'>
+            <img alt='' style='display:".$posicion.";' src='".$fila["questionImage"]."'>
         </div>";
         echo "<div id='etiquetas'>
-        <button class='labels' >".$tag."</button>
-       
+        <button class='labels' ><a href='home.php?tag=".$fila["id_topic"]."' >".$tag."</a></button>
+        <a class='labels' style='background: black;color: white' href='newquestions.php?reply=".$fila["id_question"]."'>RESPONDER</a>
         </div>";
         echo "
         <div class='des1'>
@@ -504,6 +539,12 @@ function cargarRespuestas(){
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
     $stmt->execute($data);
+    if(isset($_SESSION["idUsuario"])){
+        $posicion = "inline-block";
+    }else{
+        $posicion = "none";
+    }
+
     $contador = 0;
     echo "<h1 class='respu'>RESPUESTAS</h1> <article id='replys'>";
 
@@ -514,8 +555,8 @@ function cargarRespuestas(){
         $contador = $contador +1;
         echo "<div class='respuesta'>";
         echo "<div class='respIzq'><h2>RESPUESTA ".$contador."</h2>";
-        echo "<button  id='".$idRespuesta."-".$fila["id_question"]."' class='likeRespuesta'>
-        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='font-size:15px;color:".buscarLikeRespuesta($idRespuesta)."'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
+        echo "<button  id='".$idRespuesta."-".$fila["id_question"]."'  class='likeRespuesta'>
+        <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='display:$posicion;color:".buscarLikeRespuesta($idRespuesta)."'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
         echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorRespuesta"."' class='mejorRespuesta'>
         <i class='fas fa-check' style='color:".buscarMejorRespuesta($idRespuesta,$fila["id_question"])."'></i></button>";
         echo "<div class='des2'>
@@ -681,6 +722,11 @@ function cargarPreguntasSinRespuesta(){
     $contador = 0;
     //Mientras se encuentren preguntas, esta repetitiva se encarga de generar la estructura HTML necesaria.
     while ($fila = $stmt->fetch()) {
+        if ($_SESSION["idUsuario"] === $fila["id_user"]){
+            $posicionBorrar = "inline-block";
+        }else{
+            $posicionBorrar = "none";
+        }
 
         $tag = cargarTag($fila["id_topic"]);
         $usuario = cargarCreadorPregunta($fila["id_user"]);
@@ -695,11 +741,87 @@ function cargarPreguntasSinRespuesta(){
                    <a href='preguntas.php?pregunta=" . $fila["id_question"] . "' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador + 1;
-        echo "<h4><a href='preguntas.php?pregunta=" . $fila["id_question"] . "'> " . $fila["title"] . "</a></h4>";
+        echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."'> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></a></div>";
         echo "<a href='user.php?id=" . $fila["id_user"] . "'><h5>$usuario</h2></a>";
         echo "<p>" . $fila["text"] . "</p></div>";
         echo "<div class='fechaTag'><span class='fecha'>" . timeAgo($fila["date"]) . "</span><span class='labels'>" . $tag . "</span></div></div>";
 
     }
         close();
+}
+
+function cargarPreguntasPorTag(){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array('id'=>$_GET["tag"]);
+    //Seleccionamos los datos a recoger.
+    $stmt = $dbh->prepare("SELECT  * FROM QUESTIONS where id_topic = :id order by id_question desc");
+    //Seleccionamos como vamos a leer los datos.
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    $stmt->execute($data);
+    $contador = 0;
+    if(isset($_SESSION["idUsuario"])){
+        $posicion = "inline-block";
+    }else{
+        $posicion = "none";
+    }
+
+
+    //Mientras se encuentren preguntas, esta repetitiva se encarga de generar la estructura HTML necesaria.
+    while ($fila = $stmt->fetch()) {
+
+        if ($_SESSION["idUsuario"] === $fila["id_user"]){
+            $posicionBorrar = "inline-block";
+        }else{
+            $posicionBorrar = "none";
+        }
+
+        $tag = cargarTag($fila["id_topic"]);
+        $usuario = cargarCreadorPregunta($fila["id_user"]);
+        $likes = cargarLikesPregunta($fila["id_question"]);
+        $replys = cargarReplysPregunta($fila["id_question"]);
+
+        echo "<div class='preguntas'>";
+        echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
+
+        echo "<div class='iconos'>";
+        echo "<button id='".$fila["id_question"]."' style='display:$posicion;' class='like'><i class='fas fa-heart' style='font-size:36px;color:".buscarLike($fila["id_question"])."'  value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px'></i></button>
+                   <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
+        echo "<div class='info'>";
+        $contador = $contador +1;
+        echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."' <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></div>";
+        echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
+        echo "<p>".$fila["text"]."</p></div>";
+        echo "<div class='fechaTag'><span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div></div>";
+
+
+    }
+    close();
+}
+
+function cargarEtiquetasSinEnlace(){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $stmt = $dbh->prepare("SELECT  * FROM TOPICS");
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    $stmt->execute();
+    while ($fila = $stmt->fetch()) {
+        echo  " <button class='labels'  value='".$fila["name"]."' type='button' >".$fila["name"]."</button>";
+
+    }
+    close();
+}
+
+function borrarPregunta(){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array('id'=>$_GET["borrar"]);
+    $stmt = $dbh->prepare("DELETE FROM QUESTIONS WHERE id_question = :id");
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    $stmt->execute($data);
+    header("Location: home.php");
+    close();
 }

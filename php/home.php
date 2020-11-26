@@ -56,6 +56,10 @@ session_start();
                 <?php
                 if (isset($_GET["sin"])){
                     cargarPreguntasSinRespuesta();
+                }elseif(isset($_GET["tag"])){
+                    cargarPreguntasPorTag();
+                }elseif(isset($_GET["borrar"])){
+                    borrarPregunta();
                 }else
                     cargarTodasPreguntas();
 

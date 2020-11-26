@@ -83,7 +83,9 @@ main{
 
 }
 .box{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    margin-top: 6vh;
 }
 .button2{
 
@@ -100,6 +102,9 @@ main{
     color:white;
 
 }
+.labels a{
+    color: black;
+}
 @media (min-width: 768px) {
     /*Diseño Escritorio*/
     main {
@@ -110,6 +115,7 @@ main{
     .box{
          display: flex;
          justify-content: space-around;
+         flex-direction: row;
          margin-top: 30px;
      }
     #principal{
