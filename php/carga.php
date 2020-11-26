@@ -44,7 +44,8 @@ if (isset($_GET["insertar"]))
         header("Location: index.php");
     }
         $ruta=$directorio.$lastId.".".$extension;
-
+    //Esta funcion se encarga de guardar la ruta con el ultimo id generado para poder displayear la imagen asociada a
+    //la pregunta
         $data = array('id'=>$lastId, 'ruta'=>$ruta);
         $stmt = $dbh->prepare("UPDATE QUESTIONS SET questionImage = :ruta WHERE id_question=:id");
         $stmt->execute($data);
