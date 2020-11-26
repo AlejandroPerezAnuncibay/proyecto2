@@ -12,7 +12,7 @@ if(isset($_SESSION["idUsuario"])){
     <title>Perfil de usuario</title>
     <link rel="stylesheet" href="../style/users.css">
     <link rel="stylesheet" href="../style/modifyUser.css">
-    <link rel="icon" type="image/png" href="../media/shortlogo.png">
+    <link rel="icon" type="image/png" href="../media/shortlogoVectorizado.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/user.js"></script>
@@ -68,7 +68,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
     <div id="popup1" class="overlay">
         <div class="popup">
             <h2>Modificar usuario</h2>
-            <a class="close" href="#">&times;</a>
+            <a class="closePop" href="#">&times;</a>
             <div class="content">
                 <form enctype="multipart/form-data" method="post" action="carga.php" >
                     <i class="fa fa-user-circle">&nbsp;
@@ -101,7 +101,7 @@ $persona = cargarUsuario($_SESSION["idUsuario"]);
     <div id="popup2" class="overlay">
         <div class="popup">
             <h3>Cambiar contraseña</h3>
-            <a class="close" href="#">&times;</a>
+            <a class="closePop" href="#">&times;</a>
             <div class="content">
                 <form enctype="multipart/form-data" method="post" action="carga.php" >
                     <i class="fa fa-lock">&nbsp;

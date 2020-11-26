@@ -14,7 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../style/login.css">
-    <link rel="icon" type="image/png" href="../media/shortlogo.png">
+    <link rel="icon" type="image/png" href="../media/shortlogoVectorizado.png">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="664586227547-s57mbe513n8ene86tmeemnt9iil6b1kf.apps.googleusercontent.com">
@@ -33,7 +33,7 @@ session_start();
             <input type="button" value="Log in" class="btnSignin active">
             <input type="button" value="Sign up" class="btnSignup unactive changeForm">
         </div>
-        <img src="../media/shortlogo.svg" alt="Logo" class="imgMovil">
+        <img src="../media/shortlogoVectorizado.png" alt="Logo" class="imgMovil">
         <form action="./code.php" method="post">
             <h1>Log in</h1>
             <i class="fa fa-user-circle">&nbsp;
@@ -86,7 +86,7 @@ session_start();
             <input type="button" value="Log in" class="btnSignin unactive changeForm">
             <input type="button" value="Sign up" class="btnSignup active">
         </div>
-        <img src="../media/shortlogo.svg" alt="Logo" class="imgMovil">
+        <img src="../media/shortlogoVectorizado.png" alt="Logo" class="imgMovil">
         <form action="./code.php" method="post">
             <h1>Sign up</h1>
             <i class="fa fa-user-circle">&nbsp;

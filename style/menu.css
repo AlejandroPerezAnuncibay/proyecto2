@@ -124,6 +124,8 @@ form.buscador button{
     font-size: 17px;
     border-left: none;
     cursor: pointer;
+    border: none;
+    outline: none;
     border-radius: 0 5px 5px 0;
 }
 

@@ -29,9 +29,8 @@
     }
 
     #imgPcs {
-
         width: 35%;
-
+        margin: 9px;
     }
     #color{
     display: flex;

@@ -102,11 +102,32 @@
     width: 90vw;
 }
 .pregunta{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 70% 30%;
+    max-width: 100%;
+    padding-bottom: 3%;
     border-top: 1px solid #ffb600;
     padding-top: 2vh;
     margin: 0 auto;
     margin-bottom: 2vh;
     width:90%;
+}
+.pregunta .interaccion{
+    grid-row: 1/2;
+    margin: 2%;
+}
+.pregunta .titulotags{
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+}
+.pregunta .fechaPregunta{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+    grid-column: 3/1;
 }
 h3 a{
     color: black;
@@ -164,6 +185,9 @@ i{
     border-bottom: 1px solid #ffb600;
 
 }
+i.fa-trash{
+    border: none;
+}
 i#biografia{
     margin-top: 20px;
     border: none;
@@ -186,7 +210,25 @@ i.fa-lock-open{
 #1popup{
     font-family: elephans;
 }
+.labels {
+    background-color: white;
+    color:black;
+    border: 2px solid #ffb600;
+    margin:1.5%;
+    padding: 7px 15px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
 
+}
+.titleBorrar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h4 a{
+    color: black;
+}
 @media screen and (min-width: 768px) {
     #informacionTotal{
         width: 60%;
@@ -238,6 +280,14 @@ i.fa-lock-open{
     .pregunta{
         width:60%;
 
+    }
+    .pregunta .fechaPregunta{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-direction: row;
+        width: 100%;
+        grid-column: 3/1;
     }
 }
 

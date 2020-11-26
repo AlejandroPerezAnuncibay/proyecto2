@@ -11,6 +11,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../style/menu.css">
     <link rel="stylesheet" href="../style/home.css">
+    <link rel="icon" type="image/png" href="../media/shortlogoVectorizado.png">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="../js/jquery-3.5.1.js"></script>
     <script src="../js/likes.js"></script>
@@ -37,7 +38,7 @@ session_start();
             <div id="primero">
                 <h1 id="titulop">PREGÚNTANOS</h1>
                 <div id="color">
-                    <img src="../media/shortlogo.svg" alt="Logo" id="imgPcs">
+                    <img src="../media/shortlogoVectorizado.png" alt="Logo" id="imgPcs">
                     <h2 id="nombreEmpresa">Aergibide</h2>
                 </div>
                 <a href="newquestions.php"><div class="button1"><p>Nueva Pregunta</p></div></a>

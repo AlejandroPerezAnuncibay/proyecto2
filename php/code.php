@@ -214,10 +214,9 @@ function cargarPreguntas($id){
             echo "<p>Likes: ".$likes."</p><p>Replys: ".$replys."</p></div>";
             echo "<div class='titulotags'>";
             echo "<h3 class='tituloPregunta'><a href='preguntas.php?pregunta=".$fila["id_question"]."'>" . $fila["title"] . "</a></h3>";
-            echo "<p> Tag: " . $tag . "</p></div>";
+            echo "</div>";
             echo "<div class='fechaPregunta'>";
-            echo "<p>Creada el: " . timeAgo($fila["date"]) . "</p></div></div>";
-
+            echo "<p>Creada el: " . timeAgo($fila["date"]) . "</p> <p class='labels'>".$tag."</p></div></div>";
 
         }
     }
@@ -243,10 +242,9 @@ function cargarPreguntas($id){
             echo "<div class='interaccion'>";
             echo "<p>Likes: ".$likes."</p><p>Replys: ".$replys."</p></div>";
             echo "<div class='titulotags'>";
-            echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."'> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></a></div>";
-            echo "<p> Tag: " . $tag . "</p></div>";
+            echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."'> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></a></div></div>";
             echo "<div class='fechaPregunta'>";
-            echo "<p>Creada: " . timeAgo($fila["date"]) . "</p></div></div>";
+            echo "<p>Creada: " . timeAgo($fila["date"]) . "</p><p class='labels'> ".$tag."</p></div></div>";
 
 
             //Estructura a generar
@@ -633,7 +631,6 @@ function cargarFotoPerfilMenu($id){
     }
 }
 
-//Esta funcion se encarga de cargar contar las respuestas a partir de un id de pregunta
 function cargarReplysPregunta($id){
     require_once "bbdd.php";
     $dbh = connect();
@@ -646,13 +643,10 @@ function cargarReplysPregunta($id){
     $count = $stmt->fetchColumn();
     close();
 
-    //Devolvemos el resultado del count
+
     return $count;
 
 }
-
-//Esta funcion se encarga de saber si con el usuario que esta logueado le haya dado like a alguna pregunta y se lo haga
-//saber poniendo el like en rojo
 function buscarLike($idPregunta){
     require_once "bbdd.php";
     $dbh = connect();
@@ -661,15 +655,13 @@ function buscarLike($idPregunta){
     $stmt->execute($data);
     $respuesta = $stmt->fetchColumn();
     close();
-    //Devolvemos el color que le queremos poner al boton del like
+
     if ($respuesta==1){
         return "red";
     }else {
         return "black";
     }
 }
-
-//Es la misma funcion que la anterior pero esta vez nos encargamos de saber si tienes like aplicado a una respuesta
 function buscarLikeRespuesta($idAnswer){
     require_once "bbdd.php";
     $dbh = connect();
@@ -685,9 +677,6 @@ function buscarLikeRespuesta($idAnswer){
         return "black";
     }
 }
-
-//Esta funcion se encarga de buscar si la respuesta a la pregunta le ha servido al usuario y de esta manera la marca
-//para que el resto de usuarios sepan que esa respuesta esla valida
 function buscarMejorRespuesta($idRespuesta,$idPregunta){
     require_once "bbdd.php";
     $dbh = connect();
@@ -704,9 +693,6 @@ function buscarMejorRespuesta($idRespuesta,$idPregunta){
     }
 
 }
-
-//Esta funcion se encarga de devolver el tiempo que ha pasado desde que se genero la pregunta hasta este mismo momento,
-// de esta manera el usuario ve hace cuanto tiempo se creo la pregunta.
 function timeAgo($date){
 	   $timestamp = strtotime($date);	
 	   
@@ -725,7 +711,6 @@ function timeAgo($date){
 	   }	
 }
 
-//Esta funcion se encarga de cargar todas las preguntas que no tengan una respuesta, una manera de ordenarlas
 function cargarPreguntasSinRespuesta(){
     require_once "bbdd.php";
     $dbh = connect();
@@ -762,7 +747,7 @@ function cargarPreguntasSinRespuesta(){
     }
         close();
 }
-//Esta funcion se encarga de recoger las preguntas con el mismo tag, para poder ordenarlas por tags.
+
 function cargarPreguntasPorTag(){
     require_once "bbdd.php";
     $dbh = connect();
@@ -773,10 +758,7 @@ function cargarPreguntasPorTag(){
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
     $stmt->execute($data);
-
     $contador = 0;
-    //Este if se encarga de comprobar que haya usuario logueado para que de esta manera le deje interactuar con el
-    //boton de like.
     if(isset($_SESSION["idUsuario"])){
         $posicion = "inline-block";
     }else{
@@ -786,8 +768,7 @@ function cargarPreguntasPorTag(){
 
     //Mientras se encuentren preguntas, esta repetitiva se encarga de generar la estructura HTML necesaria.
     while ($fila = $stmt->fetch()) {
-        //Esta funcion se encarga de, que si eres el usuario creador de la pregunta te enseñe un boton para poder
-        //eliminar la pregunta
+
         if ($_SESSION["idUsuario"] === $fila["id_user"]){
             $posicionBorrar = "inline-block";
         }else{
@@ -817,8 +798,6 @@ function cargarPreguntasPorTag(){
     close();
 }
 
-
-//Una funcion para poder generar las etiquetas en NewQuestions
 function cargarEtiquetasSinEnlace(){
     require_once "bbdd.php";
     $dbh = connect();
@@ -833,7 +812,6 @@ function cargarEtiquetasSinEnlace(){
     close();
 }
 
-//Funcion para eliminar una pregunta por su id,
 function borrarPregunta(){
     require_once "bbdd.php";
     $dbh = connect();

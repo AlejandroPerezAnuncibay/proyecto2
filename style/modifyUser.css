@@ -65,7 +65,7 @@ body {
 .popup h3{
     font-size: 36px;
 }
-.popup .close {
+.popup .closePop {
     position: absolute;
     top: 20px;
     right: 30px;
