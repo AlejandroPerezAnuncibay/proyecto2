@@ -112,7 +112,7 @@ function mejorRespuesta(){
             $stmt->execute($data);
             $response = $stmt->fetchColumn();
 
-            //si la $response es 1 es que la pregunta es del usuario logeado, por lo que podra marcar una respuesta como "la mejor"
+            //si la respuesta es 1 es que la pregunta es del usuario logeado, por lo que podra marcar una respuesta como "la mejor"
             if ($response==1){
                 //antes de marcar una respuesta como la mejor tenemos que buscar si hay alguna otra respuesta como la mejor para cambiarlas
                 $data = array("idPregunta"=> $_POST["pregunta"]);
@@ -138,8 +138,6 @@ function mejorRespuesta(){
                 $count = $stmt->rowCount();
                 //si count es 1 significa que la update se ha realizado con exito
                 }
-            } else{
-                $idMejorRespuesta = "no es el creador";
             }
             close();
             echo $idMejorRespuesta; //esta variable es la aintigua mejor respuesta, la mando para cabiar el color del tick de la antigua mejor respuesta.
