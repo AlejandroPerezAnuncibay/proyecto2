@@ -556,10 +556,11 @@ function cargarRespuestas(){
     while ($fila = $stmt->fetch()) {
         $usuario = cargarCreadorPregunta($fila["id_user"]);
         $idRespuesta = $fila["id_answer"];
-
+        $likes = contarLikesRespuesta($fila["id_answer"]);
         $contador = $contador +1;
         echo "<div class='respuesta'>";
         echo "<div class='respIzq'><h2>RESPUESTA ".$contador."</h2>";
+        echo "<h2>Likes: ".$likes." </h2>";
         echo "<button  id='".$idRespuesta."-".$fila["id_question"]."'  class='likeRespuesta'>
         <i class='fas fa-heart' value='".$contador."' id='likeRespuesta".$idRespuesta."' style='display:$posicion;color:".buscarLikeRespuesta($idRespuesta)."'></i></button>";//;color:".buscarLikeRespuesta($fila["id_question"])."
         echo "<button id='".$idRespuesta."-".$fila["id_question"]."-"."mejorRespuesta"."' class='mejorRespuesta'>
@@ -829,4 +830,20 @@ function borrarPregunta(){
     $stmt->execute($data);
     header("Location: home.php");
     close();
+}
+
+function contarLikesRespuesta($id){
+    require_once "bbdd.php";
+    $dbh = connect();
+
+    $data = array( 'id' => $id);
+    $stmt = $dbh->prepare("SELECT  count(*) FROM LIKES_ANSWERS where id_answer = :id");
+
+
+    $stmt->execute($data);
+    $count = $stmt->fetchColumn();
+    close();
+
+
+    return $count;
 }

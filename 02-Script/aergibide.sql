@@ -219,3 +219,17 @@ ALTER TABLE `QUESTIONS`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `TOPICS` (`id_topic`, `name`) VALUES
+(1, 'Alas'),
+(2, 'Motor'),
+(3, 'Vuelos'),
+(4, 'Pasajeros'),
+(5, 'Ruedas'),
+(6, 'Combustible'),
+(7, 'Aterrizajes'),
+(8, 'Despegue'),
+(9, 'Destinos'),
+(10, 'Tripulacion'),
+(11, 'Emergencias'),
+(12, 'Prioritarios');
