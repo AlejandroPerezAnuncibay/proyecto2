@@ -110,7 +110,6 @@
     border-top: 1px solid #ffb600;
     padding-top: 2vh;
     margin: 0 auto;
-    margin-bottom: 2vh;
     width:90%;
 }
 .pregunta .interaccion{
@@ -125,12 +124,17 @@
 .pregunta .fechaPregunta{
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-direction: row;
+
     grid-column: 3/1;
 }
-h3 a{
+h2 a{
     color: black;
+}
+.titulotags p{
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 input#file-upload-button{
     display: none;

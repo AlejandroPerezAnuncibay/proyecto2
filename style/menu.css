@@ -25,6 +25,7 @@ input:active,button:active{
     font-family: "elephans";
     position: fixed;
     top: 0;
+    padding: 15px;
 }
 i{
     color:black;
@@ -97,10 +98,13 @@ i.fa-search{
 .buscador{
     width:50%;
     border-radius: 6%;
-    display: flex;
+    display: none;
     margin-right: 17px;
 }
 
+#logoMvl{
+    width: 12%;
+}
 /*Barra buscador*/
 form.buscador input[type=text] {
     padding: 10px;
@@ -169,6 +173,17 @@ i.fa-search{
 }
 i.fa-door-open{
     display: block;
+}
+#logoAergibide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#logoAergibide #logoMvl{
+    width: 15%;
+}
+#logoAergibide #nombreAergibide{
+    font-size: 44px;
 }
 /*DISEÑO ESCRITORIO*/
 @media (min-width: 768px){
@@ -265,5 +280,8 @@ i.fa-door-open{
     }
     i.fa-door-open{
         display: none;
+    }
+    #logoAergibide #logoMvl{
+        width: 9%;
     }
 }

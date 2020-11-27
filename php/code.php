@@ -213,8 +213,8 @@ function cargarPreguntas($id){
             echo "<div class='interaccion'>";
             echo "<p>Likes: ".$likes."</p><p>Replys: ".$replys."</p></div>";
             echo "<div class='titulotags'>";
-            echo "<h3 class='tituloPregunta'><a href='preguntas.php?pregunta=".$fila["id_question"]."'>" . $fila["title"] . "</a></h3>";
-            echo "</div>";
+            echo "<h2 class='tituloPregunta'><a href='preguntas.php?pregunta=".$fila["id_question"]."'>" . $fila["title"] . "</a></h2>";
+            echo "<p>".$fila["text"]."</p></div>";
             echo "<div class='fechaPregunta'>";
             echo "<p>Creada el: " . timeAgo($fila["date"]) . "</p> <p class='labels'>".$tag."</p></div></div>";
 
@@ -242,7 +242,8 @@ function cargarPreguntas($id){
             echo "<div class='interaccion'>";
             echo "<p>Likes: ".$likes."</p><p>Replys: ".$replys."</p></div>";
             echo "<div class='titulotags'>";
-            echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."'> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></a></div></div>";
+            echo "<div class='titleBorrar'><h2><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h2><a href='home.php?borrar=".$fila["id_question"]."'> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></a>
+           </div> <p>".$fila["text"]."</p></div>";
             echo "<div class='fechaPregunta'>";
             echo "<p>Creada: " . timeAgo($fila["date"]) . "</p><p class='labels'> ".$tag."</p></div></div>";
 
@@ -474,9 +475,15 @@ function cargarPregunta(){
         $posicionBorrar = "none";
     }
 
+    if (isset($_SESSION["idUsuario"])){
+        $like = "block";
+    }else{
+        $like="none";
+    }
+
     echo "<div class='iconos'>";
         echo "<p> Likes: <span id='contLikes".$fila["id_question"]."'>".$likes."</span><br>Replys: <span id='contReplys".$fila["id_question"]."'>".$replys."</span></p>";
-        echo "<button  id='".$fila["id_question"]."' style='display:$posicion;' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='font-size:36px;color:".buscarLike($fila["id_question"])."'></i></button>
+        echo "<button  id='".$fila["id_question"]."' style='display:$posicion;' class='like'><i class='fas fa-heart' value='".$contador."' id='like".$fila["id_question"]."' style='display:".$like.";font-size:36px;color:".buscarLike($fila["id_question"])."'></i></button>
           </div>";
             $contador = $contador +1;
         echo "<div class='info'>
@@ -561,7 +568,7 @@ function cargarRespuestas(){
             <a href='user.php?id=".$fila["id_user"]."'><h2 class='usu'>$usuario</h2></a>
             <span class='fecha'>".timeAgo($fila["date"])."</span></div>
         </div>";
-        echo "<div class='respDer'> <p>".$fila["text"]."</p></div>";
+        echo "<div class='respDer'> <p>".$fila["text"]."</p><img alt='' src='".$fila["answerImage"]."'></div>";
         echo "</div>";
     }
     echo "</article>";

@@ -112,7 +112,7 @@ session_start();
             <input type="submit" value="Sign up" onclick="return validateForm('signup')">
             <input type="button" value="Log in" class="btnSignmbl changeForm">
         </form>
-        <p class="newaccount">Dont have an account? <a href="home.php"> Enter as a guest</a></p>
+        <p class="newaccount"><a href="home.php">Dont have an account?  Enter as a guest</a></p>
     </div>
 </body>
 

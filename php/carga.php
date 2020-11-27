@@ -2,9 +2,50 @@
 
 session_start();
 if (isset($_GET["reply"])){
-    insertarRespuesta($_POST["description"]);
-}else
-if (isset($_GET["insertar"]))
+
+    require_once "bbdd.php";
+    $dbh = connect();
+    $idUsuario = $_SESSION["idUsuario"];
+
+    $data = array( 'desc' => $_POST["description"], 'usuario'=>$idUsuario, 'idPregunta'=>$_GET["reply"]);
+
+    $stmt = $dbh->prepare("insert into ANSWERS (text,id_question, id_user) values(:desc, :idPregunta,:usuario)");
+    $stmt->execute($data);
+    $lastId = $dbh->lastInsertId();
+
+
+    $nombre_img = $_FILES['imagen']['name'];
+    $tipo = $_FILES['imagen']['type'];
+    $tamano = $_FILES['imagen']['size'];
+    $extension = pathinfo($nombre_img, PATHINFO_EXTENSION);
+    $directorio = "";
+
+
+
+    if (($_FILES["imagen"]["type"] == "image/gif")
+        || ($_FILES["imagen"]["type"] == "image/jpeg")
+        || ($_FILES["imagen"]["type"] == "image/jpg")
+        || ($_FILES["imagen"]["type"] == "image/png")) {
+        // Ruta donde se guardarán las imágenes que subamos
+        $directorio = '../images/answerMedia/';
+        // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio .$_GET["reply"]. $lastId. "." . $extension);
+
+    } else {
+        //si no cumple con el formato
+        echo "No se puede subir una imagen con ese formato ";
+        header("Location: index.php");
+    }
+    $ruta=$directorio.$_GET["reply"].$lastId.".".$extension;
+
+    $data = array('id'=>$lastId, 'ruta'=>$ruta, 'idPregunta'=>$_GET["reply"]);
+    $stmt = $dbh->prepare("UPDATE ANSWERS SET answerImage = :ruta WHERE id_question=:idPregunta AND id_answer=:id");
+    $stmt->execute($data);
+
+    close();
+
+    header("Location: preguntas.php?pregunta=".$_GET["reply"]);
+}elseif (isset($_GET["insertar"]))
 {
     //Como el elemento es un arreglos utilizamos foreach para extraer todos los valores
 
@@ -155,18 +196,7 @@ function sacarIdEtiqueta($etiqueta){
 function insertarRespuesta($descripcion){
 
 
-    require_once "bbdd.php";
-    $dbh = connect();
-    $idUsuario = $_SESSION["idUsuario"];
 
-    $data = array( 'desc' => $descripcion, 'usuario'=>$idUsuario, 'idPregunta'=>$_GET["reply"]);
-
-    $stmt = $dbh->prepare("insert into ANSWERS (text,id_question, id_user) values(:desc, :idPregunta,:usuario)");
-    $stmt->execute($data);
-
-    close();
-
-    header("Location: preguntas.php?pregunta=".$_GET["reply"]);
 
 
 

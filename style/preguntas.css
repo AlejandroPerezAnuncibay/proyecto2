@@ -149,12 +149,13 @@ section{
     flex-direction: column;
     justify-content: space-between;
     font-family: montserrat;
+    padding-bottom: 31px;
 }
 #replys .respIzq{
-    width: 30%;
+    width: 36%;
 }
 #replys .respDer{
-    width: 70%;
+    width: 64%;
 }
 #replys .respDer, .fecha{
     font-family: montserrat;
@@ -166,7 +167,6 @@ section{
 .fecha{
     font-size: 12px;
     padding-top: 5px;
-    padding-left: 15px;
 }
 .respuesta{
     border-bottom: 0.5px solid gray;
@@ -174,11 +174,22 @@ section{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding-top: 19px;
 }
 .mejorRespuesta{
     background: none;
     border: none;
     outline: none;
+}
+#titleBorrar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.respDer img{
+    width: 40%;
+    margin-top: 15px;
 }
 @media (min-width: 768px) {
     /*Diseño Escritorio*/
@@ -213,6 +224,17 @@ section{
         flex-direction: column;
         /* margin-top: inherit;*/
     }
+    #replys{
+        padding-bottom: 0;
+    }
+    .respIzq{
+        width: 30%;
+    }
+    .respDer{
+        width: 70%;
+    }
+    .fecha{
+        padding-left: 15px;
 
-
+    }
 }

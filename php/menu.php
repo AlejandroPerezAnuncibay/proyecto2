@@ -27,12 +27,12 @@
     <ul id="menuList">
         <li id="btnCal"><a class="active" href="home.php">Inicio</a></li>
         <li id="btnUsu"><a href="user.php">Mi perfil</a></li>
-        <li><a href="newquestions.php">Nuevas Preguntas</a></li>
+        <li><a href="newquestions.php">Nueva Pregunta</a></li>
         <li><a href="home.php?sin=true">Sin responder</a></li>
         <li class="salir"><a href="cerrarsesion.php">Cerrar sesion</a></li>
     </ul>
 
-    <form class="buscador" action="#">
+    <!--<form class="buscador" action="#">
         <input type="text" placeholder="Search.." name="search" id="searchInput">
         <button type="submit"><i class="fa fa-search"></i></button>
         <div id="listabusqueda">
@@ -46,7 +46,11 @@
     </div>
        
     </form>
-    
+    -->
+    <div id="logoAergibide">
+        <img src="../media/shortlogoVectorizado.png" id="logoMvl">
+        <p id="nombreAergibide">AERGIBIDE</p>
+    </div>
     <!--Cargamos datos del usuario cogiendo el ID de la sesion del usuario logeado-->
     <?php $idUsuario = $_SESSION["idUsuario"];?>
     <?php $usuario = cargarUsuarioMenu($idUsuario);?>
@@ -64,4 +68,6 @@
     <?php
     }
     ?>
+</nav>
+</header>
 </html>
