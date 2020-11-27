@@ -67,12 +67,21 @@ function mejorRespuesta(){
         url: "../php/ajax.php",
         data: {action: "mejorRespuesta", respuesta: idRespuesta, pregunta: idPregunta},
         success: function (response) {
-            if (response!=0){
+            if (response=="no es el creador"){
+                $("#"+idBoton).children().css("color", "black");
+            } else {
                 //si response es cero significa que el usuario no es el dueño de la pregunta, por lo que no puede elegir la mejor respuesta
                 //response el el id de la antigua mejor respuesta, hay que añadirle el id de la pregunta para formar el id entero
                 $("#"+idBoton).children().css("color", "green");
                 $("#"+response+"-"+idPregunta+"-mejorRespuesta").children().css("color", "black");
             }
+            // if (response!=0){
+
+            // } else{
+            //     if (response=="no es el creador"){
+            //     $("#"+idBoton).children().css("color", "black");
+            //     }
+            // }
         }
     });
 
