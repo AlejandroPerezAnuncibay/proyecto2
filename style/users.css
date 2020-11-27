@@ -8,6 +8,7 @@
 }
 *{
     margin: 0;
+    box-sizing: border-box;
 }
 
 #informacionTotal{
@@ -100,6 +101,7 @@
 }
 #preguntas{
     width: 90vw;
+    padding-bottom: 15px;
 }
 .pregunta{
     display: grid;
@@ -232,6 +234,13 @@ i.fa-lock-open{
 }
 h4 a{
     color: black;
+}
+i.fa-trash{
+    font-size: 30px;
+    color: red;
+}
+i.fa-trash:hover{
+    color: red;
 }
 @media screen and (min-width: 768px) {
     #informacionTotal{

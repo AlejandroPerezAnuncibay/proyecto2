@@ -8,6 +8,7 @@ if (isset($_POST["action"])){
         case "likePregunta": likePregunta();break;
         case "likeRespuesta": likeRespuesta();break;
         case "mejorRespuesta": mejorRespuesta();break;
+        case "liveSearch": liveSearch();break;
     }
 
 }
@@ -143,4 +144,19 @@ function mejorRespuesta(){
             close();
             echo $idMejorRespuesta; //esta variable es la aintigua mejor respuesta, la mando para cabiar el color del tick de la antigua mejor respuesta.
     }
+}
+function liveSearch(){
+    require_once "bbdd.php";
+    $dbh = connect();
+    $data = array("busqueda" => '%'.$_POST["value"].'%');
+    $stmt = $dbh ->prepare("SELECT title FROM `QUESTIONS` WHERE lower(title) LIKE :busqueda LIMIT 5");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    
+    
+    while($row = $stmt->fetch()) {
+        echo $row->title . "%%%";   
+    }
+    
+    close();
 }

@@ -356,7 +356,7 @@ function cargarTodasPreguntas()
                    <a href='preguntas.php?pregunta=".$fila["id_question"]."' ><i class='fas fa-eye' style='font-size:36px'></i></a></div>";
         echo "<div class='info'>";
         $contador = $contador +1;
-        echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."' <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></div>";
+        echo "<div class='titleBorrar'><h4><a href='preguntas.php?pregunta=".$fila["id_question"]."'> ".$fila["title"]."</a></h4><a href='home.php?borrar=".$fila["id_question"]."'> <i style='color:black; display:".$posicionBorrar.";' class='fa fa-trash'></i></a></div>";
         echo "<a href='user.php?id=".$fila["id_user"]."'><h5>$usuario</h2></a>";
         echo "<p>".$fila["text"]."</p></div>";
         echo "<div class='fechaTag'><span class='fecha'>".timeAgo($fila["date"])."</span><span class='labels'>".$tag."</span></div></div>";
