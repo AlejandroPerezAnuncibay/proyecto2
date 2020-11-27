@@ -158,6 +158,10 @@
     .labels{
         width: 30%;
     }
+    .fechaTag .labels{
+        width: 40%;
+        cursor: default;
+    }
 
     .titleBorrar{
         display: flex;
@@ -166,6 +170,9 @@
     }
     .titleBorrar i{
         cursor: pointer;
+    }
+    i.fa-trash{
+        font-size: 30px;
     }
     @media (min-width: 768px) {
         /*Diseño Escritorio*/
