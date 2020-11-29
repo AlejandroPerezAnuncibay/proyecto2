@@ -93,7 +93,7 @@ session_start();
                 <input type="text" required name="user" class="username" placeholder="Username"></i>
             <p id="errorUsername"></p>
             <i class="fa fa-lock">&nbsp;
-                <input type="password" required name="pass" class="password" placeholder="Password"></i>
+                <input type="password" required name="pass" class="password" placeholder="Password (Jm12345$)"></i>
             <p id="errorPassword"></p>
             <i class="fa fa-lock">&nbsp;
                 <input type="password" required name="pass" id="password2" placeholder="Repeat the password"></i>

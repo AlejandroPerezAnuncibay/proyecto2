@@ -33,11 +33,11 @@ require_once "code.php"?>
             if (isset($_GET["reply"])){
                 $action = "carga.php?reply=".$_GET["reply"];
                 $mensaje = "RESPUESTA";
-                $placeholder = "Introduzca la respuesta...";
+                $placeholder = "Introduzca la respuesta... (Max 255)";
             }else{
                 $action = "carga.php?insertar=true";
                 $mensaje ="PREGUNTA";
-                $placeholder="Introduzca la descripcion a la pregunta...";
+                $placeholder="Introduzca la descripcion a la pregunta... (Max 255)";
             }
 
         ?>
@@ -47,7 +47,7 @@ require_once "code.php"?>
             <input type='text' name='title' id='title' placeholder='Escriba aqui un breve titulo'>";
             }?>
             <label for="description">Description</label>
-            <textarea name="description" maxlength="255" style="width: 100%;height: 82px" id="description" placeholder="<?=$placeholder?>"></textarea>
+            <textarea name="description" maxlength="255" style="width: 100%;height: 82px" id="description" required placeholder="<?=$placeholder?>"></textarea>
 
          <?php if(!isset($_GET["reply"])){
 
@@ -55,7 +55,7 @@ require_once "code.php"?>
              echo "<div id='etiquetas'>";
              cargarEtiquetasSinEnlace();
              echo"</div>";
-             echo "<input type='text' name='tags' id='tags' hidden>
+             echo "<input type='text' name='tags' id='tags' hidden required>
                 <div id='botones'>
            
             </div>";
