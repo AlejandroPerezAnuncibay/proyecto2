@@ -193,11 +193,4 @@ function sacarIdEtiqueta($etiqueta){
 }
 
 
-function insertarRespuesta($descripcion){
 
-
-
-
-
-
-}
