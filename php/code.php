@@ -825,11 +825,13 @@ function borrarPregunta(){
     $dbh = connect();
     $data = array('id'=>$_GET["borrar"]);
     $stmt = $dbh->prepare("DELETE FROM QUESTIONS WHERE id_question = :id");
+    
     $stmt->execute($data);
+     echo  '<script type="text/javascript">';
+     echo 'window.location.href = "home.php"';
+     echo '</script>';
 
-
-    header("Location: home.php");
-    close();
+close();
 
 
 }
