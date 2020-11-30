@@ -79,7 +79,7 @@ session_start();
                 }
             </script> -->
         </form>
-        <p class="newaccount">Dont have an account? <a href=""> Enter as a guest</a></p>
+        <p class="newaccount"><a href="home.php">Dont have an account?  Enter as a guest</a></p>
     </div>
     <div id="signup">
         <div class="btncambiar">

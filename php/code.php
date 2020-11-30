@@ -825,11 +825,13 @@ function borrarPregunta(){
     $dbh = connect();
     $data = array('id'=>$_GET["borrar"]);
     $stmt = $dbh->prepare("DELETE FROM QUESTIONS WHERE id_question = :id");
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
     $stmt->execute($data);
+
+
     header("Location: home.php");
     close();
+
+
 }
 
 function contarLikesRespuesta($id){
