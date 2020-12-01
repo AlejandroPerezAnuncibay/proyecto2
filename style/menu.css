@@ -2,6 +2,7 @@
     font-family: "elephans";
     src: url("../fonts/Elephans.ttf");
 }
+
 input:active,button:active{
     outline: none;
 }
@@ -158,6 +159,7 @@ i.fa-search{
 #infoUsu{
     display: flex;
     align-items: center;
+    padding-right: 17px;
 }
 #infoUsu #nombreApe{
     margin-left: 5px;

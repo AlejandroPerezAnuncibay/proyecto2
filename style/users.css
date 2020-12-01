@@ -128,7 +128,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-
+    padding-top: 15px;
     grid-column: 3/1;
 }
 h2 a{
